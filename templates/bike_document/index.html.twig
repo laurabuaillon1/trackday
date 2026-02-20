@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeDocument index{% endblock %}
+
+{% block body %}
+    <h1>BikeDocument index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Document_type</th>
+                <th>Document_name</th>
+                <th>File_url</th>
+                <th>Upload_date</th>
+                <th>Expiry_date</th>
+                <th>Amount</th>
+                <th>Notes</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bike_document in bike_documents %}
+            <tr>
+                <td>{{ bike_document.id }}</td>
+                <td>{{ bike_document.documentType }}</td>
+                <td>{{ bike_document.documentName }}</td>
+                <td>{{ bike_document.fileUrl }}</td>
+                <td>{{ bike_document.uploadDate ? bike_document.uploadDate|date('Y-m-d') : '' }}</td>
+                <td>{{ bike_document.expiryDate ? bike_document.expiryDate|date('Y-m-d') : '' }}</td>
+                <td>{{ bike_document.amount }}</td>
+                <td>{{ bike_document.notes }}</td>
+                <td>{{ bike_document.createdAt ? bike_document.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bike_document.updatedAt ? bike_document.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_bike_document_show', {'id': bike_document.id}) }}">show</a>
+                    <a href="{{ path('app_bike_document_edit', {'id': bike_document.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bike_document_new') }}">Create new</a>
+{% endblock %}

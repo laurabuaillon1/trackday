@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeDocument{% endblock %}
+
+{% block body %}
+    <h1>BikeDocument</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ bike_document.id }}</td>
+            </tr>
+            <tr>
+                <th>Document_type</th>
+                <td>{{ bike_document.documentType }}</td>
+            </tr>
+            <tr>
+                <th>Document_name</th>
+                <td>{{ bike_document.documentName }}</td>
+            </tr>
+            <tr>
+                <th>File_url</th>
+                <td>{{ bike_document.fileUrl }}</td>
+            </tr>
+            <tr>
+                <th>Upload_date</th>
+                <td>{{ bike_document.uploadDate ? bike_document.uploadDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Expiry_date</th>
+                <td>{{ bike_document.expiryDate ? bike_document.expiryDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td>{{ bike_document.amount }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ bike_document.notes }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ bike_document.createdAt ? bike_document.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ bike_document.updatedAt ? bike_document.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bike_document_index') }}">back to list</a>
+
+    <a href="{{ path('app_bike_document_edit', {'id': bike_document.id}) }}">edit</a>
+
+    {{ include('bike_document/_delete_form.html.twig') }}
+{% endblock %}

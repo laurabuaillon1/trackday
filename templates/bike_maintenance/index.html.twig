@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BikeMaintenance index{% endblock %}
+
+{% block body %}
+    <h1>BikeMaintenance index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Mileage</th>
+                <th>Hours</th>
+                <th>Maintenance_type</th>
+                <th>Description</th>
+                <th>Cost</th>
+                <th>Workshop</th>
+                <th>Parts_used</th>
+                <th>Next_service_date</th>
+                <th>Next_service_km</th>
+                <th>Next_service_hours</th>
+                <th>Receipt_url</th>
+                <th>Notes</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for bike_maintenance in bike_maintenances %}
+            <tr>
+                <td>{{ bike_maintenance.id }}</td>
+                <td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
+                <td>{{ bike_maintenance.mileage }}</td>
+                <td>{{ bike_maintenance.hours }}</td>
+                <td>{{ bike_maintenance.maintenanceType }}</td>
+                <td>{{ bike_maintenance.description }}</td>
+                <td>{{ bike_maintenance.cost }}</td>
+                <td>{{ bike_maintenance.workshop }}</td>
+                <td>{{ bike_maintenance.partsUsed }}</td>
+                <td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
+                <td>{{ bike_maintenance.nextServiceKm }}</td>
+                <td>{{ bike_maintenance.nextServiceHours }}</td>
+                <td>{{ bike_maintenance.receiptUrl }}</td>
+                <td>{{ bike_maintenance.notes }}</td>
+                <td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_bike_maintenance_show', {'id': bike_maintenance.id}) }}">show</a>
+                    <a href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_bike_maintenance_new') }}">Create new</a>
+{% endblock %}

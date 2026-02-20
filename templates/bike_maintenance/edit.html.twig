@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit BikeMaintenance{% endblock %}
+
+{% block body %}
+    <h1>Edit BikeMaintenance</h1>
+
+    {{ include('bike_maintenance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_bike_maintenance_index') }}">back to list</a>
+
+    {{ include('bike_maintenance/_delete_form.html.twig') }}
+{% endblock %}

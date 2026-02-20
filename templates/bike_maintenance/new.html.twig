@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New BikeMaintenance{% endblock %}
+
+{% block body %}
+    <h1>Create new BikeMaintenance</h1>
+
+    {{ include('bike_maintenance/_form.html.twig') }}
+
+    <a href="{{ path('app_bike_maintenance_index') }}">back to list</a>
+{% endblock %}
