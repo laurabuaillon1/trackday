@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../base/typography' as*;
+
+// Authentification
+
+form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;  
+    gap:16px;  
+}
+
+.auth-card{
+    @include auth-card;
+}
+
+.required{
+    display: flex;
+    flex-direction: column;
+}
+
+label.required{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+input{
+    @include auth-input;
+}
+
+
+.btn{
+    @include auth-button;
+}

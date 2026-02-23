@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+//Authentification
+
+h1{
+    font-family: $font-primary;
+    color: $color-dark;
+    font-weight: 700;
+    font-size: $text-xl;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+a{
+    font-family: $font-primary;
+    color:$color-gray-muted;
+    font-size: $text-s;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.back{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5rem
+}
+
+label{
+    font-family: $font-primary;
+    font-size: $text-s;
+    color: $color-gray-dark;
+    font-weight: 600;
+}

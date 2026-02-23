@@ -1,0 +1,31 @@
+// Couleurs de base
+$color-dark: #0F172A;
+$color-light: #F5F7FA;
+$color-white: #ffffff;
+$color-gray-light: #f1f5f9;
+$color-gray-medium: #e2e8f0;
+$color-gray-dark: #334155;
+$color-gray-muted: #64748B;
+
+
+// Authentification-background
+$auth-background:$color-light;
+$auth-gradient:linear-gradient(135deg, #f1f5f9, #f1f5f9);
+
+// Authentification-card
+$auth-card-background: #fffffff2;
+
+
+//3-Typographie
+$font-primary:"Inter", sans-serif;
+
+$text-xxs: 10px;
+$text-xs: 12px;
+$text-s: 14px;   
+$text-m: 16px;
+$text-l: 18px;
+$text-xl: 20px;  
+$text-xxl: 24px;
+$text-xxxl: 32px;
+
+
