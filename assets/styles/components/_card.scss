@@ -8,12 +8,25 @@ form{
     display:flex;
     flex-direction: column;
     justify-content: center;  
-    gap:16px;  
+    gap:32px;  
+}
+
+ul li {
+    @include form-error;
+    list-style: none;
 }
 
 .auth-card{
     @include auth-card;
 }
+
+.back{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:0.5rem
+}
+
 
 .required{
     display: flex;
@@ -30,7 +43,26 @@ input{
     @include auth-input;
 }
 
+input.is-invalid{
+    border-color: red;
+}
+
 
 .btn{
     @include auth-button;
+}
+
+.agree-terms{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap:16px;
+}
+
+#registration_form_agreeTerms{
+    width: 30px;
+    height: 30px;
+    margin: 0px;
 }

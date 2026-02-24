@@ -2,6 +2,6 @@
 @use '../abstracts/mixins' as *;
 
 .register-page{
-    @include auth-page($auth-background,$auth-gradient);
+    @include auth-page($auth-background, $auth-gradient);
 }
 

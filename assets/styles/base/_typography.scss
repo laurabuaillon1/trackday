@@ -7,7 +7,8 @@ h1{
     font-family: $font-primary;
     color: $color-dark;
     font-weight: 700;
-    font-size: $text-xl;
+    font-size: $text-xxxxxl;
+    margin-top: 80px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -16,21 +17,25 @@ h1{
 a{
     font-family: $font-primary;
     color:$color-gray-muted;
-    font-size: $text-s;
+    font-size: $text-xxxl;
     font-weight: 400;
     text-decoration: none;
 }
 
-.back{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:0.5rem
-}
 
 label{
     font-family: $font-primary;
-    font-size: $text-s;
+    font-size: $text-xxxl;
     color: $color-gray-dark;
     font-weight: 600;
+}
+
+.agree-terms label{
+    font-size: $text-xxl;
+}
+
+li{
+    list-style-type: none;
+    font-size: $text-xxl;
+    
 }

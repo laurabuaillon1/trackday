@@ -18,37 +18,39 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email',TextType::class,[
+            ->add('email', TextType::class, [
                 'attr' => [
-                    'placeholder'=> 'you@exemple.com',
+                    'placeholder' => 'you@exemple.com',
                 ],
+                'invalid_message' => 'L\'adresse email n\'est pas valide',
             ])
             ->add('agreeTerms', CheckboxType::class, [
-                'label'=> 'J\'accepte les conditions générales d\'utilisation.',
                 'mapped' => false,
+                'label' => 'J\'accepte les conditions générales d\'utilisation.',
                 'constraints' => [
                     new IsTrue(
                         message: 'Vous devez accepter les conditions d\'utilisation.',
                     ),
                 ],
             ])
-            
-            ->add('plainPassword', RepeatedType::class,[
-                'type'=>PasswordType::class,
-                'mapped'=>false,
-                'first_options'=> [
+
+            ->add('plainPassword', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'mapped' => false,
+                'first_options' => [
                     'label' => 'Mot de passe',
                     'attr' => [
                         'autocomplete' => 'new-password',
-                        'placeholder'=> 'Minimum 8 caractères',]
-                ],
-                'second_options' =>[
-                    'label' => 'Confirmer le mot de passe : ',
-                    'attr'=> [
-                        'placeholder'=> "Confirmez votre mot de passe",
+                        'placeholder' => 'Minimum 8 caractères',
                     ]
                 ],
-                'invalid_message'=> 'Les mots de passe ne correspondent pas.',
+                'second_options' => [
+                    'label' => 'Confirmer le mot de passe : ',
+                    'attr' => [
+                        'placeholder' => "Confirmez votre mot de passe",
+                    ]
+                ],
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
             ])
         ;
     }
@@ -57,9 +59,9 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'csrf_protection'=> true,
-            'csrf_field_name'=>'_token',
-            'csrf_token_id'=>'registration_form',
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id' => 'registration_form',
         ]);
     }
 }
