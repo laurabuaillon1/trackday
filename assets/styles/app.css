@@ -38,7 +38,12 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
   gap: 32px;
+}
+form div {
+  width: 100%;
 }
 
 ul li {
@@ -53,9 +58,17 @@ ul li {
   border-radius: 3rem;
   padding: 64px;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2509803922);
-  min-height: 50vh;
+  min-height: 60vh;
   width: 80%;
   font-size: 0.875rem;
+}
+.auth-card > div {
+  width: 100%;
+}
+.auth-card .form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .back {
@@ -77,12 +90,13 @@ label.required {
 }
 
 input {
+  box-sizing: border-box;
   background-color: rgba(248, 250, 252, 0.5);
   border-style: solid;
   border-width: 1px;
   border-color: #b4bac2;
   border-radius: 2rem;
-  height: 80px;
+  height: 100px;
   width: 100%;
   padding: 16px 24px;
   margin-top: 16px;
@@ -100,10 +114,6 @@ input::placeholder {
   font-weight: 500;
 }
 
-input.is-invalid {
-  border-color: rgb(114, 2, 2);
-}
-
 .btn {
   font-family: "Inter", sans-serif;
   font-size: 32px;
@@ -115,7 +125,8 @@ input.is-invalid {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 80px;
+  height: 100px;
+  width: 100%;
   align-items: center;
   padding: 16px 24px;
 }
@@ -133,6 +144,30 @@ input.is-invalid {
   width: 30px;
   height: 30px;
   margin: 0px;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.alert {
+  font-size: 24px;
+  font-family: "Inter", sans-serif;
+  list-style: none;
+  color: #d10000;
+}
+
+.login-page {
+  background-color: #F5F7FA;
+  background-image: linear-gradient(135deg, #f1f5f9, #f1f5f9);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .register-page {

@@ -4,6 +4,7 @@
 {% endblock %}
 {% block body_class %}register-page
 {% endblock %}
+
 {% block body %}
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -32,7 +33,7 @@
 		</div>
 
 		
-		<div>
+		<div class="password">
 			{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
 			{{ form_widget(registrationForm.plainPassword.first)}}
 			{{ form_errors(registrationForm.plainPassword.first)}}
