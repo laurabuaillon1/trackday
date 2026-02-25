@@ -26,7 +26,8 @@
 @mixin form-error{
     font-size: $text-xxl;
     font-family: $font-primary;
-    color:red;
+    list-style: none;
+    color:$color-red-error;
 }
 
 @mixin auth-input{

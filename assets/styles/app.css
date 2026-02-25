@@ -44,8 +44,8 @@ form {
 ul li {
   font-size: 24px;
   font-family: "Inter", sans-serif;
-  color: red;
   list-style: none;
+  color: #d10000;
 }
 
 .auth-card {
@@ -101,7 +101,7 @@ input::placeholder {
 }
 
 input.is-invalid {
-  border-color: red;
+  border-color: rgb(114, 2, 2);
 }
 
 .btn {

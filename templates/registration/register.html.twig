@@ -31,20 +31,16 @@
 		{{ form_errors(registrationForm.email)}}
 		</div>
 
-		{# {{ form_row(registrationForm.plainPassword, {
-				            label: 'Password'
-				        }) }} #}
+		
 		<div>
 			{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
 			{{ form_widget(registrationForm.plainPassword.first)}}
+			{{ form_errors(registrationForm.plainPassword.first)}}
 		
-		</div>
-
-		<div>
 			{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
 			{{ form_widget(registrationForm.plainPassword.second)}}
-			
-			 {{ form_errors(registrationForm.plainPassword) }}
+			{{ form_errors(registrationForm.plainPassword.first)}}
+			 
 		</div>
 
 

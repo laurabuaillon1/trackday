@@ -13,8 +13,10 @@ form{
 
 ul li {
     @include form-error;
-    list-style: none;
+    // list-style: none;
+
 }
+
 
 .auth-card{
     @include auth-card;
@@ -44,8 +46,9 @@ input{
 }
 
 input.is-invalid{
-    border-color: red;
-}
+    border-color: rgb(114, 2, 2);
+};
+
 
 
 .btn{
