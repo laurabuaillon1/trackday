@@ -12,19 +12,24 @@
 	{% endfor %}
 
 	<div class="auth-card">
-		<h1>Modifier le mot de passe</h1>
-		<div class="email">
-			{{ form_label(requestForm.email) }}
-			{{ form_widget(requestForm.email) }}
-            {{ form_errors(requestForm.email) }}
+		<div class="back">
+			<img src="{{asset('icons/arrow_left.svg')}}" alt="fleche pour retourner vers la page de connexion de l'application trackday" width="16" height="16">
+			<a href="{{path('app_login')}}">Se connecter</a>
 		</div>
-		<div>
+		<h1>Modifier le mot de passe</h1>
+		<div class="form-info">
 			<small>
 				Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
 			</small>
 		</div>
+		{{ form_start(requestForm) }}
+		<div class="email">
+			{{ form_label(requestForm.email) }}
+			{{ form_widget(requestForm.email) }}
+			{{ form_errors(requestForm.email) }}
+		</div>
 
-		<button class="btn">Envoyer un email</button>
+		<button type="submit" class="btn">Envoyer un email</button>
 		{{ form_end(requestForm) }}
 	</div>
 {% endblock %}

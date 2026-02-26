@@ -31,6 +31,8 @@
 @use 'pages/login';
 @use 'pages/register';
 @use 'pages/resetpassword';
+@use 'pages/newpassword';
+@use 'pages/check-email';
 
 // themes
 @use 'themes/dark';
