@@ -4,12 +4,9 @@
 
 // Authentification
 
-form{
-    @include auth-form; 
 
-    div{
-        width: 100%;
-    }
+.input-group{
+    @include auth-form; 
 }
 
 ul li {
@@ -19,17 +16,6 @@ ul li {
 
 .auth-card{
     @include auth-card;
-
-    > div{
-        width: 100%;
-        
-    }
-
-    .form{
-        display: flex;
-        flex-direction: column;
-        gap: 32px;
-    }
 }
 
 .back{
@@ -71,3 +57,28 @@ input{
 .alert{
     @include form-error;
 }
+
+.email, .first-password, .second-password{
+    @include auth-space-form-child;
+}
+
+.auth-links{
+    margin:12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:12px;
+
+    p{
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .register{
+        color:$color-dark;
+        font-weight: 700;
+    }
+
+}
+

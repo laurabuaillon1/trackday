@@ -1,53 +1,62 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 h1 {
   font-family: "Inter", sans-serif;
   color: #0F172A;
   font-weight: 700;
-  font-size: 48px;
-  margin-top: 80px;
+  font-size: 20px;
+  margin-top: 16px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  text-align: center;
 }
 
-a {
+a, p {
   font-family: "Inter", sans-serif;
   color: #64748B;
-  font-size: 32px;
+  font-size: 14px;
   font-weight: 400;
   text-decoration: none;
 }
 
+small {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+}
+
 label {
   font-family: "Inter", sans-serif;
-  font-size: 32px;
+  font-size: 14px;
   color: #334155;
   font-weight: 600;
 }
 
 .agree-terms label {
-  font-size: 24px;
+  font-size: 10px;
 }
 
 li {
   list-style-type: none;
-  font-size: 24px;
+  font-size: 14px;
 }
 
-form {
+.input-group {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 32px;
-}
-form div {
-  width: 100%;
+  gap: 12px;
 }
 
 ul li {
-  font-size: 24px;
+  font-size: 10px;
   font-family: "Inter", sans-serif;
   list-style: none;
   color: #d10000;
@@ -55,20 +64,21 @@ ul li {
 
 .auth-card {
   background-color: rgba(255, 255, 255, 0.9490196078);
-  border-radius: 3rem;
-  padding: 64px;
+  border-radius: 1rem;
+  padding: 2rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2509803922);
-  min-height: 60vh;
-  width: 80%;
+  width: 100%;
   font-size: 0.875rem;
 }
-.auth-card > div {
-  width: 100%;
+@media (min-width: 768px) {
+  .auth-card {
+    width: 75%;
+  }
 }
-.auth-card .form {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+@media (min-width: 1024px) {
+  .auth-card {
+    width: 70%;
+  }
 }
 
 .back {
@@ -87,20 +97,22 @@ label.required {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
 }
 
 input {
-  box-sizing: border-box;
   background-color: rgba(248, 250, 252, 0.5);
   border-style: solid;
   border-width: 1px;
   border-color: #b4bac2;
-  border-radius: 2rem;
-  height: 100px;
+  border-radius: 0.75rem;
+  height: 40px;
   width: 100%;
-  padding: 16px 24px;
-  margin-top: 16px;
-  font-size: 32px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.875rem;
   font-family: "Inter", sans-serif;
   color: #64748B;
 }
@@ -109,26 +121,25 @@ input:focus {
   outline: none;
 }
 input::placeholder {
-  font-size: 32px;
+  font-size: 0.875rem;
   color: #b4bac2;
   font-weight: 500;
 }
-
 .btn {
   font-family: "Inter", sans-serif;
-  font-size: 32px;
+  font-size: 14px;
   font-weight: 700;
   background-color: #0F172A;
   color: #F5F7FA;
-  border-radius: 2rem;
+  border-radius: 0.75rem;
   border-style: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  height: 100px;
+  height: 40px;
   width: 100%;
   align-items: center;
-  padding: 16px 24px;
+  padding: 8px 12px;
 }
 
 .agree-terms {
@@ -141,44 +152,82 @@ input::placeholder {
 }
 
 #registration_form_agreeTerms {
-  width: 30px;
-  height: 30px;
+  width: 16px;
+  height: 16px;
   margin: 0px;
 }
 
 .password {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
 
 .alert {
-  font-size: 24px;
+  font-size: 10px;
   font-family: "Inter", sans-serif;
   list-style: none;
   color: #d10000;
 }
 
+.email, .first-password, .second-password {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-links {
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.auth-links p {
+  font-weight: 400;
+  text-align: center;
+}
+.auth-links .register {
+  color: #0F172A;
+  font-weight: 700;
+}
+
 .login-page {
   background-color: #F5F7FA;
   background-image: linear-gradient(135deg, #f1f5f9, #f1f5f9);
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 16px;
 }
 
 .register-page {
   background-color: #F5F7FA;
   background-image: linear-gradient(135deg, #f1f5f9, #f1f5f9);
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 16px;
+}
+
+.reset-password {
+  background-color: #F5F7FA;
+  background-image: linear-gradient(135deg, #f1f5f9, #f1f5f9);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
 }
 
 /*# sourceMappingURL=app.css.map */

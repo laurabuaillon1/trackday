@@ -1,17 +1,16 @@
 // add your SASS styles in this file
 
 
-
-// abstract
-@use 'abstracts/breakpoints';
-@use 'abstracts/functions';
-@use 'abstracts/mixins';
-@use 'abstracts/variables' as *;
-
 // base
 @use 'base/base';
 @use 'base/reset';
 @use 'base/typography';
+
+// abstract
+@use 'abstracts/functions';
+@use 'abstracts/mixins';
+@use 'abstracts/variables' as *;
+
 
 // components
 @use 'components/alert';
@@ -31,6 +30,7 @@
 @use 'pages/garage';
 @use 'pages/login';
 @use 'pages/register';
+@use 'pages/resetpassword';
 
 // themes
 @use 'themes/dark';

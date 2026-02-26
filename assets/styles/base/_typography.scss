@@ -7,35 +7,40 @@ h1{
     font-family: $font-primary;
     color: $color-dark;
     font-weight: 700;
-    font-size: $text-xxxxxl;
-    margin-top: 80px;
+    font-size: $text-xl;
+    margin-top: 16px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    text-align: center;
 }
 
-a{
+a,p{
     font-family: $font-primary;
     color:$color-gray-muted;
-    font-size: $text-xxxl;
+    font-size: $text-s;
     font-weight: 400;
     text-decoration: none;
 }
 
+small{
+    font-family: $font-primary;
+    font-size: $text-xxs;
+}
 
 label{
     font-family: $font-primary;
-    font-size: $text-xxxl;
+    font-size: $text-s;
     color: $color-gray-dark;
     font-weight: 600;
 }
 
 .agree-terms label{
-    font-size: $text-xxl;
+    font-size: $text-xxs;
 }
 
 li{
     list-style-type: none;
-    font-size: $text-xxl;
+    font-size: $text-s;
     
 }

@@ -1,16 +1,18 @@
 @use '../abstracts/variables' as*;
 
+
 // Inscription
 
 @mixin auth-page($background,$gradient){
     background-color: $background;
     background-image:$gradient;
-    min-height: 100vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 16px;
 }
 
 @mixin auth-form{
@@ -19,70 +21,100 @@
     justify-content: center;  
     align-items: center;
     width: 100%;
-    gap:32px; 
+    gap:12px;
+    
 }
 
 @mixin auth-card{
     background-color: $auth-card-background;
-    border-radius: 3rem;
-    padding: 64px;
+    border-radius: 1rem;
+    padding: 2rem;
     box-shadow: 0 25px 50px -12px #00000040;
-    min-height: 60vh;
-    width: 80%;
+    width: 100%;
     font-size: 0.875rem;
     
-}
+    @include tablet{
+        width: 75%;
+    }
 
+    @include desktop{
+        width:70%;
+    }
+}
+    
+
+
+//texte erreur
 @mixin form-error{
-    font-size: $text-xxl;
+    font-size: $text-xxs;
     font-family: $font-primary;
     list-style: none;
     color:$color-red-error;
+    
 }
 
 @mixin auth-input{
-    box-sizing: border-box;
     background-color: rgb(248, 250, 252, 0.5);
     border-style: solid;
     border-width: 1px;
     border-color: $color-gray-medium;
-    border-radius: 2rem;
-    height: 100px;
+    border-radius: 0.75rem;
+    height: 40px;
     width: 100%;
-    padding: 16px 24px;
-    margin-top: 16px;
-    font-size: $text-xxxl;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+    font-size: 0.875rem;
     font-family: $font-primary;
     color: $color-gray-muted;
+   
 
     &:focus{
       border-color: $color-gray-dark;
       outline: none;
+     
       
     }
 
     &::placeholder{
-        font-size:  $text-xxxl;
+        font-size:  0.875rem;
         color: $color-gray-medium;
         font-weight: 500;
     }
+
+  
+
+    @include tablet{
+        
+
+    }
 }
+
+
+@mixin auth-space-form-child{
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+}
+
 
 @mixin auth-button{
     font-family: $font-primary;
-    font-size: $text-xxxl;
+    font-size: $text-s;
     font-weight: 700;
     background-color: $color-dark;
     color: $color-light;
-    border-radius: 2rem;
+    border-radius: 0.75rem;
     border-style: none;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    height: 100px;
+    height: 40px;
     width: 100%;
     align-items: center;
-    padding: 16px 24px;
+    padding: 8px 12px;
 }
 
 @mixin auth-back{
@@ -101,9 +133,10 @@
     gap:16px;
 }
 
+//checkbox registration form
 @mixin auth-registration-form-agree-terms{
-    width: 30px;
-    height: 30px;
+    width: 16px;
+    height: 16px;
     margin: 0px;
 }
 
@@ -116,14 +149,33 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 100%;
     
 }
 
 @mixin auth-password{
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 16px;
 }
 
-// Login
+// breakpoints
+
+// @mixin mobile{
+//     @media (min-width:$breakpoints-mobile-min) and (max-width:$breakpoints-mobile-max){
+//       @content;
+//     }
+// }
+
+@mixin tablet{
+    @media (min-width:$breakpoints-tablet){
+    @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width:$breakpoints-desktop){
+    @content;
+    }
+}
 
