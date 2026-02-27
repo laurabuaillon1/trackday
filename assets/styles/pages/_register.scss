@@ -3,5 +3,6 @@
 
 .register-page{
     @include auth-page($auth-background, $auth-gradient);
+    
 }
 

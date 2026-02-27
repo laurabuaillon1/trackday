@@ -1,0 +1,32 @@
+.alert{
+    padding: 12px 16px;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 0.875rem;
+    width: 100%;
+
+    &-danger {
+        background-color: #2d0000;
+        color: #ff4444;
+        border-color: #ff4444;
+    }
+
+    &-success {
+        background-color: #002d00;
+        color: #44ff44;
+        border-color: #44ff44;
+    }
+
+    &-warning {
+        background-color: #2d2000;
+        color: #ffaa00;
+        border-color: #ffaa00;
+    }
+
+    &-info {
+        background-color: #002d2d;
+        color: #00aaff;
+        border-color: #00aaff;
+    }
+}

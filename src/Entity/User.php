@@ -69,6 +69,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     )]
     private ?string $password = null;
 
+    // Suppression en cascade des tokens de réinitialisation de mot de passe liés à l'utilisateur
+    //Pour éviter d'avoir des tokens "orphelins" en base de données
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ResetPasswordRequest::class, cascade: ['remove'], orphanRemoval: true)]
+    private Collection $resetPasswordRequests;
+
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -96,6 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->bikes = new ArrayCollection();
+        $this->resetPasswordRequests = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
         $this->account_status = 'active';
     }
@@ -153,6 +159,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function getResetPasswordRequests(): Collection
+{
+    return $this->resetPasswordRequests;
+}
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {

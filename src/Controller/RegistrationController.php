@@ -52,7 +52,7 @@ class RegistrationController extends AbstractController
             );
 
             $this->addFlash(
-                'notice',
+                'success',
                 'Votre compte à été crée '
             );
 

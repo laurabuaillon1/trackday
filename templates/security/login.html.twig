@@ -26,12 +26,21 @@
 			<div class='input-group'>
 				<div class="email">
 					<label class="required" for="username">Email</label>
+
+				<div class ="email-wrapper">
 					<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
+					<img src="{{asset('icons/email.svg')}}"  class="email-icon" width="16" height="16">
+
+				</div>
 				</div>
 
 				<div class='first-password'>
 					<label class="required" for="password">Mot de passe</label>
+
+					<div class= "email-wrapper">
 					<input placeholder="Votre mot de passe" type="password" name="_password" id="password" autocomplete="current-password" required>
+					<img src="{{asset('icons/lock.svg')}}"  class="email-icon" width="16" height="16">
+					</div>
 				</div>
 
 				{% if error %}

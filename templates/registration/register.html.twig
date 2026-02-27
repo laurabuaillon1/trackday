@@ -10,7 +10,7 @@
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
 
-
+	
 	<div class="auth-card">
 		<div class="back">
 			<img src="{{asset('icons/arrow_left.svg')}}" alt="fleche pour retourner vers la page de connexion de l'application trackday" width="16" height="16">
@@ -26,22 +26,33 @@
 		<div class="input-group">
 			<div class="email">
 				{{ form_label(registrationForm.email)}}
-				{{ form_widget(registrationForm.email)}}
+				<div class="email-wrapper">
+					{{ form_widget(registrationForm.email)}}
+					<img src="{{asset('icons/email.svg')}}"  class="email-icon" width="16" height="16">
+
+				</div>
 				{{ form_errors(registrationForm.email)}}
 			</div>
 
 
 			<div class="password">
-			    <div class="first-password">
-				{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
-				{{ form_widget(registrationForm.plainPassword.first)}}
-				{# {{ form_errors(registrationForm.plainPassword.first)}} #}
+				<div class="first-password">
+					{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
+					<div class="password-wrapper">
+						{{ form_widget(registrationForm.plainPassword.first)}}
+						<img src="{{asset('icons/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="eye-hide" width="16" height="16">
+					{# data-target= permet à l'icone de savoir quel input afficher/caher #}
+					</div>
 				</div>
-                
+
 				<div class="second-password">
-				{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
-				{{ form_widget(registrationForm.plainPassword.second)}}
-				{{ form_errors(registrationForm.plainPassword.first)}}
+					{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
+					<div class="password-wrapper">
+						{{ form_widget(registrationForm.plainPassword.second)}}
+						<img src="{{asset('icons/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="eye-hide" width="16" height="16">
+
+					</div>
+					{{ form_errors(registrationForm.plainPassword.first)}}
 				</div>
 			</div>
 

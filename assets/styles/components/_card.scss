@@ -40,6 +40,13 @@ input{
     @include auth-button;
 }
 
+.btn:active{
+    background-color: $color-light;
+    color:$color-dark;
+}
+
+
+
 .agree-terms{
     @include auth-agree-terms;
 }
@@ -51,6 +58,41 @@ input{
 .password{
     @include auth-password;
 }
+
+.password-wrapper{
+    position: relative;
+    width: 100%;
+
+    input {
+        padding-left: 40px;
+    }
+
+    .eye-hide {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+}
+
+ .email-wrapper{
+    position: relative;
+    width: 100%;
+
+    input{
+        padding-left: 40px;
+    }
+
+    .email-icon{
+        position:absolute;
+        top: 50%;
+        left:12px;
+        transform: translateY(-50%);
+    }
+ }
+
+
 
 // Login
 
