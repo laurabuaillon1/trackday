@@ -180,3 +180,23 @@
     }
 }
 
+//Sidebar
+
+@mixin flex-row-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin sidebar-border-bottom {
+    border-bottom: 1px solid $color-gray-light;
+}
+
+@mixin sidebar-border-top {
+    border-top: 1px solid $color-gray-light;
+}
+

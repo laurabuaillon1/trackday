@@ -1,0 +1,74 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: $color-gray-dark;
+    font-size: $text-s;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+
+    &:hover {
+        background-color: $color-light;
+        color: $color-gray-dark;
+    }
+
+    &--active {
+        background-color: #fff1f1;
+        color: #e53e3e;
+    }
+
+    &--disabled {
+        color: $color-gray-muted;
+        pointer-events: none;
+    }
+}
+
+.sidebar__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: $color-dark;
+    color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: $text-s;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.sidebar__user-email {
+    font-size: $text-xs;
+    font-weight: 600;
+    color: $color-gray-dark;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sidebar__user-link {
+    font-size: $text-xxs;
+    color: $color-gray-muted;
+    text-decoration: none;
+
+    &:hover {
+        color: $color-gray-dark;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

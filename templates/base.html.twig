@@ -8,18 +8,23 @@
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="icon" href="{{asset('icons/favicon.png')}}"> 
-		{% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{asset('icons/favicon.png')}}"> {% block stylesheets %}{% endblock %}
 
 		{% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
+
 		{% endblock %}
 	</head>
 
-	<body class="{% block body_class %}{% endblock %}"> 
-    {% block body %}{% endblock %}
+	<body class="{% block body_class %}{% endblock %}">
+		<div class="d-lg-flex">
+			{% if app.user %}
+				{{ include('components/_sidebar.html.twig') }}
+			{% endif %}
+			<main class="flex-grow-1 p-3" style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
+				</main>
+			</div>
 		</body>
 	</html>
