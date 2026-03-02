@@ -1,23 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DashboardController!{% endblock %}
+{% block title %}Bonjour
+	{{app.user.lastname}}!
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/laragon/www/trackday/trackday/src/Controller/DashboardController.php</code></li>
-        <li>Your template at <code>C:/laragon/www/trackday/trackday/templates/dashboard/index.html.twig</code></li>
-    </ul>
-</div>
+	<div class="dashboard">
+		<div class="dashboard">
 
+			<div class="dashboard__title">
+				<img class="dashboard__flag" src="{{asset('icons/sidebar/flag.svg')}}" alt="flag">
+				<h1>Tableau de bord</h1>
+			</div>
+			<p>Suivez vos performances</p>
+
+		</div>
+		{# {% for message in app.flashes('welcome') %} #}
+		<div
+			class="dashboard__message">
+			{# <h2>{{ message }}
+														! 🏁</h2> #}
+			<h2>Bienvenue sur Trackday, byuix.pro@gmail.com !
+			</h2>
+			<p>Votre application est prête! Suivez vos journées de roulages, gérez votre moto, analysez vos temps et progressez à chaque sortie.</p>
+
+
+		</div>
+		{# {% endfor %} #}
+
+
+	</div>
 
 
 {% endblock %}

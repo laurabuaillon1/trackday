@@ -1,2 +1,39 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+
+
+h1{
+    font-size: $text-xxl;
+}
+
+.main-content{
+        padding: 72px 1rem 1rem 1rem !important; // ← change la valeur ici
+    
+        @media (min-width: 992px) {
+        padding: 32px;
+        
+        
+    }
+    
+    }
+
+.dashboard{
+
+    &__title{
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__message{
+        display: flex;
+        flex-direction: column;
+        border-color: #fecaca;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 0.75rem;
+        padding: 2rem;
+        background: linear-gradient(154deg,rgba(255, 237, 232, 1) 0%, rgba(255, 255, 219, 1) 100%);    background-color: #fef2f2;
+    }
+
+   
+}

@@ -1,6 +1,119 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 
+// Sidebar container
+.sidebar {
+    width: 240px;
+    min-height: 100vh;
+
+    @media (min-width: 992px) {
+        align-self: stretch;
+        display: flex !important;
+        flex-direction: column;
+        
+        
+    }
+}
+
+// Header mobile fixe
+.sidebar__mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    height: 56px;
+    padding: 1rem ;
+    background-color: $color-white;
+    border-bottom: 1px solid $color-gray-light;
+
+    @media (min-width: 992px) {
+        display: none !important;
+    }
+}
+
+// Bouton burger
+.sidebar__burger {
+    border: none;
+    color: $color-gray-muted;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+// Logo desktop
+.sidebar__logo-desktop {
+    display: none;
+
+    @media (min-width: 992px) {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        border-bottom: 1px solid $color-border;
+        background-color: $color-background;
+    }
+}
+
+// Header mobile dans offcanvas
+.sidebar__offcanvas-header {
+    border-bottom: 1px solid $color-gray-medium;
+
+    @media (min-width: 992px) {
+        display: none !important;
+    }
+}
+
+.sidebar__logo-mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sidebar__logo-title{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+// Brand
+.sidebar__brand-name {
+    font-weight: 700;
+    font-size: $text-l;
+    font-family: $font-brand-name;
+}
+
+.sidebar__brand-subtitle {
+    font-size: 0.7rem;
+    color: $color-gray-muted;
+}
+
+// Body
+.sidebar__body {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+
+    @media (min-width: 992px) {
+        height: 100%;
+        
+    }
+}
+
+// Nav
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex-grow: 1;
+    background-color: $color-background;
+    padding: 1.25rem;
+}
+
+// Links
 .sidebar__link {
     display: flex;
     align-items: center;
@@ -21,19 +134,46 @@
     &--active {
         background-color: #fff1f1;
         color: #e53e3e;
+        box-shadow: 0 1px 2px 0 #0000000d;
+
+        img{
+            color:#e53e3e;
+        }
     }
 
     &--disabled {
-        color: $color-gray-muted;
+        color: $color-gray-medium;
         pointer-events: none;
     }
 }
 
+// Footer
+.sidebar__footer {
+    border-top: 1px solid $color-border;
+    padding:1.25rem;
+    background-color: $color-background;
+}
+
+.sidebar__user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 10px 12px;
+}
+
+.sidebar__user-info {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+// Avatar
 .sidebar__avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background-color: $color-dark;
+    background: linear-gradient(154deg,rgba(61, 62, 74, 1) 0%, rgba(31, 41, 55, 1) 100%);
     color: $color-white;
     display: flex;
     align-items: center;
@@ -44,7 +184,7 @@
 }
 
 .sidebar__user-email {
-    font-size: $text-xs;
+    font-size: $text-s;
     font-weight: 600;
     color: $color-gray-dark;
     white-space: nowrap;
@@ -53,7 +193,7 @@
 }
 
 .sidebar__user-link {
-    font-size: $text-xxs;
+    font-size: $text-xs;
     color: $color-gray-muted;
     text-decoration: none;
 
@@ -61,14 +201,3 @@
         color: $color-gray-dark;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

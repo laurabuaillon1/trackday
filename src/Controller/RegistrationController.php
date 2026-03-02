@@ -51,10 +51,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            $this->addFlash(
-                'success',
-                'Votre compte à été crée '
-            );
+            $this->addFlash('welcome', 'Bienvenue sur Trackday!');
 
              
             //redirection vers login
