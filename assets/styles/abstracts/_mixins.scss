@@ -200,3 +200,11 @@
     border-top: 1px solid $color-gray-light;
 }
 
+//Dashboard
+
+@mixin stats-text($size, $weight, $color, $font) {
+    font-family: $font;
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}

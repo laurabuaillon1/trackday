@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block body %}
+	{% block sidebar %}{% endblock %}
+
 	<div class="auth-card">
 
 		<h1>Réinitialisez votre mot de passe</h1>
@@ -26,7 +28,7 @@
 			</div>
 		</div>
 
-		<button class="btn">Valider</button>
+		<button class="app-btn">Valider</button>
 		{{ form_end(resetForm) }}
 
 	</div>

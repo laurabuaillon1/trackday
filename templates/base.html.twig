@@ -20,9 +20,11 @@
 
 	<body class="{% block body_class %}{% endblock %}">
 		<div class="d-lg-flex min-vh-100">
-			{% if app.user %}
-				{{ include('components/_sidebar.html.twig') }}
-			{% endif %}
+			{% block sidebar %}
+				{% if app.user %}
+					{{ include('components/_sidebar.html.twig') }}
+				{% endif %}
+			{% endblock %}
 			<main class="flex-grow-1 p-3 main-content pt-lg-3" style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
 				</main>
 			</div>
