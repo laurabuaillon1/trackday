@@ -1,21 +1,7 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
+@use '../base/breakpoints' as *;
 
-
-h1{
-    font-size: $text-xxl;
-}
-
-.main-content{
-        padding: 72px 1rem 1rem 1rem !important; // ← change la valeur ici
-    
-        @media (min-width: 992px) {
-        padding: 32px;
-        
-        
-    }
-    
-    }
 
 .dashboard{
 
@@ -36,5 +22,19 @@ h1{
         background: linear-gradient(154deg,rgba(255, 237, 232, 1) 0%, rgba(255, 255, 219, 1) 100%);    background-color: #fef2f2;
     }
 
-   
+    
+
+    
+}
+
+.main-content {
+    padding: 56px 16px 16px 16px; // mobile
+
+    @media (min-width: $medium) {
+        padding: 56px 32px; // tablette
+    }
+
+    @media (min-width: $large) {
+        padding: 32px; // desktop
+    }
 }

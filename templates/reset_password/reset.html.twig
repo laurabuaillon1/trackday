@@ -18,7 +18,6 @@
 			<div class="first-password">
 				{{ form_label(resetForm.plainPassword.first)}}
 				{{ form_widget(resetForm.plainPassword.first)}}
-				{# {{ form_errors(registrationForm.plainPassword.first)}} #}
 			</div>
 
 			<div class="second-password">
@@ -28,7 +27,7 @@
 			</div>
 		</div>
 
-		<button class="app-btn">Valider</button>
+		<button type="submit" class="app-btn">Valider</button>
 		{{ form_end(resetForm) }}
 
 	</div>

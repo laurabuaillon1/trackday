@@ -1,9 +1,14 @@
 @use '../abstracts/variables' as *;
+@use "../base/breakpoints" as*;
+
+
+//import des typographie depuis GOOGLE FONT
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 //Authentification
 
+//small
 h1{
     font-family: $font-primary;
     color: $color-dark;
@@ -22,15 +27,10 @@ a,p{
     font-size: $text-s;
     font-weight: 400;
     text-decoration: none;
-}
-
-small{
-    font-family: $font-primary;
-    font-size: $text-xxs;
     display: flex;
     text-align: center;
-    margin-top: 12px;
 }
+
 
 label{
     font-family: $font-primary;
@@ -47,4 +47,42 @@ li{
     list-style-type: none;
     font-size: $text-s;
     
+}
+
+
+@media (min-width :$medium){
+    h1{
+        font-size: $text-4xl;
+        font-family: $font-primary;
+    }
+
+    .text-m{
+        font-size: $text-m;
+    }
+
+    .stats__title{
+        font-size: $text-s;
+        color: $stats-card-color-title;
+    }
+
+    .stats__number{
+        font-size: $text-4xl;
+        color: $stats-card-color-number;
+    }
+
+    .stats__p{
+        font-size: $text-s;
+        color:$stats-card-color-p;
+    }
+
+    .section-card__title{
+        font-size: $text-l;
+        color:$stats-card-color-number;
+    }
+    
+}
+
+@media (min-width: $large){
+    //body{
+    //}
 }

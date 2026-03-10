@@ -29,7 +29,7 @@
 					<label class="required" for="username">Email</label>
 
 					<div class="email-wrapper">
-						<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus>
+						<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus  aria-hidden="true">
 						<img src="{{asset('icons/authentification/email.svg')}}" class="email-icon" width="16" height="16">
 
 					</div>
@@ -39,7 +39,7 @@
 					<label class="required" for="password">Mot de passe</label>
 
 					<div class="email-wrapper">
-						<input placeholder="Votre mot de passe" type="password" name="_password" id="password" autocomplete="current-password" required>
+						<input placeholder="Votre mot de passe" type="password" name="_password" id="password" autocomplete="current-password" required aria-hidden="true">
 						<img src="{{asset('icons/authentification/lock.svg')}}" class="email-icon" width="16" height="16">
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 
 			<div class="auth-links">
 				<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
-				<p>Besoin d'un compte ?<a class="register" href="{{path('app_register')}}">Inscrivez-vous</a>
+				<p class="auth-register">Besoin d'un compte ?<a class="register" href="{{path('app_register')}}">Inscrivez-vous</a>
 				</p>
 
 			</div>

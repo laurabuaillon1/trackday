@@ -1,71 +1,83 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
-@use '../base/typography' as*;
-
-// Card Authentification
-
-.auth-form-group{
-    @include auth-form; 
-}
-
-ul li {
-    @include form-error;
-}
+@use '../base/typography' as *;
+@use '../base/breakpoints' as *;
 
 
-.auth-card{
+// ================================
+// Card Authentification - Base
+// ================================
+
+.auth-card {
     @include auth-card;
 }
 
-.back{
+.auth-form-group {
+    @include auth-form;
+}
+
+.back {
     @include auth-back;
 }
 
-
-.required{
+.required {
     @include auth-required;
 }
 
-label.required{
+label.required {
     @include auth-label-required;
 }
 
-input{
+input {
     @include auth-input;
 }
 
-
-.app-btn{
-    @include auth-button;
-}
-
-.btn:active{
-    background-color: $color-light;
-    color:$color-dark;
-}
-
-
-
-.agree-terms{
+.agree-terms {
     @include auth-agree-terms;
 }
 
-#registration_form_agreeTerms{
-   @include auth-registration-form-agree-terms;
+#registration_form_agreeTerms {
+    @include auth-registration-form-agree-terms;
 }
 
-.password{
+.password {
     @include auth-password;
 }
 
-.password-wrapper{
+.app-btn {
+    @include auth-button;
+}
+
+.btn:active {
+    background-color: $color-light;
+    color: $color-dark;
+}
+
+
+// ================================
+// Card Authentification - Wrappers
+// ================================
+
+.email-wrapper,
+.password-wrapper {
     position: relative;
     width: 100%;
 
     input {
         padding-left: 40px;
     }
+}
 
+.email-wrapper {
+    .email-icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+    }
+}
+
+.password-wrapper {
     .eye-hide {
         position: absolute;
         top: 50%;
@@ -75,77 +87,85 @@ input{
     }
 }
 
- .email-wrapper{
-    position: relative;
-    width: 100%;
 
-    input{
-        padding-left: 40px;
-    }
+// ================================
+// Card Authentification - Erreurs
+// ================================
 
-    .email-icon{
-        position:absolute;
-        top: 50%;
-        left:12px;
-        transform: translateY(-50%);
-    }
- }
-
-
-
-//Card Login
-
-.alert{
+.alert,
+ul li {
     @include form-error;
 }
 
-.email, .first-password, .second-password{
+
+// ================================
+// Card Login
+// ================================
+
+.email,
+.first-password,
+.second-password {
     @include auth-space-form-child;
 }
 
-.auth-links{
-    margin:12px;
+.auth-links {
+    margin: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap:12px;
+    justify-content: center;
+    gap: 12px;
 
-    p{
-        font-weight: 400;
-        text-align: center;
+    .auth-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .register{
-        color:$color-dark;
+    .register {
+        color: $color-dark;
         font-weight: 700;
     }
+}
 
+@media (min-width: $medium) {
+    .min-vh-100 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: $large) {
+    .min-vh-100 {
+        min-height: 0 !important;
+    }
 }
 
 
-//Card Grid
+// ================================
+// Card Dashboard - Statistiques
+// ================================
 
-.stats__wrap{
+.stats__wrap {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap:16px;
+    gap: 16px;
     margin-bottom: 24px;
 }
 
-.stats__card{
+.stats__card {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: calc(50% - 8px); // 2 colonnes sur mobile
+    padding: 16px;
     background-color: #f9fafb;
     border: 1px solid $color-border;
     border-radius: 0.75rem;
-    padding:16px;
-    width: calc(50% - 8px); // 2 colonnes sur mobile
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
-
 
     @media (min-width: 992px) {
         width: calc(25% - 12px); // 4 colonnes sur desktop
@@ -155,30 +175,19 @@ input{
         position: absolute;
         top: 20%;
         right: 12px;
-        padding: 8px;
         transform: translateY(-50%);
-        background: linear-gradient(159deg,rgb(59, 178, 246) 0%, rgba(37, 99, 235, 1) 100%);
         width: 36px;
         height: 36px;
+        padding: 8px;
         border-radius: 8px;
+        background: linear-gradient(159deg, rgb(59, 178, 246) 0%, rgba(37, 99, 235, 1) 100%);
 
-        &.flag{
-            background: linear-gradient(159deg,rgb(187, 59, 246) 0%, rgb(123, 37, 235) 100%);
+        &.flag    { background: linear-gradient(159deg, rgb(187, 59, 246) 0%, rgb(123, 37, 235) 100%); }
+        &.trophy  { background: linear-gradient(159deg, rgb(246, 59, 59) 0%, rgb(184, 20, 20) 100%); }
+        &.time    { background: linear-gradient(159deg, rgb(134, 246, 59) 0%, rgb(63, 173, 48) 100%); }
+    }
 
-        }
-
-        &.trophy{
-            background: linear-gradient(159deg,rgb(246, 59, 59) 0%, rgb(184, 20, 20) 100%);
-
-        }
-
-        &.time{
-            background: linear-gradient(159deg,rgb(134, 246, 59) 0%, rgb(63, 173, 48) 100%);
-
-        }
-    }  
-
-    .stats__row{
+    .stats__row {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -186,70 +195,54 @@ input{
         width: 100%;
     }
 
-    .stats__title{
-        @include stats-text($text-xs,700,$stats-card-color-title,$font-primary)
-    }
-
-    .stats__number{
-        @include stats-text($text-xxl,500,$stats-card-color-number,$font-primary)
-    }
-
-    .stats__p{
-        @include stats-text($text-xs,400,$stats-card-color-p,$font-primary);
-        margin-bottom: 0px;
-    }
-
-   
+//     .stats__title   { @include stats-text($text-xs,  700, $stats-card-color-title,  $font-primary); }
+//     .stats__number  { @include stats-text($text-xxl, 500, $stats-card-color-number, $font-primary); }
+//     .stats__p       { @include stats-text($text-xs,  400, $stats-card-color-p,      $font-primary); margin-bottom: 0; }
 }
 
 
-//Cards (upcomming)
+// ================================
+// Card Dashboard - Prochains Trackdays
+// ================================
 
-
-.section-card{
+.section-card {
     background-color: #f9fafb;
     border: 1px solid $color-border;
     border-radius: 0.75rem;
     margin-bottom: 24px;
-    // padding:16px;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
 
-    &__header{
+    &__header {
         display: flex;
-        flex-direction: row;
-        text-align: center;
+        align-items: center;
         gap: 8px;
         padding: 16px;
         background-color: $color-white;
         border-bottom: 1px solid $color-border;
     }
 
-    &__title{
-        margin: 0px;
+    &__title {
+        margin: 0;
         color: $stats-card-color-number;
     }
 
-    &__empty{
+    &__empty {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        padding: 16px;
+        justify-content: center;
         gap: 12px;
+        padding: 16px;
     }
 
-    &__empty-text{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin: 0px;
-        padding-bottom: 24px ;
-    }
-
-    &__empty-icon{
+    &__empty-icon {
         width: 36px;
         height: 36px;
+    }
+
+    &__empty-text {
+        margin: 0;
+        padding-bottom: 24px;
     }
 }
 

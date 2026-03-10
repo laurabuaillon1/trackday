@@ -6,7 +6,6 @@
 @mixin auth-page($background,$gradient){
     background-color: $background;
     background-image:$gradient;
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -49,39 +48,27 @@
 
 @mixin auth-input{
     background-color: rgb(248, 250, 252, 0.5);
-    border-style: solid;
-    border-width: 1px;
-    border-color: $color-gray-medium;
+    border: 1px solid $color-gray-medium;
     border-radius: 0.75rem;
     height: 40px;
     width: 100%;
     padding: 8px 12px;
     display: flex;
     flex-direction: column;
-    gap:12px;
+    gap: 12px;
     font-size: 0.875rem;
     font-family: $font-primary;
     color: $color-gray-muted;
-   
 
-    &:focus{
-      border-color: $color-gray-dark;
-      outline: none;
-     
-      
+    &:focus {
+        border-color: $color-gray-dark;
+        outline: none;
     }
 
-    &::placeholder{
-        font-size:  0.875rem;
+    &::placeholder {
+        font-size: 0.875rem;
         color: $color-gray-medium;
         font-weight: 500;
-    }
-
-  
-
-    @include tablet{
-        
-
     }
 }
 
@@ -159,27 +146,6 @@
 
 
 
-
-// breakpoints
-
-// @mixin mobile{
-//     @media (min-width:$breakpoints-mobile-min) and (max-width:$breakpoints-mobile-max){
-//       @content;
-//     }
-// }
-
-@mixin tablet{
-    @media (min-width:$breakpoints-tablet){
-    @content;
-    }
-}
-
-@mixin desktop{
-    @media (min-width:$breakpoints-desktop){
-    @content;
-    }
-}
-
 //Sidebar
 
 @mixin flex-row-center {
@@ -200,11 +166,3 @@
     border-top: 1px solid $color-gray-light;
 }
 
-//Dashboard
-
-@mixin stats-text($size, $weight, $color, $font) {
-    font-family: $font;
-    font-size: $size;
-    font-weight: $weight;
-    color: $color;
-}

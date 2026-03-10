@@ -15,14 +15,14 @@
 
 	<div class="auth-card">
 		<div class="back">
-			<img src="{{asset('icons/authentification/arrow_left.svg')}}" alt="fleche pour retourner vers la page de connexion de l'application trackday" width="16" height="16">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}"  width="16" height="16" alt="" aria-hidden="true">
 			<a href="{{path('app_login')}}">Se connecter</a>
 		</div>
 		<h1>Modifier le mot de passe</h1>
 		<div class="form-info">
-			<small>
+			<p>
 				Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-			</small>
+			</p>
 		</div>
 		{{ form_start(requestForm) }}
 		<div class="email">

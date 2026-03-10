@@ -1,21 +1,21 @@
 {# Header mobile fixe #}
 <div class="sidebar__mobile-header">
-	<button class="sidebar__burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar">
-		<img src="{{ asset('icons/sidebar/menu_burger.svg') }}" width="16" height="16" alt="Menu">
+	<button class="sidebar__burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Ouvrir le menu de navigation">
+		<img src="{{ asset('icons/sidebar/menu_burger.svg') }}" width="16" height="16" alt="" aria-hidden="true">
 	</button>
 	<div class="sidebar__logo-title">
-		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="24" height="24" alt="Trackday">
+		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="24" height="24" alt="Icone de l'application mobile Trackday">
 		<span class="sidebar__brand-name">Trackday</span>
 	</div>
 </div>
 
 {# Sidebar #}
 <div
-	class="offcanvas-lg offcanvas-start sidebar" tabindex="-1" id="sidebar" style="max-width: 240px;">
+	class="offcanvas-lg offcanvas-start sidebar" tabindex="-1" id="sidebar" style="max-width: 240px;" aria-label="Menu de navigation">
 
 	{# Logo desktop #}
 	<div class="sidebar__logo-desktop">
-		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="30" height="30" alt="Trackday">
+		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="30" height="30" alt="Icone de l'application mobile trackday">
 		<div>
 			<div class="sidebar__brand-name">TRACKDAY</div>
 			<div class="sidebar__brand-subtitle">L'application des pilotes sur circuit</div>
@@ -25,53 +25,53 @@
 	{# Header mobile dans offcanvas #}
 	<div class="offcanvas-header sidebar__offcanvas-header">
 		<div class="sidebar__logo-mobile">
-			<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="28" height="28" alt="Trackday">
+			<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="28" height="28" alt="" aria-hidden="true">
 			<div>
 				<div class="sidebar__brand-name">Trackday</div>
 				<div class="sidebar__brand-subtitle">Pilotage Circuit</div>
 			</div>
 		</div>
-		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar"></button>
+		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fermer le menu de navigation"></button>
 	</div>
 
 	{# NAV BAR #}
 	<div class="offcanvas-body sidebar__body">
 		<nav class="sidebar__nav">
 			<a href="{{ path('app_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_dashboard' ? 'sidebar__link--active' : '' }}">
-				<img src="{{ asset('icons/sidebar/flag_black.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/flag_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Tableau de bord</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/calendar.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/calendar.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Mes Trackdays</span>
 			</a>
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img src="{{ asset('icons/sidebar/brain.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/brain.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Analyse IA</span>
-				<img src="{{ asset('icons/sidebar/lock.svg') }}" width="14" height="14" class="ms-auto" alt="Premium">
+				<img src="{{ asset('icons/sidebar/lock.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 			</a>
 			<a href="{{ path('app_bike_index') }}" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/biker_on_bike.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/biker_on_bike.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Mon Garage</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/bell.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/bell.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Rappels</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/expense.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/expense.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Frais</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/maintenance.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/maintenance.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Entretien</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/settings.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/settings.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Réglages Moto</span>
 			</a>
 			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/informations.svg') }}" width="20" height="20" alt="">
+				<img src="{{ asset('icons/sidebar/informations.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Informations</span>
 			</a>
 		</nav>
