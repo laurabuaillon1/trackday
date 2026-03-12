@@ -1,0 +1,350 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../base/typography' as *;
+@use '../base/breakpoints' as *;
+
+
+// ================================
+// Card Authentification - Base
+// ================================
+
+.auth-card {
+    @include auth-card;
+}
+
+.auth-form-group {
+    @include auth-form;
+}
+
+.back {
+    @include auth-back;
+}
+
+.required {
+    @include auth-required;
+}
+
+label.required {
+    @include auth-label-required;
+}
+
+input {
+    @include auth-input;
+}
+
+.agree-terms {
+    @include auth-agree-terms;
+}
+
+#registration_form_agreeTerms {
+    @include auth-registration-form-agree-terms;
+}
+
+.password {
+    @include auth-password;
+}
+
+.app-btn {
+    @include auth-button;
+}
+
+.btn:active {
+    background-color: $color-light;
+    color: $color-dark;
+}
+
+
+// ================================
+// Card Authentification - Wrappers
+// ================================
+
+.email-wrapper,
+.password-wrapper {
+    position: relative;
+    width: 100%;
+
+    input {
+        padding-left: 40px;
+    }
+}
+
+.email-wrapper {
+    .email-icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+    }
+}
+
+.password-wrapper {
+    .eye-hide {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+}
+
+
+// ================================
+// Card Authentification - Erreurs
+// ================================
+
+.alert,
+ul li {
+    @include form-error;
+}
+
+
+// ================================
+// Card Login
+// ================================
+
+.email,
+.first-password,
+.second-password {
+    @include auth-space-form-child;
+}
+
+.auth-links {
+    margin: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    .auth-register {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .register {
+        color: $color-dark;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: $medium) {
+    .min-vh-100 {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (min-width: $large) {
+    .min-vh-100 {
+        min-height: 0 !important;
+    }
+}
+
+
+// ================================
+// Card Dashboard - Statistiques
+// ================================
+
+.stats__wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.stats__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(50% - 8px); // 2 colonnes sur mobile
+    padding: 16px;
+    background-color: #f9fafb;
+    border: 1px solid $color-border;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
+
+    @media (min-width: 992px) {
+        width: calc(25% - 12px); // 4 colonnes sur desktop
+    }
+
+    .stats__icon {
+        position: absolute;
+        top: 20%;
+        right: 12px;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        border-radius: 8px;
+        background: linear-gradient(159deg, rgb(59, 178, 246) 0%, rgba(37, 99, 235, 1) 100%);
+
+        &.flag    { background: linear-gradient(159deg, rgb(187, 59, 246) 0%, rgb(123, 37, 235) 100%); }
+        &.trophy  { background: linear-gradient(159deg, rgb(246, 59, 59) 0%, rgb(184, 20, 20) 100%); }
+        &.time    { background: linear-gradient(159deg, rgb(134, 246, 59) 0%, rgb(63, 173, 48) 100%); }
+    }
+
+    .stats__row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+//     .stats__title   { @include stats-text($text-xs,  700, $stats-card-color-title,  $font-primary); }
+//     .stats__number  { @include stats-text($text-xxl, 500, $stats-card-color-number, $font-primary); }
+//     .stats__p       { @include stats-text($text-xs,  400, $stats-card-color-p,      $font-primary); margin-bottom: 0; }
+}
+
+
+// ================================
+// Card Dashboard - Prochains Trackdays
+// ================================
+
+.section-card {
+    background-color: #f9fafb;
+    border: 1px solid $color-border;
+    border-radius: 0.75rem;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 16px;
+        background-color: $color-white;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__title {
+        margin: 0;
+        color: $stats-card-color-number;
+    }
+
+    &__empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    &__empty-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    &__empty-text {
+        margin: 0;
+        padding-bottom: 24px;
+    }
+}
+
+// =====================================
+// Card Dashboard - Moto dans le garage
+// =====================================
+
+.bike-list{
+   
+}
+
+.bike-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fafb;
+    border: 1px solid $color-border;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
+
+    &__img{
+        width:100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+    }
+
+    &__header{
+        position: relative;
+    }
+
+    &__container{
+    position: absolute;
+    bottom:16px;
+    left:16px;
+    }
+
+    &__alert{
+        background-color: $color-orange-alert;
+        height: 22px;
+        padding: 2px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        position: absolute;
+        border-radius: 0.5rem;
+        top:16px;
+        right: 16px;
+    }
+
+    
+        
+   
+
+    &__name,&__brand,&__specs{
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        color: $color-white;
+    }
+    
+    &__details{
+        background-color: $stats-card-backgorund;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    &__stat{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $color-white;
+        height: 38px;
+        border:1px solid $color-border;
+        border-radius: 0.5rem;
+        padding: 8px;
+
+    }
+
+    &__icon{
+        height: 16px;
+        width: 16px;
+    }
+
+    &__miles,&__maintenance,&__nextmaintenance{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap:0.5rem;
+    }
+
+    &__actions{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+
+
+

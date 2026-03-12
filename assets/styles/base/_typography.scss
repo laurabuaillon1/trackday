@@ -1,0 +1,99 @@
+@use '../abstracts/variables' as *;
+@use "../base/breakpoints" as*;
+
+// ===========================================
+//import des typographie depuis GOOGLE FONT
+// ===========================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+// ================================
+// Éléments de base
+// ================================
+
+h1, h2, h3, h4, h5, h6, p, a {
+    margin:0px;
+}
+
+h1{
+    font-family: $font-primary;
+    color: $color-dark;
+    font-weight: 700;
+    font-size: $text-xl;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+a,p{
+    font-family: $font-primary;
+    //grey-muted
+    margin-bottom: 0px;
+    font-size: $text-s;
+    font-weight: 400;
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+}
+
+
+label{
+    font-family: $font-primary;
+    font-size: $text-s;
+    color: $color-gray-dark;
+    font-weight: 600;
+}
+
+.agree-terms label{
+    font-size: $text-xxs;
+}
+
+li{
+    list-style-type: none;
+    font-size: $text-s;
+    
+}
+
+// ================================
+// Classes utilitaires - Taille
+// ================================
+
+.text-xxs  { font-size: $text-xxs; }//10px
+.text-xs   { font-size: $text-xs; }//12px
+.text-s    { font-size: $text-s; }//14px
+.text-m    { font-size: $text-m; }//16px
+.text-l    { font-size: $text-l; }//18px
+.text-xl   { font-size: $text-xl; }//20px
+.text-xxl  { font-size: $text-xxl; }//24px
+.text-xxxl { font-size: $text-xxxl; }//32px
+.text-4xl  { font-size: $text-4xl; }//36px
+.text-5xl  { font-size: $text-5xl; }//40px
+.text-6xl { font-size: $text-6xl; }//48px
+
+
+
+// ================================
+// Responsive - Tablette
+// ================================
+
+@media (min-width: $medium) {
+    h1 {
+        font-size: $text-4xl;
+        font-family: $font-primary;
+    }
+
+    .stats__title   { font-size: $text-s;   color: $stats-card-color-title; }
+    .stats__number  { font-size: $text-4xl; color: $stats-card-color-number; }
+    .stats__p       { font-size: $text-s;   color: $stats-card-color-p; }
+
+    .section-card__title { font-size: $text-l; color: $stats-card-color-number; }
+}
+
+
+@media (min-width: $large){
+    //body{
+    //}
+}

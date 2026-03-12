@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour
+	{{app.user.lastname}}!
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/sidebar/flag.svg')}}" alt="" aria-hidden="true">
+				<h1>Tableau de bord</h1>
+			</div>
+			<p class ="text-m ">Suivez vos performances</p>
+
+		</div>
+		{# {% for message in app.flashes('welcome') %} #}
+		<div
+			class="dashboard__message">
+			{# <h2>{{ message }}
+																					! 🏁</h2> #}
+			<h2>Bienvenue sur Trackday !
+			</h2>
+			<p>Suivez vos journées de roulages, gérez votre moto, analysez vos temps et progressez à chaque sortie.</p>
+		</div>
+
+		<div class="stats__grid">
+			<div class="stats__wrap">
+				<div class="stats__card">
+					<p class="stats__title">Trackdays</p>
+					<img class="stats__icon" src="{{asset('icons/dashboard/calendar_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Journées</p>
+				</div>
+
+				<div class="stats__card">
+					<p class="stats__title">Tours</p>
+					<img class="stats__icon flag" src="{{asset('icons/dashboard/lap_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Total</p>
+				</div>
+
+				<div class="stats__card">
+					<p class="stats__title">Record</p>
+					<img class="stats__icon trophy" src="{{asset('icons/dashboard/trophy_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Meilleur</p>
+				</div>
+
+				<div class="stats__card">
+					<p class="stats__title">A venir</p>
+					<img class="stats__icon time " src="{{asset('icons/dashboard/time_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Sessions</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="section-card__grid">
+			<div class="section-card">
+				<div class="section-card__header">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true" >
+					<p class="section-card__title">Prochains Trackdays</p>
+				</div>
+				<div class="section-card__empty">
+					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="" aria-hidden="true">
+					<p class="section-card__empty-text">Aucun trackday prévu</p>
+				</div>
+			</div>
+			<div class="section-card">
+				<div class="section-card__header">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+					<p class="section-card__title">Prochains Trackdays</p>
+				</div>
+				<div class="section-card__empty">
+					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
+					<p class="section-card__empty-text">Aucun trackday prévu</p>
+				</div>
+			</div>
+			<div class="section-card">
+				<div class="section-card__header">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+					<p class="section-card__title">Prochains Trackdays</p>
+				</div>
+				<div class="section-card__empty">
+					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
+					<p class="section-card__empty-text">Aucun trackday prévu</p>
+				</div>
+			</div>
+			<div class="section-card">
+				<div class="section-card__header">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+					<p class="section-card__title">Prochains Trackdays</p>
+				</div>
+				<div class="section-card__empty">
+					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
+					<p class="section-card__empty-text">Aucun trackday prévu</p>
+				</div>
+			</div>
+			<div class="section-card">
+				<div class="section-card__header">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+					<p class="section-card__title">Prochains Trackdays</p>
+				</div>
+				<div class="section-card__empty">
+					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
+					<p class="section-card__empty-text">Aucun trackday prévu</p>
+				</div>
+			</div>
+
+
+		</div>
+
+		{# {% endfor %} #}
+
+
+	</div>
+
+
+{% endblock %}

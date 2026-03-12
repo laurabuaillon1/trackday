@@ -1,0 +1,38 @@
+@use '../abstracts/mixins' as*;
+@use '../abstracts/variables' as*;
+@use '../base/breakpoints' as *;
+@use '../components/button' as*;
+
+.dashboard{
+
+    &__wrapper{
+        margin-top: 16px;
+        margin-bottom: 16px;
+        gap:0.75rem;
+    }
+
+    &__title{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+        
+    }
+    
+    &__icon{
+        width: 24px;
+        height: 24px;
+    }
+}
+
+.main-content {
+    padding: 56px 16px 16px 16px; // mobile
+
+    @media (min-width: $medium) {
+        padding: 56px 32px; // tablette
+    }
+
+    @media (min-width: $large) {
+        padding: 32px; // desktop
+    }
+}
