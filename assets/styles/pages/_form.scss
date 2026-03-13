@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+// ================================
+// Formulaire - Ajout d'une moto
+// ================================
+
+.form{
+
+    &__title{
+        padding: 16px 0px;
+
+    }
+
+    label{
+        display: flex;
+        text-align:start;
+    }
+}

@@ -10,32 +10,19 @@ h1, h2, h3, h4, h5, h6, p, a {
   margin: 0px;
 }
 
-h1 {
-  font-family: "Inter", sans-serif;
-  color: #0F172A;
-  font-weight: 700;
-  font-size: 1.25rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  text-align: center;
-}
-
-a, p {
-  font-family: "Inter", sans-serif;
-  margin-bottom: 0px;
-  font-size: 0.875rem;
-  font-weight: 400;
-  text-decoration: none;
-  display: flex;
-  text-align: center;
-}
-
 label {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   color: #334155;
   font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.auth-card label {
+  justify-content: center;
 }
 
 .agree-terms label {
@@ -89,6 +76,50 @@ li {
 
 .text-6xl {
   font-size: 3rem;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-grey {
+  color: #4b5563;
+}
+
+.text-blue {
+  color: #111827;
+}
+
+.font-thin {
+  font-weight: 100;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.font-extrabold {
+  font-weight: 800;
+}
+
+.font-black {
+  font-weight: 900;
 }
 
 @media (min-width: 768px) {
@@ -200,8 +231,30 @@ li {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2509803922);
   font-size: 0.875rem;
 }
-
-.auth-form-group {
+.auth-card__back {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+.auth-card__title {
+  font-family: "Inter", sans-serif;
+  color: #0F172A;
+  font-weight: 700;
+  font-size: 1.25rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  margin-top: 16px;
+}
+.auth-card__text {
+  color: #334155;
+  font-size: 0.875rem;
+  text-align: center;
+  margin-top: 8px;
+}
+.auth-card__form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -209,24 +262,51 @@ li {
   width: 100%;
   gap: 12px;
 }
-
-.back {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.required {
+.auth-card__field {
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  gap: 8px;
 }
-
-label.required {
+.auth-card__passwords {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+.auth-card__terms {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  width: auto;
+  gap: 16px;
+}
+.auth-card__link {
+  color: #64748B;
+  font-size: 0.875rem;
+  text-decoration: none;
+}
+.auth-card__input-wrapper {
+  position: relative;
   width: 100%;
+}
+.auth-card__input-wrapper input {
+  padding-left: 40px;
+}
+.auth-card__icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+}
+.auth-card__eye {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  cursor: pointer;
 }
 
 input {
@@ -253,26 +333,10 @@ input::placeholder {
   font-weight: 500;
 }
 
-.agree-terms {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  gap: 16px;
-}
-
 #registration_form_agreeTerms {
   width: 16px;
   height: 16px;
   margin: 0px;
-}
-
-.password {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  width: 100%;
 }
 
 .app-btn {
@@ -298,47 +362,12 @@ input::placeholder {
   color: #0F172A;
 }
 
-.email-wrapper,
-.password-wrapper {
-  position: relative;
-  width: 100%;
-}
-.email-wrapper input,
-.password-wrapper input {
-  padding-left: 40px;
-}
-
-.email-wrapper .email-icon {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-}
-
-.password-wrapper .eye-hide {
-  position: absolute;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
 .alert,
 ul li {
   font-size: 0.625rem;
   font-family: "Inter", sans-serif;
   list-style: none;
   color: #d10000;
-}
-
-.email,
-.first-password,
-.second-password {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 8px;
 }
 
 .auth-links {
@@ -353,10 +382,22 @@ ul li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Inter", sans-serif;
+  color: #64748B;
+  margin-bottom: 0px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none;
+  display: flex;
+  text-align: center;
 }
 .auth-links .register {
   color: #0F172A;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.auth-form-group {
+  margin-top: 12px;
 }
 
 @media (min-width: 768px) {
@@ -397,9 +438,8 @@ ul li {
 }
 .stats__card .stats__icon {
   position: absolute;
-  top: 20%;
+  top: 12px;
   right: 12px;
-  transform: translateY(-50%);
   width: 36px;
   height: 36px;
   padding: 8px;
@@ -508,6 +548,8 @@ ul li {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
 }
 .bike-card__stat {
   display: flex;
@@ -531,9 +573,34 @@ ul li {
   align-items: center;
   gap: 0.5rem;
 }
+.bike-card__trait {
+  margin: 0;
+}
 .bike-card__actions {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 8px;
+}
+.bike-card__details-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+.bike-card__link {
+  color: #111827;
+}
+.bike-card__controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+@media (min-width: 992px) {
+  .bike-card {
+    width: calc(50% - 12px);
+  }
 }
 
 .sidebar {
@@ -842,6 +909,14 @@ ul li {
   justify-content: center;
   align-items: center;
   padding: 16px;
+}
+
+.form__title {
+  padding: 16px 0px;
+}
+.form label {
+  display: flex;
+  text-align: start;
 }
 
 /*# sourceMappingURL=app.css.map */

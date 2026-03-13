@@ -14,18 +14,19 @@
 	{% endfor %}
 
 	<div class="auth-card">
+	
 		<div class="back">
-			<img src="{{asset('icons/authentification/arrow_left.svg')}}"  width="16" height="16" alt="" aria-hidden="true">
-			<a href="{{path('app_login')}}">Se connecter</a>
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+			<a class="auth-card__link font-medium" href="{{path('app_login')}}">Se connecter</a>
 		</div>
-		<h1>Modifier le mot de passe</h1>
-		<div class="form-info">
-			<p>
-				Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-			</p>
-		</div>
+		<h1 class="auth-card__title ">Modifier le mot de passe</h1>
+		<p class="auth-card__text ">
+			Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+		</p>
+
 		{{ form_start(requestForm) }}
-		<div class="email">
+
+		<div class="auth-form-group">
 			{{ form_label(requestForm.email) }}
 			{{ form_widget(requestForm.email) }}
 			{{ form_errors(requestForm.email) }}

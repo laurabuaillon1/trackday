@@ -1,6 +1,5 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
-@use '../base/typography' as *;
 @use '../base/breakpoints' as *;
 
 
@@ -10,39 +9,99 @@
 
 .auth-card {
     @include auth-card;
+
+    &__back {
+        @include auth-back;
+    }
+
+    &__title {
+        font-family: $font-primary;
+        color: $color-dark;
+        font-weight: 700;
+        font-size: $text-xl;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+        margin-top: 16px;
+        
+    }
+
+    &__text{
+        color: $color-gray-dark;
+        font-size: $text-s;
+        text-align: center;
+        margin-top: 8px;
+    }
+
+    &__form {
+        @include auth-form;
+    }
+
+    &__field {
+        @include auth-space-form-child;
+    }
+
+    &__passwords {
+        @include auth-password;
+    }
+
+    &__terms {
+        @include auth-agree-terms;
+    }
+
+    &__link {
+        color: $color-gray-muted;
+        font-size: $text-s;
+        text-decoration: none;
+    }
+
+
+
+// ================================
+//  Wrappers
+// ================================
+
+&__input-wrapper {
+        position: relative;
+        width: 100%;
+
+        input {
+            padding-left: 40px;
+        }
+    }
+
+    &__icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+    }
+
+    &__eye {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
 }
 
-.auth-form-group {
-    @include auth-form;
-}
-
-.back {
-    @include auth-back;
-}
-
-.required {
-    @include auth-required;
-}
-
-label.required {
-    @include auth-label-required;
-}
+// ================================
+// Inputs
+// ================================
 
 input {
     @include auth-input;
-}
-
-.agree-terms {
-    @include auth-agree-terms;
 }
 
 #registration_form_agreeTerms {
     @include auth-registration-form-agree-terms;
 }
 
-.password {
-    @include auth-password;
-}
+// ================================
+// Boutons
+// ================================
 
 .app-btn {
     @include auth-button;
@@ -55,41 +114,7 @@ input {
 
 
 // ================================
-// Card Authentification - Wrappers
-// ================================
-
-.email-wrapper,
-.password-wrapper {
-    position: relative;
-    width: 100%;
-
-    input {
-        padding-left: 40px;
-    }
-}
-
-.email-wrapper {
-    .email-icon {
-        position: absolute;
-        top: 50%;
-        left: 12px;
-        transform: translateY(-50%);
-    }
-}
-
-.password-wrapper {
-    .eye-hide {
-        position: absolute;
-        top: 50%;
-        left: 12px;
-        transform: translateY(-50%);
-        cursor: pointer;
-    }
-}
-
-
-// ================================
-// Card Authentification - Erreurs
+// Erreurs
 // ================================
 
 .alert,
@@ -99,14 +124,8 @@ ul li {
 
 
 // ================================
-// Card Login
+// Card Login - Liens
 // ================================
-
-.email,
-.first-password,
-.second-password {
-    @include auth-space-form-child;
-}
 
 .auth-links {
     margin: 12px;
@@ -120,13 +139,33 @@ ul li {
         display: flex;
         flex-direction: column;
         align-items: center;
+        font-family: $font-primary;
+        color:$color-gray-muted;
+        margin-bottom: 0px;
+        font-size: $text-s;
+        font-weight: 400;
+        text-decoration: none;
+        display: flex;
+        text-align: center;
     }
 
     .register {
         color: $color-dark;
-        font-weight: 700;
+        font-weight: 500;
     }
 }
+// ================================
+// Card reset password 
+// ================================
+
+.auth-form-group{
+    margin-top: 12px;
+}
+
+
+// ================================
+// Responsive
+// ================================
 
 @media (min-width: $medium) {
     .min-vh-100 {
@@ -161,7 +200,7 @@ ul li {
     justify-content: center;
     width: calc(50% - 8px); // 2 colonnes sur mobile
     padding: 16px;
-    background-color: #f9fafb;
+    background-color: $card-white;
     border: 1px solid $color-border;
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
@@ -172,9 +211,8 @@ ul li {
 
     .stats__icon {
         position: absolute;
-        top: 20%;
+        top: 12px;
         right: 12px;
-        transform: translateY(-50%);
         width: 36px;
         height: 36px;
         padding: 8px;
@@ -222,7 +260,7 @@ ul li {
 
     &__title {
         margin: 0;
-        color: $stats-card-color-number;
+        color: $card-blue-dark;
     }
 
     &__empty {
@@ -249,9 +287,6 @@ ul li {
 // Card Dashboard - Moto dans le garage
 // =====================================
 
-.bike-list{
-   
-}
 
 .bike-card{
     display: flex;
@@ -294,10 +329,6 @@ ul li {
         right: 16px;
     }
 
-    
-        
-   
-
     &__name,&__brand,&__specs{
         display: flex;
         flex-direction: row;
@@ -306,12 +337,15 @@ ul li {
     }
     
     &__details{
-        background-color: $stats-card-backgorund;
+        background-color: $card-white;
         padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 12px;
+        border-bottom-left-radius: 0.75rem;
+        border-bottom-right-radius: 0.75rem;
     }
+
     
     &__stat{
         display: flex;
@@ -324,9 +358,9 @@ ul li {
         border:1px solid $color-border;
         border-radius: 0.5rem;
         padding: 8px;
-
+        
     }
-
+    
     &__icon{
         height: 16px;
         width: 16px;
@@ -339,11 +373,43 @@ ul li {
         gap:0.5rem;
     }
 
+    &__trait{
+        margin: 0;
+    }
+
     &__actions{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        padding:8px;
+    }
+
+    &__details-link{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    &__link{
+        color:$card-blue-dark;
+    }
+
+    &__controls{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+    }
+
+    
+    @media (min-width: 992px) {
+        width: calc(50% - 12px); // 2 colonnes sur desktop
     }
 }
+
+
+
 
 
 

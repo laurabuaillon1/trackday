@@ -21,26 +21,26 @@
 
 		<div class="auth-card">
 
-			<h1>Connexion</h1>
+			<h1 class="auth-card__title">Connexion</h1>
 
 
-			<div class='auth-form-group'>
-				<div class="email">
-					<label class="required" for="username">Email</label>
+			<div class='auth-card__form'>
+				<div class="auth-card__field">
+					<label for="username">Email</label>
 
-					<div class="email-wrapper">
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--email">
 						<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus  aria-hidden="true">
-						<img src="{{asset('icons/authentification/email.svg')}}" class="email-icon" width="16" height="16">
+						<img src="{{asset('icons/authentification/email.svg')}}" class="auth-card__icon" width="16" height="16">
 
 					</div>
 				</div>
 
-				<div class='first-password'>
-					<label class="required" for="password">Mot de passe</label>
+				<div class='auth-card__field'>
+					<label for="password">Mot de passe</label>
 
-					<div class="email-wrapper">
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						<input placeholder="Votre mot de passe" type="password" name="_password" id="password" autocomplete="current-password" required aria-hidden="true">
-						<img src="{{asset('icons/authentification/lock.svg')}}" class="email-icon" width="16" height="16">
+						<img src="{{asset('icons/authentification/lock.svg')}}" class="auth-card__icon" width="16" height="16">
 					</div>
 				</div>
 
@@ -67,7 +67,7 @@
 										     #}
 
 			<div class="auth-links">
-				<a href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+				<a class="auth-card__link font-medium" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
 				<p class="auth-register">Besoin d'un compte ?<a class="register" href="{{path('app_register')}}">Inscrivez-vous</a>
 				</p>
 

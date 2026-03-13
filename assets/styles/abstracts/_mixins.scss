@@ -60,6 +60,7 @@
     font-size: 0.875rem;
     font-family: $font-primary;
     color: $color-gray-muted;
+    
 
     &:focus {
         border-color: $color-gray-dark;
@@ -129,13 +130,7 @@
     flex-direction: column;
 }
 
-@mixin auth-label-required{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    
-}
+
 
 @mixin auth-password{
     display: flex;

@@ -14,45 +14,45 @@
 
 
 	<div class="auth-card">
-		<div class="back">
+		<div class="auth-card__back">
 			<img src="{{asset('icons/authentification/arrow_left.svg')}}" alt="" width="16" height="16" aria-hidden="true">
-			<a href="{{path('app_login')}}">Se connecter</a>
+			<a class="auth-card__link font-medium"  href="{{path('app_login')}}">Se connecter</a>
 		</div>
-		<h1>Créer un compte</h1>
+		<h1 class="auth-card__title ">Créer un compte</h1>
 
 
 		{{ form_errors(registrationForm) }}
 
 		{{ form_start(registrationForm) }}
 
-		<div class="auth-form-group">
-			<div class="email">
+		<div class="auth-card__form">
+			<div class="auth-card__field">
 				{{ form_label(registrationForm.email)}}
-				<div class="email-wrapper">
+				<div class="auth-card__input-wrapper auth-card__input-wrapper--email">
 					{{ form_widget(registrationForm.email)}}
-					<img src="{{asset('icons/authentification/email.svg')}}" class="email-icon" width="16" height="16" aria-hidden="true">
+					<img src="{{asset('icons/authentification/email.svg')}}" class="auth-card__icon" width="16" height="16" aria-hidden="true">
 
 				</div>
 				{{ form_errors(registrationForm.email)}}
 			</div>
 
 
-			<div class="password">
-				<div class="first-password">
+			<div class="auth-card__passwords">
+				<div class="auth-card__field">
 					{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
-					<div class="password-wrapper">
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.first)}}
 						<img
-						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="eye-hide" width="16" height="16" aria-hidden="true">
+						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye" width="16" height="16" aria-hidden="true">
 					{# data-target= permet à l'icone de savoir quel input afficher/caher #}
 					</div>
 				</div>
 
-				<div class="second-password">
+				<div class="auth-card__field">
 					{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
-					<div class="password-wrapper">
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.second)}}
-						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="eye-hide" width="16" height="16" aria-hidden="true">
+						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye" width="16" height="16" aria-hidden="true">
 
 					</div>
 					{{ form_errors(registrationForm.plainPassword.first)}}
@@ -60,7 +60,7 @@
 			</div>
 
 
-			<div class="agree-terms">
+			<div class="auth-card__terms">
 				{{ form_widget(registrationForm.agreeTerms) }}
 				{{ form_label(registrationForm.agreeTerms) }}
 				{{ form_errors(registrationForm.agreeTerms) }}

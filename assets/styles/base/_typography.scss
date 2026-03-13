@@ -18,25 +18,11 @@ h1, h2, h3, h4, h5, h6, p, a {
 }
 
 h1{
-    font-family: $font-primary;
-    color: $color-dark;
-    font-weight: 700;
-    font-size: $text-xl;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
+    
 }
 
 a,p{
-    font-family: $font-primary;
-    //grey-muted
-    margin-bottom: 0px;
-    font-size: $text-s;
-    font-weight: 400;
-    text-decoration: none;
-    display: flex;
-    text-align: center;
+    
 }
 
 
@@ -45,6 +31,14 @@ label{
     font-size: $text-s;
     color: $color-gray-dark;
     font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.auth-card label{
+    justify-content: center;
 }
 
 .agree-terms label{
@@ -73,6 +67,25 @@ li{
 .text-5xl  { font-size: $text-5xl; }//40px
 .text-6xl { font-size: $text-6xl; }//48px
 
+// ================================
+// Classes utilitaires - Couleurs
+// ================================
+.text-white { color:$color-white; }
+.text-grey { color:$card-grey-dark ;}
+.text-blue { color:$card-blue-dark; }
+
+// ================================
+// Classes utilitaires - Weight
+// ================================
+
+.font-thin       { font-weight: 100; }
+.font-light      { font-weight: 300; }
+.font-regular    { font-weight: 400; }
+.font-medium     { font-weight: 500; }
+.font-semibold   { font-weight: 600; }
+.font-bold       { font-weight: 700; }
+.font-extrabold  { font-weight: 800; }
+.font-black      { font-weight: 900; }
 
 
 // ================================
@@ -85,11 +98,11 @@ li{
         font-family: $font-primary;
     }
 
-    .stats__title   { font-size: $text-s;   color: $stats-card-color-title; }
-    .stats__number  { font-size: $text-4xl; color: $stats-card-color-number; }
-    .stats__p       { font-size: $text-s;   color: $stats-card-color-p; }
+    .stats__title   { font-size: $text-s;   color: $card-grey-dark; }
+    .stats__number  { font-size: $text-4xl; color: $card-blue-dark; }
+    .stats__p       { font-size: $text-s;   color: $card-grey-light; }
 
-    .section-card__title { font-size: $text-l; color: $stats-card-color-number; }
+    .section-card__title { font-size: $text-l; color: $card-blue-dark; }
 }
 
 
