@@ -1,4 +1,5 @@
 @use '../abstracts/variables' as*;
+@use '../base/breakpoints' as*;
 
 
 // Inscription
@@ -164,5 +165,67 @@
 
 @mixin sidebar-border-top {
     border-top: 1px solid $color-gray-light;
+}
+
+
+//Button
+
+@mixin add-action{
+    //Mobile:Fixé en bas à droite,au dessus du contenu
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+
+    //Desktop: dans le flux en haut à droite
+    @media (min-width:$large){
+        position: static;
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 16px;
+    }
+}
+
+@mixin add-btn{
+    background-color: $add-button-background;
+    border-radius: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    width: 56px;
+
+    &__img{
+        height: 28px;
+        width: 28px;
+    }
+
+    //Mobile: cache le texte
+    &__text{
+        display: none;
+    }
+
+    @media (min-width: $large) {
+        height: 35px;
+        width: 160px;
+        border-radius: 6px;
+        padding: 10px 16px;
+        gap: 8px;
+        
+
+        &__img{
+        height: 16px;
+        width: 16px;
+        }
+
+
+        //Desktop: affiche le texte
+        &__text{
+            display: block;
+            font-size: $text-xs;
+            margin: 0px;
+            color: $color-background;
+        }
+    }
 }
 

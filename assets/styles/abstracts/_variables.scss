@@ -14,6 +14,8 @@ $color-gray-dark: #334155;
 $color-gray-muted: #64748B;
 $color-red-error:#d10000;
 $color-green-success:#009120;
+$color-orange-alert:#f97316e6;
+
 
 
 // Authentification-background
@@ -37,8 +39,8 @@ $text-xl: 1.25rem;//20px
 $text-xxl: 1.5rem;//24px
 $text-xxxl: 2rem;//32px
 $text-4xl: 2.25rem;//36px
-$text-xxxxl: 2.5rem;//40px
-$text-xxxxxl: 3rem;//48px
+$text-5xl: 2.5rem;//40px
+$text-6xl: 3rem;//48px
 
 // Sidebar
 $color-background: #fafafa;
@@ -51,4 +53,6 @@ $stats-card-color-title:#4b5563;
 $stats-card-color-number:#111827;
 $stats-card-color-p:#6b7280;
 
-//Cards
+//Button
+$add-button-background:#dc2626;
+
