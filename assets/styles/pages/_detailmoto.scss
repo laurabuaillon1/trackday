@@ -1,0 +1,158 @@
+@use '../abstracts/mixins' as*;
+@use '../abstracts/variables' as*;
+@use '../base/breakpoints' as *;
+@use '../components/button' as*;
+
+
+
+.bike-detail{
+    display: flex;
+    flex-direction: column;
+    gap:1.5rem;
+   
+
+    &__wrap{
+        padding-bottom: 16px;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__back{
+        padding: 16px 0px;
+    }
+
+    &__img{
+        width:100%;
+        height: 160px;
+        object-fit: cover;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);    
+    }
+
+    // ================================
+    // Card - Informations
+    // ================================
+
+    &__header{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    &__info{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    &__specs{
+        display: flex;
+        flex-direction: row;
+        gap:0.75rem;
+    }
+
+    &__license{
+        width: 50%;
+        text-align: center;
+        padding: 8px 16px;
+        border-radius: 0.5rem;
+        background-color: $color-gray-light;
+        border: 1px solid $color-gray-medium;
+    }
+
+    &__card{
+        background-color: $color-white;
+        border:1px solid $color-border;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144); 
+    }
+
+    &__section-title{
+        padding: 16px;
+        border-bottom: 1px solid $color-border;
+    }
+
+    &__stats{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 16px;
+    }
+
+    &__stat{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $card-white;
+        height: 38px;
+        border:1px solid $color-border;
+        border-radius: 0.5rem;
+        padding: 12px;
+    }
+
+    // ================================
+    // Card - Historique d'entretien
+    // ================================
+
+    &__section-header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        padding: 16px;
+        justify-content: space-between;
+        border-bottom:1px solid $color-border;
+    }
+
+    // ================================
+    // Card - Document
+    // ================================
+
+    &__documents{
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__document,&__document-type{
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__icon{
+        width: 36px;
+        height: 36px;
+        padding: 8px;
+        border-radius: 8px;
+        background: linear-gradient(159deg, rgb(59, 178, 246) 0%, rgb(37, 99, 235) 100%);
+    }
+
+    &__number{
+        padding: .125rem .625rem;
+        border: 1px solid $color-border;
+        border-radius: 0.5rem;
+    }
+
+    &__document-infos{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    &__container{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border: 1px solid $color-border;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.144); 
+    }
+
+}

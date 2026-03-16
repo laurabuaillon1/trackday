@@ -65,7 +65,7 @@ class Bike
     private ?string $notes = null;
 
     #[ORM\Column]
-    private ?bool $is_active = null;
+    private ?bool $is_active = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;

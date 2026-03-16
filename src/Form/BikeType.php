@@ -25,7 +25,9 @@ class BikeType extends AbstractType
                 'attr'=>[
                     'placeholder'=> 'Cliquer pour ajouter une photo',
                 ],
-                'label'=>'Photo de la moto'
+                'label'=>'Photo de la moto',
+                'data_class'=>null,
+                'required'=>false,
             ])
             ->add('nickname',TextType::class,[
                 'attr' =>[
@@ -93,6 +95,10 @@ class BikeType extends AbstractType
                 'choices'=>[
                     'kilomètres'=>'km',
                     'heures'=>'hours',
+                    ],
+                    'attr'=>[
+                    'class'=>'form-field__textarea',
+                    
                 ]
             ])
             ->add('last_service_date',DateType::class,[
@@ -118,6 +124,7 @@ class BikeType extends AbstractType
             ->add('notes',TextareaType::class,[
                 'attr'=>[
                     'placeholder'=>'Modifications,accessoires...',
+                    'class'=> 'form-field__textarea',
                 ],
                 'label'=>'Notes'
             ])

@@ -224,3 +224,25 @@
     }
 }
 
+@mixin simple-btn{
+    background-color: $add-button-background;
+    border-radius: 0.5rem;
+    border: 1px solid $color-border;
+    padding: 0px 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    height: 32px;
+
+    img{
+        height: 16px;
+        width: 16px;
+    }
+
+    p{
+        color:$color-background;
+    }
+}
+

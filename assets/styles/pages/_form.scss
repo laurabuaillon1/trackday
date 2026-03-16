@@ -17,3 +17,11 @@
         text-align:start;
     }
 }
+
+.form-field{
+
+    &__textarea{
+        width: 100%;
+        @include auth-input;
+    }
+}

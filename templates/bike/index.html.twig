@@ -17,13 +17,15 @@
 				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
 				<p class="add-btn__text">Ajouter une moto</p>
 			</a>
+
+			
 		</div>
 	</div>
 	{% for bike in bikes %}
 		<div class="bike-list">
 			<div class="bike-card">
 				<div class="bike-card__header">
-					<img class="bike-card__img" src="https://images.unsplash.com/photo-1588756681780-9d5859fc2ca0?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+					<img class="bike-card__img" src="{{ bike.photoUrl }}" alt="Photo de {{bike.nickname}}">
 					<div class="bike-card__alert">
 						<img src="{{asset('icons/garage/maintenance_white.svg')}}" alt="">
 						<p class="text-white text-xs">Entretien</p>
@@ -79,6 +81,7 @@
 							<a href="{{ path('app_bike_delete', {'id': bike.id}) }}">
 								<img class="bike-card__icon" src="{{ asset('icons/garage/trash_grey.svg') }}" alt="" aria-hidden="true">
 							</a>
+							
 						</div>
 
 					</div>

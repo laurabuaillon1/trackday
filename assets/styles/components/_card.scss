@@ -393,6 +393,7 @@ ul li {
     
     &__link{
         color:$card-blue-dark;
+        text-decoration: none;
     }
 
     &__controls{
@@ -400,6 +401,12 @@ ul li {
         flex-direction: row;
         align-items: center;
         gap: 24px;
+    }
+
+    &__label{
+        display: flex;
+        flex-direction: row;
+        gap:0.75rem;
     }
 
     
