@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 #[Route('/bike')]
 final class BikeController extends AbstractController
@@ -25,11 +26,26 @@ final class BikeController extends AbstractController
     #[Route('/new', name: 'app_bike_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $bike = new Bike();
+        $bike = new Bike();//quand je fais ça dans le controller cela execute automatiquement le  __construct()
         $form = $this->createForm(BikeType::class, $bike);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $bike->setUser($this->getUser());
+            $photoFile = $form->get('photo_url')->getData();
+            
+            if ($photoFile){
+                $newFilename=uniqid() . '.' . $photoFile->guessExtension();
+
+                // déplacer le fichier 
+                $photoFile->move($this->getParameter('kernel.project_dir'). '/public/uploads/photos',$newFilename);
+
+                //sauvegarder le nom en bdd 
+                $bike->setPhotoUrl($newFilename);
+                
+            }
+
+           
             $entityManager->persist($bike);
             $entityManager->flush();
 

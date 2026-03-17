@@ -9,10 +9,10 @@
 		<div class="bike-detail__wrap">
 			<div class="bike-detail__back">
 				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
-                <a class="auth-card__link font-medium" href="{{ path('app_bike_index') }}">Retourner au garage</a>
+				<a class="auth-card__link font-medium" href="{{ path('app_bike_index') }}">Retourner au garage</a>
 			</div>
 			<div class="bike-detail__header">
-				<img class="bike-detail__img" src={{ bike.photoUrl }} alt="">
+				<img class="bike-detail__img" src="{{asset('uploads/photos/' ~ bike.photoUrl) }}" alt="">
 
 				<div class="bike-detail__info">
 					<h1 class="bike-detail__title">{{ bike.nickname }}</h1>
@@ -23,6 +23,10 @@
 					</div>
 					<p class="bike-detail__license text-l font-bold">{{ bike.licensePlate }}</p>
 				</div>
+				<button>
+					<a class="simple-btn" href="{{ path('app_bike_edit', {'id': bike.id}) }}">Modifier</a>
+					{{ include('bike/_delete_form.html.twig') }}
+				</button>
 			</div>
 		</div>
 
@@ -203,4 +207,4 @@
 																														                <td>{{ bike.notes }}</td>
 																														            </tr>
 																														        </tbody>
-																														    </table> #}<a href="{{ path('app_bike_edit', {'id': bike.id}) }}">Modifier</a>{{ include('bike/_delete_form.html.twig') }}{% endblock %}
+																														    </table> #}{% endblock %}

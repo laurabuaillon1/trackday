@@ -25,8 +25,8 @@ class BikeType extends AbstractType
                 'attr'=>[
                     'placeholder'=> 'Cliquer pour ajouter une photo',
                 ],
+                'mapped' => false,
                 'label'=>'Photo de la moto',
-                'data_class'=>null,
                 'required'=>false,
             ])
             ->add('nickname',TextType::class,[
