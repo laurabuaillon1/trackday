@@ -5,14 +5,10 @@
 
 
 //bouton ajouter
-.add-action{
-    @include add-action;
-}
-
-.add-btn{
-    @include add-btn;
-}
-
-.simple-btn{
-    @include simple-btn;
-}
+.add-action{ @include add-action;}
+.add-btn{ @include add-btn;}
+.btn-base{ @include btn-base;}
+.btn-primary{ @include btn-primary;}
+.btn-outline {@include btn-outline;}
+.btn-danger{ @include btn-danger;}
+.btn-disabled { @include btn-disabled;}

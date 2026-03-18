@@ -224,24 +224,131 @@ li {
   }
 }
 
-.simple-btn {
-  background-color: #dc2626;
-  border-radius: 0.5rem;
-  border: 1px solid #e5e7eb;
-  padding: 0px 12px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.btn-base {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  padding: 0px 12px;
   height: 32px;
+  border-radius: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
 }
-.simple-btn img {
+.btn-base img {
   height: 16px;
   width: 16px;
 }
-.simple-btn p {
+
+.btn-primary {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0px 12px;
+  height: 32px;
+  border-radius: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.btn-primary img {
+  height: 16px;
+  width: 16px;
+}
+.btn-primary {
+  background-color: #dc2626;
   color: #fafafa;
+}
+
+.btn-outline {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0px 12px;
+  height: 32px;
+  border-radius: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.btn-outline img {
+  height: 16px;
+  width: 16px;
+}
+.btn-outline {
+  background-color: #374151;
+  color: #fafafa;
+}
+
+.btn-danger {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0px 12px;
+  height: 32px;
+  border-radius: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.btn-danger img {
+  height: 16px;
+  width: 16px;
+}
+.btn-danger {
+  background-color: #dc2626;
+  color: #fafafa;
+}
+
+.btn-disabled {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0px 12px;
+  height: 32px;
+  border-radius: 0.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+.btn-disabled img {
+  height: 16px;
+  width: 16px;
+}
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .auth-card {
@@ -988,6 +1095,11 @@ ul li {
   object-fit: cover;
   border-radius: 0.75rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.144);
+}
+.bike-detail__buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 .bike-detail__header {
   display: flex;

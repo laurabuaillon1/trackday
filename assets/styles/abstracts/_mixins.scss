@@ -163,8 +163,70 @@
 }
 
 
-//Button
+// ================================
+// Base Button
+// ================================
 
+@mixin btn-base{
+
+    //reset les styles navigateur (Chrome)
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    //style
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0px 12px;
+    height: 32px;
+    border-radius: 0.5rem;
+    font-family: $font-primary;
+    font-size: $text-s;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+
+    img{
+        height: 16px;
+        width: 16px;
+    }
+
+}
+
+// ================================
+// Bouton - Variantes
+// ================================
+
+@mixin btn-primary{
+    @include btn-base;
+    background-color: $button-red;
+    color: $color-background;
+}
+
+@mixin btn-outline{
+    @include btn-base;
+    background-color: $button-gray;
+    color: $color-background;
+}
+
+@mixin btn-danger{
+    @include btn-base;
+    background-color: $button-red;
+    color: $color-background;
+}
+
+@mixin btn-disabled{
+    @include btn-base;
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+// ================================
+// Bouton - Ajouter
+// ================================
 @mixin add-action{
     //Mobile:Fixé en bas à droite,au dessus du contenu
     position: fixed;
@@ -182,7 +244,7 @@
 }
 
 @mixin add-btn{
-    background-color: $add-button-background;
+    background-color: $button-red;
     border-radius: 2rem;
     display: flex;
     justify-content: center;
@@ -224,25 +286,4 @@
     }
 }
 
-@mixin simple-btn{
-    background-color: $add-button-background;
-    border-radius: 0.5rem;
-    border: 1px solid $color-border;
-    padding: 0px 12px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    height: 32px;
-
-    img{
-        height: 16px;
-        width: 16px;
-    }
-
-    p{
-        color:$color-background;
-    }
-}
 
