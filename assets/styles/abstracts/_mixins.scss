@@ -51,7 +51,6 @@
     background-color: rgb(248, 250, 252, 0.5);
     border: 1px solid $color-gray-medium;
     border-radius: 0.75rem;
-    height: 40px;
     width: 100%;
     padding: 8px 12px;
     display: flex;
@@ -209,6 +208,7 @@
     @include btn-base;
     background-color: $button-gray;
     color: $color-background;
+    width: 100%
 }
 
 @mixin btn-danger{

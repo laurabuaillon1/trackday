@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class BikeType extends AbstractType
 {
@@ -28,6 +29,13 @@ class BikeType extends AbstractType
                 'mapped' => false,
                 'label'=>'Photo de la moto',
                 'required'=>false,
+                'constraints'=>[
+                    new Assert\File(
+                        maxSize:'5M',
+                        extensions:['jpg','jpeg','png','webp'],
+                        extensionsMessage:'Veuillez uploader une image valide (jpg, jpeg, png, webp)'
+                    )
+                ]
             ])
             ->add('nickname',TextType::class,[
                 'attr' =>[
@@ -97,7 +105,7 @@ class BikeType extends AbstractType
                     'heures'=>'hours',
                     ],
                     'attr'=>[
-                    'class'=>'form-field__textarea',
+                    'class'=>'form-field__dropdown',
                     
                 ]
             ])

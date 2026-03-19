@@ -71,8 +71,16 @@ final class BikeController extends AbstractController
     {
         $form = $this->createForm(BikeType::class, $bike);
         $form->handleRequest($request);
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $bike->setUser($this->getUser());
+            $photoFile = $form->get('photo_url')->getData();
+
+            if($photoFile){
+                $newFilename=uniqid() . "." . $photoFile->guessExtension();
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('app_bike_index', [], Response::HTTP_SEE_OTHER);

@@ -1,6 +1,6 @@
 @use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
-
+@use '../base/breakpoints' as *;
 // ================================
 // Formulaire - Ajout d'une moto
 // ================================
@@ -21,7 +21,43 @@
 .form-field{
 
     &__textarea{
-        width: 100%;
         @include auth-input;
+        height: 20vh;
+    }
+
+    &__dropdown{
+        @include auth-input;
+    }
+}
+
+
+// ====================================
+// Formulaire - Modification d'une moto
+// ====================================
+
+.bike-update{
+
+
+    &__wrap{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap:1rem;
+
+        
+    }
+
+    &__actions{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+
+    @media (min-width:$large){
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: row;
+                gap: 1rem;
+            }
     }
 }

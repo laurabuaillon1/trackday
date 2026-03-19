@@ -296,6 +296,7 @@ li {
 .btn-outline {
   background-color: #374151;
   color: #fafafa;
+  width: 100%;
 }
 
 .btn-danger {
@@ -440,7 +441,6 @@ input {
   background-color: rgba(248, 250, 252, 0.5);
   border: 1px solid #b4bac2;
   border-radius: 0.75rem;
-  height: 40px;
   width: 100%;
   padding: 8px 12px;
   display: flex;
@@ -1053,11 +1053,9 @@ ul li {
 }
 
 .form-field__textarea {
-  width: 100%;
   background-color: rgba(248, 250, 252, 0.5);
   border: 1px solid #b4bac2;
   border-radius: 0.75rem;
-  height: 40px;
   width: 100%;
   padding: 8px 12px;
   display: flex;
@@ -1075,6 +1073,52 @@ ul li {
   font-size: 0.875rem;
   color: #b4bac2;
   font-weight: 500;
+}
+.form-field__textarea {
+  height: 20vh;
+}
+.form-field__dropdown {
+  background-color: rgba(248, 250, 252, 0.5);
+  border: 1px solid #b4bac2;
+  border-radius: 0.75rem;
+  width: 100%;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.875rem;
+  font-family: "Inter", sans-serif;
+  color: #64748B;
+}
+.form-field__dropdown:focus {
+  border-color: #334155;
+  outline: none;
+}
+.form-field__dropdown::placeholder {
+  font-size: 0.875rem;
+  color: #b4bac2;
+  font-weight: 500;
+}
+
+.bike-update__wrap {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.bike-update__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .bike-update__actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
 }
 
 .bike-detail {
