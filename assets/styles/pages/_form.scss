@@ -28,7 +28,23 @@
     &__dropdown{
         @include auth-input;
     }
+
+    &__usage-inputs{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        gap: 8px;
+
+
+        .next-unit-label{
+            position: absolute;
+            right: 15px;
+            top: 7px;
+        }
+    }
 }
+
+
 
 
 // ====================================

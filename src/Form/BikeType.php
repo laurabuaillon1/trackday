@@ -22,119 +22,128 @@ class BikeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photo_url',FileType::class,[
-                'attr'=>[
-                    'placeholder'=> 'Cliquer pour ajouter une photo',
+            ->add('photo_url', FileType::class, [
+                'attr' => [
+                    'placeholder' => 'Cliquer pour ajouter une photo',
                 ],
                 'mapped' => false,
-                'label'=>'Photo de la moto',
-                'required'=>false,
-                'constraints'=>[
+                'label' => 'Photo de la moto',
+                'required' => false,
+                'constraints' => [
                     new Assert\File(
-                        maxSize:'5M',
-                        extensions:['jpg','jpeg','png','webp'],
-                        extensionsMessage:'Veuillez uploader une image valide (jpg, jpeg, png, webp)'
+                        maxSize: '5M',
+                        extensions: ['jpg', 'jpeg', 'png', 'webp'],
+                        extensionsMessage: 'Veuillez uploader une image valide (jpg, jpeg, png, webp)'
                     )
                 ]
             ])
-            ->add('nickname',TextType::class,[
-                'attr' =>[
+            ->add('nickname', TextType::class, [
+                'attr' => [
                     'placeholder' => 'Ex:Ma Pistarde,Gex#1'
                 ],
-                'label'=> 'Pseudo(Surnom)',
+                'label' => 'Pseudo(Surnom)',
             ])
-            ->add('brand', TextType::class,[
-                'attr' =>[
-                    'placeholder'=> 'Ex: Yamaha',
+            ->add('brand', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex: Yamaha',
                 ],
-                'label'=> 'Marque',
+                'label' => 'Marque',
             ])
-            ->add('model',TextType::class,[
-                'attr' =>[
-                    'placeholder'=>'Ex: R1',
+            ->add('model', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex: R1',
                 ],
-                'label'=> 'Modèle'
+                'label' => 'Modèle'
             ])
-            ->add('year',TextType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex: 2020',
+            ->add('year', TextType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: 2020',
                 ],
-                'label'=>'Année'
+                'label' => 'Année'
+                
             ])
-            ->add('displacement',TextType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex: 1000',
+            ->add('displacement', TextType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: 1000',
                 ],
-                'label'=> 'Cylindrée(cc)'
+                'label' => 'Cylindrée(cc)'
             ])
-            ->add('color',TextType::class,[
-                'attr'=>[
-                    'placeholder'=> 'Ex: Bleu',
+            ->add('color', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'Ex: Bleu',
                 ],
-                'label'=> 'Couleur'
+                'label' => 'Couleur'
             ])
-            ->add('license_plate',TextType::class,[
-                'attr'=>[
-                    'placeholder'=>'AB-123-CD',
+            ->add('license_plate', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'AB-123-CD',
                 ],
-                'label'=> 'Plaque d\'immatriculation'
+                'label' => 'Plaque d\'immatriculation'
             ])
-            ->add('purchase_date',DateType::class,[
-                'attr'=>[
-                    'placeholder'=> 'jj/mm/aaaa',
+            ->add('purchase_date', DateType::class, [
+                'attr' => [
+                    'placeholder' => 'jj/mm/aaaa',
                 ],
-                'label'=> 'Date d\'achat'
+                'label' => 'Date d\'achat'
             ])
-            ->add('mileage',IntegerType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex:15000km',
+            ->add('mileage', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
                 ],
-                'label'=> 'Utilisation actuelle'
+                'label' => 'Utilisation actuelle'
 
             ])
-            ->add('hours',IntegerType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex:15000km',
+            ->add('hours', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
                 ],
-                'label'=> 'Utilisation actuelle'
-
+                'label' => 'Utilisation actuelle',
+                'required' => false,
             ])
-            ->add('usage_unit',ChoiceType::class,[
-                'choices'=>[
-                    'kilomètres'=>'km',
-                    'heures'=>'hours',
-                    ],
-                    'attr'=>[
-                    'class'=>'form-field__dropdown',
-                    
+            ->add('usage_unit', ChoiceType::class, [
+                'choices' => [
+                    'kilomètres' => 'km',
+                    'heures' => 'hours',
+                ],
+                'attr' => [
+                    'class' => 'form-field__dropdown',
+
                 ]
             ])
-            ->add('last_service_date',DateType::class,[
-                'attr'=> [
-                    'placeholder'=>'jj/mm/aaaa',
+            ->add('last_service_date', DateType::class, [
+                'attr' => [
+                    'placeholder' => 'jj/mm/aaaa',
                 ],
-                'label'=> 'Dernier entretien'
+                'label' => 'Dernier entretien'
             ])
-            ->add('next_service_km',IntegerType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex:15000km',
+            ->add('next_service_km', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
                 ],
-                'label'=> 'Utilisation actuelle'
+                'label' => 'Utilisation actuelle',
 
             ])
-            ->add('next_service_hours',IntegerType::class,[
-                'attr'=>[
-                    'placeholder'=>'Ex:15000km',
+            ->add('next_service_hours', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
                 ],
-                'label'=> 'Utilisation actuelle'
+                'label' => 'Utilisation actuelle',
+                'required' => false,
 
             ])
-            ->add('notes',TextareaType::class,[
-                'attr'=>[
-                    'placeholder'=>'Modifications,accessoires...',
-                    'class'=> 'form-field__textarea',
+            ->add('notes', TextareaType::class, [
+                'attr' => [
+                    'placeholder' => 'Modifications,accessoires...',
+                    'class' => 'form-field__textarea',
                 ],
-                'label'=>'Notes'
+                'label' => 'Notes',
+                'required' => false,
             ])
             // ->add('is_active',CheckboxType::class,[
             //     'label'=> "moto active",

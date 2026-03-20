@@ -49,38 +49,32 @@
 		{{ form_widget(form.purchase_date) }}
 		{{ form_errors(form.purchase_date) }}
 	</div>
-	<div class="form-field">
-		{{ form_label(form.mileage) }}
-		{{ form_widget(form.mileage) }}
-		{{ form_errors(form.mileage) }}
-	</div>
-	<div class="form-field">
-		{{ form_label(form.hours) }}
-		{{ form_widget(form.hours) }}
-		{{ form_errors(form.hours) }}
+
+	<div class="form-field__usage-unit">
+		<label>Utilisation actuelle</label>
+		<div class="form-field__usage-inputs">
+			{{ form_widget(form.mileage, {'attr': {'placeholder': 'Ex: 15000', 'class': 'usage-input'}}) }}
+			{{ form_widget(form.hours, {'attr': {'placeholder': 'Ex: 45.5', 'class': 'usage-input', 'style': 'display:none'}}) }}
+			{{ form_widget(form.usage_unit) }}
+		</div>
 	</div>
 
-	<div class="form-field">
-		{{ form_label(form.usage_unit) }}
-		{{ form_widget(form.usage_unit) }}
-		{{ form_errors(form.usage_unit) }}
-	</div>
+
 	<div class="form-field">
 		{{ form_label(form.last_service_date) }}
 		{{ form_widget(form.last_service_date) }}
 		{{ form_errors(form.last_service_date) }}
 	</div>
-	<div class="form-field">
-		{{ form_label(form.next_service_km) }}
-		{{ form_widget(form.next_service_km) }}
-		{{ form_errors(form.next_service_km) }}
+
+	<div class="form-field__next-service">
+		<label>Prochain entretien</label>
+		<div class="form-field__usage-inputs">
+			{{ form_widget(form.next_service_km, {'attr': {'placeholder': 'Ex: 5000', 'class': 'next-input'}}) }}
+			{{ form_widget(form.next_service_hours, {'attr': {'placeholder': 'Ex: 60.0', 'class': 'next-input', 'style': 'display:none'}}) }}
+			<span class="next-unit-label">km</span>
+		</div>
 	</div>
 
-	<div class="form-field">
-		{{ form_label(form.next_service_hours) }}
-		{{ form_widget(form.next_service_hours) }}
-		{{ form_errors(form.next_service_hours) }}
-	</div>
 	<div class="form-field">
 		{{ form_label(form.notes) }}
 		{{ form_widget(form.notes) }}
@@ -90,6 +84,7 @@
 	<div class="bike-update__actions">
 		<button class="btn-primary">{{ button_label|default('Enregistrer') }}</button>
 		{{ form_end(form) }}
+		{# {{ include('bike/_delete_form.html.twig') }} #}
 	</div>
 
 </div>

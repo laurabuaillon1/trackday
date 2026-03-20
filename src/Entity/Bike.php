@@ -57,6 +57,7 @@ class Bike
     private ?string $model = null;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\PositiveOrZero]
     #[Assert\Length(
         min: 2,
         max: 255,
@@ -80,6 +81,7 @@ class Bike
         pattern: '/^\d+$/',
         message: 'La cylindrée doit contenir uniquement des chiffres.'
     )]
+     #[Assert\PositiveOrZero]
     private ?string $displacement = null;
 
     #[ORM\Column(length: 255, nullable: true)]

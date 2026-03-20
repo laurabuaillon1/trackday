@@ -626,6 +626,29 @@ ul li {
   padding-bottom: 24px;
 }
 
+.bike-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .bike-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: calc(100% - 12px);
+  }
+}
+@media (min-width: 1024px) {
+  .bike-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: calc(100% - 12px);
+  }
+}
+
 .bike-card {
   display: flex;
   flex-direction: column;
@@ -707,7 +730,6 @@ ul li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 8px;
 }
 .bike-card__details-link {
   display: flex;
@@ -716,6 +738,7 @@ ul li {
   gap: 12px;
 }
 .bike-card__link {
+  font-size: 0.75rem;
   color: #111827;
   text-decoration: none;
 }
@@ -723,7 +746,7 @@ ul li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
 }
 .bike-card__label {
   display: flex;
@@ -1098,6 +1121,17 @@ ul li {
   font-size: 0.875rem;
   color: #b4bac2;
   font-weight: 500;
+}
+.form-field__usage-inputs {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  gap: 8px;
+}
+.form-field__usage-inputs .next-unit-label {
+  position: absolute;
+  right: 15px;
+  top: 7px;
 }
 
 .bike-update__wrap {

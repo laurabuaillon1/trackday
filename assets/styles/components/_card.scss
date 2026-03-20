@@ -287,6 +287,26 @@ ul li {
 // Card Dashboard - Moto dans le garage
 // =====================================
 
+.bike-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    @media (min-width:$medium){
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: calc(100% - 12px); // 4 colonnes sur tablette
+    }
+
+    @media (min-width: $large) {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: calc(100% - 12px); // 4 colonnes sur desktop
+    }
+}
 
 .bike-card{
     display: flex;
@@ -381,7 +401,7 @@ ul li {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding:8px;
+        
     }
 
     &__details-link{
@@ -392,6 +412,7 @@ ul li {
     }
     
     &__link{
+        font-size:$text-xs ;
         color:$card-blue-dark;
         text-decoration: none;
     }
@@ -400,7 +421,7 @@ ul li {
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: 24px;
+        gap: 12px;
     }
 
     &__label{

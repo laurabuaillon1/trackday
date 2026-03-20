@@ -18,11 +18,11 @@
 				<span class="add-btn__text">Ajouter une moto</span>
 			</a>
 
-			
+
 		</div>
 	</div>
-	{% for bike in bikes %}
-		<div class="bike-list">
+	<div class="bike-list">
+		{% for bike in bikes %}
 			<div class="bike-card">
 				<div class="bike-card__header">
 					<img class="bike-card__img" src="{{ asset('uploads/photos/' ~ bike.photoUrl) }}" alt="Photo de {{bike.nickname}}">
@@ -80,75 +80,76 @@
 							</a>
 							{{ include('bike/_delete_form.html.twig') }}
 
-							
+
 						</div>
 
 					</div>
 				</div>
-			{% endfor %}
-		</div>
+
+			</div>
+		{% endfor %}
 	</div>
 	{# <table class="table">
-														<thead>
-															<tr>
-																<th>Id</th>
-																<th>Nickname</th>
-																<th>Brand</th>
-																<th>Model</th>
-																<th>Year</th>
-																<th>Displacement</th>
-																<th>Color</th>
-																<th>License_plate</th>
-																<th>Purchase_date</th>
-																<th>Mileage</th>
-																<th>Hours</th>
-																<th>Usage_unit</th>
-																<th>Last_service_date</th>
-																<th>Next_service_km</th>
-																<th>Next_service_hours</th>
-																<th>Photo_url</th>
-																<th>Notes</th>
-																<th>Is_active</th>
-																<th>Created_at</th>
-																<th>Updated_at</th>
-																<th>actions</th>
-															</tr>
-														</thead>
-														<tbody>
-															{% for bike in bikes %}
-																<tr>
-																	<td>{{ bike.id }}</td>
-																	<td>{{ bike.nickname }}</td>
-																	<td>{{ bike.brand }}</td>
-																	<td>{{ bike.model }}</td>
-																	<td>{{ bike.year }}</td>
-																	<td>{{ bike.displacement }}</td>
-																	<td>{{ bike.color }}</td>
-																	<td>{{ bike.licensePlate }}</td>
-																	<td>{{ bike.purchaseDate ? bike.purchaseDate|date('Y-m-d') : '' }}</td>
-																	<td>{{ bike.mileage }}</td>
-																	<td>{{ bike.hours }}</td>
-																	<td>{{ bike.usageUnit }}</td>
-																	<td>{{ bike.lastServiceDate ? bike.lastServiceDate|date('Y-m-d') : '' }}</td>
-																	<td>{{ bike.nextServiceKm }}</td>
-																	<td>{{ bike.nextServiceHours }}</td>
-																	<td>{{ bike.photoUrl }}</td>
-																	<td>{{ bike.notes }}</td>
-																	<td>{{ bike.isActive ? 'Yes' : 'No' }}</td>
-																	<td>{{ bike.createdAt ? bike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-																	<td>{{ bike.updatedAt ? bike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-																	<td>
-																		<a href="{{ path('app_bike_show', {'id': bike.id}) }}">show</a>
-																		<a href="{{ path('app_bike_edit', {'id': bike.id}) }}">edit</a>
-																	</td>
-																</tr>
-															{% else %}
-																<tr>
-																	<td colspan="21">Votre garage est vide</td>
-																</tr>
-															{% endfor %}
-														</tbody>
-													</table> #}
+																		<thead>
+																			<tr>
+																				<th>Id</th>
+																				<th>Nickname</th>
+																				<th>Brand</th>
+																				<th>Model</th>
+																				<th>Year</th>
+																				<th>Displacement</th>
+																				<th>Color</th>
+																				<th>License_plate</th>
+																				<th>Purchase_date</th>
+																				<th>Mileage</th>
+																				<th>Hours</th>
+																				<th>Usage_unit</th>
+																				<th>Last_service_date</th>
+																				<th>Next_service_km</th>
+																				<th>Next_service_hours</th>
+																				<th>Photo_url</th>
+																				<th>Notes</th>
+																				<th>Is_active</th>
+																				<th>Created_at</th>
+																				<th>Updated_at</th>
+																				<th>actions</th>
+																			</tr>
+																		</thead>
+																		<tbody>
+																			{% for bike in bikes %}
+																				<tr>
+																					<td>{{ bike.id }}</td>
+																					<td>{{ bike.nickname }}</td>
+																					<td>{{ bike.brand }}</td>
+																					<td>{{ bike.model }}</td>
+																					<td>{{ bike.year }}</td>
+																					<td>{{ bike.displacement }}</td>
+																					<td>{{ bike.color }}</td>
+																					<td>{{ bike.licensePlate }}</td>
+																					<td>{{ bike.purchaseDate ? bike.purchaseDate|date('Y-m-d') : '' }}</td>
+																					<td>{{ bike.mileage }}</td>
+																					<td>{{ bike.hours }}</td>
+																					<td>{{ bike.usageUnit }}</td>
+																					<td>{{ bike.lastServiceDate ? bike.lastServiceDate|date('Y-m-d') : '' }}</td>
+																					<td>{{ bike.nextServiceKm }}</td>
+																					<td>{{ bike.nextServiceHours }}</td>
+																					<td>{{ bike.photoUrl }}</td>
+																					<td>{{ bike.notes }}</td>
+																					<td>{{ bike.isActive ? 'Yes' : 'No' }}</td>
+																					<td>{{ bike.createdAt ? bike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+																					<td>{{ bike.updatedAt ? bike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+																					<td>
+																						<a href="{{ path('app_bike_show', {'id': bike.id}) }}">show</a>
+																						<a href="{{ path('app_bike_edit', {'id': bike.id}) }}">edit</a>
+																					</td>
+																				</tr>
+																			{% else %}
+																				<tr>
+																					<td colspan="21">Votre garage est vide</td>
+																				</tr>
+																			{% endfor %}
+																		</tbody>
+																	</table> #}
 
 
 {% endblock %}
