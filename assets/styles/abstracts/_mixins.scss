@@ -204,6 +204,14 @@
     color: $color-background;
 }
 
+@mixin btn-secondary{
+    @include btn-base;
+    background-color: $color-white;
+    color: $color-dark;
+    border: 1px solid $button-ligth-gray;
+
+}
+
 @mixin btn-outline{
     @include btn-base;
     background-color: $button-gray;
@@ -223,6 +231,7 @@
     cursor: not-allowed;
     pointer-events: none;
 }
+
 
 // ================================
 // Bouton - Ajouter
