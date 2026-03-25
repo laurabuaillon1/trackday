@@ -28,7 +28,7 @@ final class BikeController extends AbstractController
     #[Route('/new', name: 'app_bike_new', methods: ['GET', 'POST'])]
     public function new(
         Request $request,
-        //nettoyage du texte por le rendre sur
+        //nettoyage du texte pour le rendre sur
         SluggerInterface $slugger,
 
         //injecte automatiquement une valeur dans la function

@@ -45,43 +45,55 @@
 				<img src="{{ asset('icons/sidebar/calendar.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Mes Trackdays</span>
 			</a>
-			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img src="{{ asset('icons/sidebar/brain.svg') }}" width="20" height="20" alt="" aria-hidden="true">
-				<span>Analyse IA</span>
-				<img src="{{ asset('icons/sidebar/lock.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
-			</a>
+			
 			<a href="{{ path('app_bike_index') }}" class="sidebar__link">
 				<img src="{{ asset('icons/sidebar/biker_on_bike.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Mon Garage</span>
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/bell.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class ="sidebar__icon"src="{{ asset('icons/sidebar/bell_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Rappels</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/expense.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/expense_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Frais</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/maintenance.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/maintenance_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Entretien</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/settings.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/settings_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Réglages Moto</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/informations.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/informations_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Informations</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
 			</a>
 		</nav>
 
 		<div class="sidebar__footer">
 			<div class="sidebar__user">
-				<div class="sidebar__avatar">{{ app.user.email|first|upper }}</div>
+				<div class="sidebar__avatar" name="profilepicture">{{ app.user.profilePicture }}</div>
+					{% if app.user.profilePicture %}
+						<img src="{{asset ('uploads/profiles'~ app.user.profilePicture )}}" alt="Photo de profil">
+					{% else %}
+						{{app.user.firstName|first}}{{app.user.lastName|first}}
+					{% endif %}
 				<div class="sidebar__user-info">
-					<div class="sidebar__user-email">{{ app.user.email }}</div>
-					<a href="{{path('app_settings')}}" class="sidebar__user-link">Gérer mon compte</a>
+					<div class="sidebar__user-email">{{ app.user.lastName }}
+						{{ app.user.firstName }}</div>
+					<a href="{{path('app_account')}}" class="sidebar__user-link">Gérer mon compte</a>
 				</div>
 			</div>
 		</div>

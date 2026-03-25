@@ -914,7 +914,6 @@ ul li {
     flex-direction: column;
   }
 }
-
 .sidebar__mobile-header {
   display: flex;
   align-items: center;
@@ -934,7 +933,6 @@ ul li {
     display: none !important;
   }
 }
-
 .sidebar__burger {
   border: none;
   color: #64748B;
@@ -942,7 +940,6 @@ ul li {
   padding: 0;
   cursor: pointer;
 }
-
 .sidebar__logo-desktop {
   display: none;
 }
@@ -957,7 +954,6 @@ ul li {
     background-color: #fafafa;
   }
 }
-
 .sidebar__offcanvas-header {
   border-bottom: 1px solid #b4bac2;
   background-color: #fafafa;
@@ -967,30 +963,25 @@ ul li {
     display: none !important;
   }
 }
-
 .sidebar__logo-mobile {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .sidebar__logo-title {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .sidebar__brand-name {
   font-weight: 700;
   font-size: 1.125rem;
   font-family: "Josefin Sans", sans-serif;
 }
-
 .sidebar__brand-subtitle {
   font-size: 0.7rem;
   color: #64748B;
 }
-
 .sidebar__body {
   display: flex;
   flex-direction: column;
@@ -1002,7 +993,6 @@ ul li {
     height: 100%;
   }
 }
-
 .sidebar__nav {
   display: flex;
   flex-direction: column;
@@ -1012,7 +1002,6 @@ ul li {
   border-right: 1px solid #e5e7eb;
   padding: 1.25rem;
 }
-
 .sidebar__link {
   display: flex;
   align-items: center;
@@ -1025,43 +1014,30 @@ ul li {
   font-weight: 500;
   transition: background-color 0.15s ease;
 }
-.sidebar__link:hover {
-  background-color: #F5F7FA;
-  color: #334155;
-}
-.sidebar__link--active {
-  background-color: #fff1f1;
-  color: #e53e3e;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.0509803922);
-}
-.sidebar__link--active img {
-  color: #e53e3e;
-}
 .sidebar__link--disabled {
   color: #b4bac2;
   pointer-events: none;
 }
-
+.sidebar__link--disabled--icon {
+  color: #6B7280;
+}
 .sidebar__footer {
   border-top: 1px solid #e5e7eb;
   padding: 1.25rem;
   background-color: #fafafa;
 }
-
 .sidebar__user {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 10px 12px;
 }
-
 .sidebar__user-info {
   overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
-
 .sidebar__avatar {
   width: 36px;
   height: 36px;
@@ -1074,8 +1050,13 @@ ul li {
   font-size: 0.875rem;
   font-weight: 600;
   flex-shrink: 0;
+  overflow: hidden;
 }
-
+.sidebar__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .sidebar__user-email {
   font-size: 0.875rem;
   font-weight: 600;
@@ -1084,7 +1065,6 @@ ul li {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .sidebar__user-link {
   font-size: 0.75rem;
   color: #64748B;

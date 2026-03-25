@@ -33,7 +33,7 @@ class BikeType extends AbstractType
                     new Assert\File(
                         maxSize: '5M',
                         extensions: ['jpg', 'jpeg', 'png', 'webp'],
-                        extensionsMessage: 'Veuillez uploader une image valide (jpg, jpeg, png, webp)'
+                        extensionsMessage: 'Veuillez uploader une image valide (jpg, jpeg, png, webp)',
                     )
                 ]
             ])
