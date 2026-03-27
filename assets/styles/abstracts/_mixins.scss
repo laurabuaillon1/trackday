@@ -38,12 +38,24 @@
     
 
 
-//texte erreur
-@mixin form-error{
-    font-size: $text-xxs;
+//MESSAGE FLASH - login sucess
+@mixin login-sucess{
+    font-size: $text-m;
     font-family: $font-primary;
     list-style: none;
     color:$color-red-error;
+    display: flex;
+    flex-direction: column;
+    border-color: #fecaca;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    margin-bottom: 24px;
+    background: linear-gradient(154deg,rgba(255, 237, 232, 1) 0%, rgba(255, 255, 219, 1) 100%);    
+    background-color: #fef2f2;
+    color: $color-dark;
+    
     
 }
 

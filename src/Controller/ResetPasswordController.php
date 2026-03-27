@@ -19,7 +19,10 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\ResetPassword\Controller\ResetPasswordControllerTrait;
 use SymfonyCasts\Bundle\ResetPassword\Exception\ResetPasswordExceptionInterface;
 use SymfonyCasts\Bundle\ResetPassword\ResetPasswordHelperInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+
+#[IsGranted('PUBLIC_ACCESS')]
 #[Route('/reset-password')]
 class ResetPasswordController extends AbstractController
 {

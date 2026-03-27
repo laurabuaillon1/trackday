@@ -58,15 +58,9 @@ class Bike
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
     #[Assert\PositiveOrZero]
-    #[Assert\Length(
-        min: 2,
-        max: 255,
-        minMessage: 'L\'année doit comporter au moins 2 caractères',
-        maxMessage: 'L\'année ne peut pas dépasser 255 caractères',
-    )]
     #[Assert\Regex(
         pattern: '/^\d{4}$/',
-        message: 'L’année doit contenir exactement 4 chiffres.'
+        message: 'L\'année doit contenir exactement 4 chiffres.',
     )]
     private ?int $year = null;
 
@@ -163,7 +157,7 @@ class Bike
     private ?\DateTimeImmutable $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'bikes')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false,onDelete: 'CASCADE')]
     private ?User $user = null;
 
     /**

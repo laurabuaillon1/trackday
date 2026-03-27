@@ -23,9 +23,6 @@ class BikeType extends AbstractType
     {
         $builder
             ->add('photo_url', FileType::class, [
-                'attr' => [
-                    'placeholder' => 'Cliquer pour ajouter une photo',
-                ],
                 'mapped' => false,
                 'label' => 'Photo de la moto',
                 'required' => false,

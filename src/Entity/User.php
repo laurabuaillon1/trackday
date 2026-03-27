@@ -92,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var Collection<int, Bike>
      */
-    #[ORM\OneToMany(targetEntity: Bike::class, mappedBy: 'user', orphanRemoval: true)]
+    #[ORM\OneToMany(targetEntity: Bike::class, mappedBy: 'user', orphanRemoval: true, cascade: ['remove'])]
     private Collection $bikes;
 
     #[ORM\Column]

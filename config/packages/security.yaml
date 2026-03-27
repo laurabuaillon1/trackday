@@ -27,7 +27,7 @@ security:
                 # where to redirect after logout
                 # target: app_any_route
 
-            # utilisateur reste connecté même après avoir fermé son navigateur
+            # utilisateur reste connecté même après avoir fermé son navigateur (pdt 1 mois)
             remember_me:
                 secret: "%kernel.secret%"
                 lifetime: 2592000
@@ -41,8 +41,18 @@ security:
 
     # Note: Only the *first* matching rule is applied
     access_control:
-        - { path: ^/admin, roles: ROLE_ADMIN }
-        - { path: ^/profile, roles: ROLE_USER }
+        # Nouvel utilisateur qui ne possède pas encore de compte:
+        - {path: ^/register, roles: PUBLIC_ACCESS}
+        - {path: ^/login,roles: PUBLIC_ACCESS}
+        
+        # Admin:
+        - { path: ^/user, roles: ROLE_ADMIN }
+    
+        # Utilisateurs ayant déjà un compte:
+        - { path: ^/account, roles: ROLE_USER }
+
+
+
 
 when@test:
     security:

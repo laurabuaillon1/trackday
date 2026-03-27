@@ -11,8 +11,10 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
+#[IsGranted('ROLE_USER')]
 final class AccountController extends AbstractController
 {
     #[Route('/account', name: 'app_account', methods: ['GET'])]
@@ -72,7 +74,7 @@ final class AccountController extends AbstractController
     {
 
         $user = $this->getUser();
-        if ($this->isCsrfTokenValid('delete-account', $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete_account', $request->getPayload()->getString('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }

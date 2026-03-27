@@ -17,7 +17,10 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+
+#[IsGranted('PUBLIC_ACCESS')]
 class RegistrationController extends AbstractController
 {
     public function __construct(private EmailVerifier $emailVerifier)

@@ -13,7 +13,9 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/bike')]
 final class BikeController extends AbstractController
 {
@@ -143,6 +145,7 @@ final class BikeController extends AbstractController
         ]);
     }
 
+    
     #[Route('/{id}', name: 'app_bike_delete', methods: ['POST'])]
     public function delete(Request $request, Bike $bike, EntityManagerInterface $entityManager): Response
     {

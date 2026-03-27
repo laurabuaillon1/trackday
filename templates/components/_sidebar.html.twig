@@ -37,19 +37,30 @@
 	{# NAV BAR #}
 	<div class="offcanvas-body sidebar__body">
 		<nav class="sidebar__nav">
+			{# Pannel-admin #}
+			{% if is_granted('ROLE_ADMIN') %}
+			<a href="{{ path('app_admin_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'sidebar__link--active' : '' }}">
+				<img src="{{ asset('icons/sidebar/admin_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Gestion Admin</span>
+			</a>
+			{% endif %}
+
+			{# Navbar - générale #}
 			<a href="{{ path('app_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_dashboard' ? 'sidebar__link--active' : '' }}">
 				<img src="{{ asset('icons/sidebar/flag_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Tableau de bord</span>
 			</a>
-			<a href="#" class="sidebar__link">
-				<img src="{{ asset('icons/sidebar/calendar.svg') }}" width="20" height="20" alt="" aria-hidden="true">
-				<span>Mes Trackdays</span>
-			</a>
-			
 			<a href="{{ path('app_bike_index') }}" class="sidebar__link">
 				<img src="{{ asset('icons/sidebar/biker_on_bike.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Mon Garage</span>
 			</a>
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img src="{{ asset('icons/sidebar/calendar_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Mes Trackdays</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
+
+			</a>
+			
 			<a href="#" class="sidebar__link sidebar__link--disabled">
 				<img class ="sidebar__icon"src="{{ asset('icons/sidebar/bell_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Rappels</span>

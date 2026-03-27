@@ -10,21 +10,18 @@
 	<div class="dashboard">
 		<div class="dashboard__wrapper">
 			<div class="dashboard__title">
-				<img class="dashboard__icon" src="{{asset('icons/sidebar/flag.svg')}}" alt="" aria-hidden="true">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
 				<h1>Tableau de bord</h1>
 			</div>
 			<p class ="text-m ">Suivez vos performances</p>
 
 		</div>
-		{# {% for message in app.flashes('welcome') %} #}
-		<div
-			class="dashboard__message">
-			{# <h2>{{ message }}
-																					! 🏁</h2> #}
-			<h2>Bienvenue sur Trackday !
-			</h2>
-			<p>Suivez vos journées de roulages, gérez votre moto, analysez vos temps et progressez à chaque sortie.</p>
+		{% for message in app.flashes('success') %}
+		<div class="alert alert-success alert-dismissible fade show">
+			{{ message }}!
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
 		</div>
+		{% endfor %}
 
 		<div class="stats__grid">
 			<div class="stats__wrap">
