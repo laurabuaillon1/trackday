@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -14,11 +15,14 @@ final class DashboardController extends AbstractController
     #[Route('/dashboard', name: 'app_dashboard')]
     public function index(): Response
     {
+        /** @var \App\Entity\User $user */
+        $user=$this->getUser();
 
         $this->addFlash('success', 'Bienvenue sur Trackday ! Suivez vos journées de roulages, gérez votre moto, analysez vos temps et progressez à chaque sortie.');
 
         return $this->render('dashboard/index.html.twig', [
             'controller_name' => 'DashboardController',
+            'bikes'=>$user->getBikes(),
         ]);
     }
 

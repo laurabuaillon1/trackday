@@ -56,7 +56,7 @@ final class AccountController extends AbstractController
             if ($photoFile) {
                 $originalFilename = pathinfo($photoFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '-' . $photoFile->guessExtension();
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $photoFile->guessExtension();
                 $photoFile->move($photoProfile, $newFilename);
                 $user->setProfilePicture($newFilename);
             }

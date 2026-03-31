@@ -308,3 +308,47 @@
 }
 
 
+// ================================
+// Tableau admin - Status
+// ================================
+
+
+@mixin badge-base{
+    //reset les styles navigateur (Chrome)
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    //style
+    
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0px 12px;
+    height: 32px;
+    border-radius: 0.5rem;
+    font-family: $font-primary;
+    font-size: $text-s;
+    font-weight: 600;
+    
+
+}
+
+@mixin badge-active{
+    @include badge-base;
+    background-color: $badge-actif;
+    color:$badge-color-green;
+}
+
+@mixin badge-inactif{
+    @include badge-base;
+    background-color: $badge-inactif;
+    color: $badge-color-gray;
+}
+
+@mixin badge-banni{
+    @include badge-base;
+    background-color: $badge-banni;
+    color: $badge-color-red;
+}

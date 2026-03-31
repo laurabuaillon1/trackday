@@ -13,22 +13,14 @@
 				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
 				<h1>Tableau de bord</h1>
 			</div>
-			<p class ="text-m ">Suivez vos performances</p>
+			<p class="text-m ">Suivez vos performances</p>
 
 		</div>
 		{% for message in app.flashes('success') %}
-		<div class="alert alert-success alert-dismissible fade show">
-			{{ message }}!
-			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"</button>
-		</div>
-		{% endfor %}
-
-		<div class="stats__grid">
-			<div class="stats__wrap">
-				<div class="stats__card">
-					<p class="stats__title">Trackdays</p>
-					<img class="stats__icon" src="{{asset('icons/dashboard/calendar_white.svg')}}" alt="" aria-hidden="true">
-					<p class="stats__number">0</p>
+			<div class="alert alert-success alert-dismissible fade show">
+				{{ message }}!
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" 
+				</button> </div> {% endfor %} <div class="stats__grid"> <div class="stats__wrap"> <div class="stats__card" class="stats__title"> trackdays <img class="stats__icon" src="{{asset('icons/dashboard/calendar_white.svg')}}" alt="" ari a-hidden="true"> <p class="stats__number">0
 					<p class="stats__p">Journées</p>
 				</div>
 
@@ -58,7 +50,7 @@
 		<div class="section-card__grid">
 			<div class="section-card">
 				<div class="section-card__header">
-					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true" >
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
 					<p class="section-card__title">Prochains Trackdays</p>
 				</div>
 				<div class="section-card__empty">
@@ -66,54 +58,62 @@
 					<p class="section-card__empty-text">Aucun trackday prévu</p>
 				</div>
 			</div>
+			{# card mon garage #}
 			<div class="section-card">
 				<div class="section-card__header">
 					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-					<p class="section-card__title">Prochains Trackdays</p>
+					<p class="section-card__title">Mon Garage</p>
 				</div>
 				<div class="section-card__empty">
-					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
-					<p class="section-card__empty-text">Aucun trackday prévu</p>
+					{% if bikes is not empty %}
+						{% for bike in bikes %}
+							<div class="section-card__wrap">
+								{% if bike.photoUrl %}
+									<img class="section-card__image" src="{{asset ('uploads/photos/'~ bike.photoUrl )}}" alt="Photo de la moto">
+								{% endif %}
+								<div class="section-card__infos">
+									<p class="text-s">{{ bike.brand }}
+										{{ bike.model }}</p>
+									<p class="text-xs text-grey">{{ bike.mileage }}
+										km</p>
+									<p class="text-xs text-grey">{{ bike.year }}</p>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<p>Aucune moto enregistrée</p>
+					{% endif %}
 				</div>
 			</div>
-			<div class="section-card">
-				<div class="section-card__header">
-					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-					<p class="section-card__title">Prochains Trackdays</p>
-				</div>
-				<div class="section-card__empty">
-					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
-					<p class="section-card__empty-text">Aucun trackday prévu</p>
-				</div>
-			</div>
-			<div class="section-card">
-				<div class="section-card__header">
-					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-					<p class="section-card__title">Prochains Trackdays</p>
-				</div>
-				<div class="section-card__empty">
-					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
-					<p class="section-card__empty-text">Aucun trackday prévu</p>
-				</div>
-			</div>
-			<div class="section-card">
-				<div class="section-card__header">
-					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-					<p class="section-card__title">Prochains Trackdays</p>
-				</div>
-				<div class="section-card__empty">
-					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="calendar">
-					<p class="section-card__empty-text">Aucun trackday prévu</p>
-				</div>
-			</div>
-
-
 		</div>
 
-		{# {% endfor %} #}
-
-
+		{# card rappel #}
+		<div class="section-card">
+			<div class="section-card__header">
+				<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+				<p class="section-card__title">Rappels</p>
+			</div>
+			<div class="section-card__empty">
+				<p class="section-card__empty-text">Aucun rappel de prévu</p>
+			</div>
+		</div>
+		<div class="section-card">
+			<div class="section-card__header">
+				<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+				<p class="section-card__title">Frais ce mois-ci</p>
+			</div>
+			<div class="section-card__empty">
+				<p class="section-card__empty-text">Aucun trackday prévu</p>
+			</div>
+		</div>
+		<div class="section-card">
+			<div class="section-card__header">
+				<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
+				<p class="section-card__title">Performances récentes</p>
+			</div>
+			<div class="section-card__empty">
+				<p class="section-card__empty-text">Aucun trackday prévu</p>
+			</div>
+		</div>
 	</div>
-
-
-{% endblock %}
+</div>{% endblock %}

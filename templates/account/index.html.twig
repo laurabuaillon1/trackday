@@ -105,13 +105,33 @@
 
 				{# Accordion body  #}
 				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
-					<a href="#" class="sidebar__link ">
+					<a href="#" class="accordion__link ">
 						<img class="sidebar__icon" src="{{ asset('icons/sidebar/settings_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 						<span>Contactez-nous</span>
 
 
 					</a>
 
+				</div>
+			</div>
+		</div>
+
+		{# QUATRIEME ACCORDEON #}
+
+		<div class="accordion" id="accordionThree">
+			<div class="accordion-item">
+				<h2 class="accordion-header">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+						<img class="accordion__icon-round" src="{{asset('icons/compte/help.svg')}}" alt="" aria-hidden="true">
+						Information légales
+					</button>
+				</h2>
+
+				{# Accordion body  #}
+				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
+					<a href="#" class="accordion__link ">Conditions d'utilisation</a>
+					<a href="#" class="accordion__link ">Politique de confidentialité</a>
+					<a href="#" class="accordion__link ">Mentions légales</a>
 				</div>
 			</div>
 		</div>

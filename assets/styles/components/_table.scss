@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+
+// ========================================
+// Tableau admin - Gestion des utilisateurs
+// ========================================
+.badge-active{@include badge-active;}
+.badge-inactif{@include badge-inactif;}
+.badge-banni{@include badge-banni;}
+
+
+.table:not(caption) > * > * {
+    --bs-table-color: inherit;
+    --bs-table-bg: transparent;
+}

@@ -98,12 +98,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
+
     public function __construct()
     {
         $this->bikes = new ArrayCollection();
         $this->resetPasswordRequests = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
         $this->account_status = 'active';
+        $this->last_login_at= new \DateTimeImmutable();
+        
     }
 
     public function getId(): ?int

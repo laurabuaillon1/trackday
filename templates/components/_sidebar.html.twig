@@ -36,13 +36,14 @@
 
 	{# NAV BAR #}
 	<div class="offcanvas-body sidebar__body">
-		<nav class="sidebar__nav">
+		<nav
+			class="sidebar__nav">
 			{# Pannel-admin #}
 			{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('app_admin_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'sidebar__link--active' : '' }}">
-				<img src="{{ asset('icons/sidebar/admin_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
-				<span>Gestion Admin</span>
-			</a>
+				<a href="{{ path('app_admin_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'sidebar__link--active' : '' }}">
+					<img src="{{ asset('icons/sidebar/admin_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+					<span>Gestion Admin</span>
+				</a>
 			{% endif %}
 
 			{# Navbar - générale #}
@@ -60,52 +61,55 @@
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
-			
+
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img class ="sidebar__icon"src="{{ asset('icons/sidebar/bell_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/bell_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Rappels</span>
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/expense_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/expense_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Frais</span>
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/maintenance_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/maintenance_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Entretien</span>
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/settings_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/settings_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Réglages Moto</span>
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
 			<a href="#" class="sidebar__link sidebar__link--disabled">
-				<img class ="sidebar__icon" src="{{ asset('icons/sidebar/informations_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/informations_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 				<span>Informations</span>
 				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Premium" aria-hidden="true">
 
 			</a>
 		</nav>
 
+		{# Sidebar footer #}
 		<div class="sidebar__footer">
 			<div class="sidebar__user">
-				<div class="sidebar__avatar" name="profilepicture">{{ app.user.profilePicture }}</div>
+				<div class="sidebar__avatar" name="profilepicture">
 					{% if app.user.profilePicture %}
-						<img src="{{asset ('uploads/profiles'~ app.user.profilePicture )}}" alt="Photo de profil">
+						<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
 					{% else %}
 						{{app.user.firstName|first}}{{app.user.lastName|first}}
 					{% endif %}
-				<div class="sidebar__user-info">
-					<div class="sidebar__user-email">{{ app.user.lastName }}
-						{{ app.user.firstName }}</div>
-					<a href="{{path('app_account')}}" class="sidebar__user-link">Gérer mon compte</a>
-				</div>
+					</div>
+					<div class="sidebar__user-info">
+						<div class="sidebar__user-email">{{ app.user.lastName }}
+							{{ app.user.firstName }}</div>
+						<a href="{{path('app_account')}}" class="sidebar__user-link">Gérer mon compte</a>
+					</div>
+				
 			</div>
 		</div>
 	</div>
