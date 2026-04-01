@@ -60,7 +60,7 @@ class RegistrationController extends AbstractController
             $this->addFlash('welcome', 'Bienvenue sur Trackday!');
 
              
-            //redirection vers login
+            //redirection vers l
             return $this->redirectToRoute('app_login');
         }
 

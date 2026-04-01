@@ -21,6 +21,8 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
+                default_target_path: app_dashboard
+                always_use_default_target_path: true
                 enable_csrf: true
             logout:
                 path: app_logout
@@ -47,9 +49,11 @@ security:
         
         # Admin:
         - { path: ^/user, roles: ROLE_ADMIN }
+        - { path: ^/admin/dashboard, roles: ROLE_ADMIN }
     
         # Utilisateurs ayant déjà un compte:
         - { path: ^/account, roles: ROLE_USER }
+        - { path: ^/dashboard, roles: ROLE_USER }
 
 
 

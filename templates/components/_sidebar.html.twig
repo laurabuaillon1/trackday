@@ -101,7 +101,7 @@
 					{% if app.user.profilePicture %}
 						<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
 					{% else %}
-						{{app.user.firstName|first}}{{app.user.lastName|first}}
+						{{app.user.lastName|first}}{{app.user.firstName|first}}
 					{% endif %}
 					</div>
 					<div class="sidebar__user-info">
