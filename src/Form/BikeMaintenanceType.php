@@ -14,6 +14,10 @@ class BikeMaintenanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('bike', EntityType::class, [
+                'class' => Bike::class,
+                'choice_label' => 'nickname',
+            ])
             ->add('date')
             ->add('mileage')
             ->add('hours')
@@ -27,16 +31,12 @@ class BikeMaintenanceType extends AbstractType
             ->add('next_service_hours')
             ->add('receipt_url')
             ->add('notes')
-            ->add('created_at', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('updated_at', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('bike', EntityType::class, [
-                'class' => Bike::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('created_at', null, [
+            //     'widget' => 'single_text',
+            // ])
+            // ->add('updated_at', null, [
+            //     'widget' => 'single_text',
+            // ])
         ;
     }
 

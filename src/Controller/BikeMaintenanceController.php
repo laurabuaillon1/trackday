@@ -13,14 +13,17 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[IsGranted('ROLE_USER')]
-#[Route('/bike/maintenance')]
+#[Route('/maintenance')]
 final class BikeMaintenanceController extends AbstractController
 {
     #[Route(name: 'app_bike_maintenance_index', methods: ['GET'])]
     public function index(BikeMaintenanceRepository $bikeMaintenanceRepository): Response
     {
+        $user = $this->getUser();
+        assert($user instanceof \App\Entity\User);
+
         return $this->render('bike_maintenance/index.html.twig', [
-            'bike_maintenances' => $bikeMaintenanceRepository->findAll(),
+            'bike_maintenances' => $bikeMaintenanceRepository->findBy(['bike'=> $user->getBikes()->toArray()]),
         ]);
     }
 

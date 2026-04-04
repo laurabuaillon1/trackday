@@ -22,8 +22,12 @@ final class BikeController extends AbstractController
     #[Route(name: 'app_bike_index', methods: ['GET'])]
     public function index(BikeRepository $bikeRepository): Response
     {
+
+    /** @var \App\Entity\User $user */
+    $user = $this->getUser();
+
         return $this->render('bike/index.html.twig', [
-            'bikes' => $bikeRepository->findAll(),
+            'bikes' => $bikeRepository->findBy(['user'=> $user]),
         ]);
     }
 
@@ -146,7 +150,7 @@ final class BikeController extends AbstractController
     }
 
     
-    #[Route('/{id}', name: 'app_bike_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_bike_delete', methods: ['POST'])]
     public function delete(Request $request, Bike $bike, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $bike->getId(), $request->getPayload()->getString('_token'))) {
