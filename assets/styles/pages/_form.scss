@@ -27,6 +27,10 @@
 
     &__dropdown{
         @include auth-input;
+
+        &--maintenance{
+            @include auth-input;
+        }
     }
 
     &__usage-inputs{
@@ -77,3 +81,4 @@
             }
     }
 }
+

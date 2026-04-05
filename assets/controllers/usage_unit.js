@@ -1,3 +1,7 @@
+// ==================================================
+// Formulaire - changement d'unité formulaire garage
+// ==================================================
+
 document.addEventListener("turbo:load", function () {
     //variables de mes inputs
     let select = document.querySelector(".form-field__dropdown");
@@ -8,22 +12,6 @@ document.addEventListener("turbo:load", function () {
 
     //variables des labels de mes inputs
     let nextUnitLabel = document.querySelector(".next-unit-label");
-
-    // select.addEventListener("change",function (){
-    //         if(select.value === 'km'){
-    //             mileageInput.style.display = "block";
-    //             hoursInput.style.display = "none";
-    //             nextMileageInput.style.display = "block";
-    //             nextHoursInput.style.display = "none";
-    //             nextUnitLabel.textContent = 'km';
-    //         }else{
-    //             mileageInput.style.display = "none";
-    //             hoursInput.style.display = "block";
-    //             nextMileageInput.style.display = "none";
-    //             nextHoursInput.style.display = "block";
-    //             nextUnitLabel.textContent = 'hrs';
-    //         }
-    // })
 
     function updateUnit(unit) {
         const isKm = unit === "km";
@@ -50,3 +38,44 @@ document.addEventListener("turbo:load", function () {
         updateUnit(select.value);
     });
 });
+
+
+// ======================================================
+// Formulaire - changement d'unité formulaire maintenance
+// ======================================================
+
+document.addEventListener("turbo:load",function(){
+
+    //variables de mes inputs 
+    let maintenanceSelect = document.querySelector(".form-field__dropdown--maintenance");
+    let maintenanceMileageInput = document.querySelector("#bike_maintenance_mileage");
+    let maintenanceHoursInput = document.querySelector("#bike_maintenance_hours");
+    let maintenanceNextMileageInput= document.querySelector("#bike_maintenance_next_service_km");
+    let maintenanceNextHoursInput= document.querySelector("#bike_maintenance_next_service_hours");
+
+    //variable du label de mon input prochain entretien
+    let maintenanceNextUnitLabel = document.querySelector(".next-unit-label");
+
+    function newMaintenance(unit){
+        const isKm = unit === "km";
+
+        maintenanceMileageInput.style.display = isKm ? "block" : "none";
+        maintenanceHoursInput.style.display = isKm ? "none": "block";
+        maintenanceNextMileageInput.style.display = isKm ? "block":"none" ;
+        maintenanceNextHoursInput.style.display = isKm ? "none":"block" ;
+
+        //Mise à jours des placeholders
+        maintenanceMileageInput.placeholder = isKm ? "Ex: 15000": "";
+        maintenanceHoursInput.placeholder = isKm ? "" : "Ex: 45.5";
+        maintenanceNextMileageInput.placeholder = isKm ? "Ex:5000" : "";
+        maintenanceNextHoursInput.placeholder = isKm ? "": "Ex:60.0";
+
+        maintenanceNextUnitLabel.textContent = isKm ? "km" : "hrs";
+    }
+    newMaintenance(maintenanceSelect.value);
+    maintenanceSelect.addEventListener("change",function (){
+        console.log(maintenanceSelect.value);
+        newMaintenance(maintenanceSelect.value);
+    })
+
+})

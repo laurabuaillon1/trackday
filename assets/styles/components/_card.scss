@@ -341,15 +341,24 @@ ul li {
 
 .bike-list{
     display: flex;
-    flex-direction: column ;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
+
+    .bike-card {
+        width: 100%; // mobile : 1 card par ligne
+    }
+
 
     @media (min-width:$medium){
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        width: calc(100% - 12px); // 4 colonnes sur tablette
+        
+
+        .bike-card {
+            width: calc(50% - 0.5rem);
+        }
 
         
     }
@@ -358,10 +367,11 @@ ul li {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        width: calc(100% - 12px); 
-        gap: 1rem;// 4 colonnes sur desktop
+       
 
-        
+        .bike-card {
+            width: calc(50% - 0.5rem);
+        }
         
     
     }

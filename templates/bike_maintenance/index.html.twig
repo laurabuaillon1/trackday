@@ -50,7 +50,7 @@
 								<img class="bike-card__icon" src="{{asset('icons/garage/counter_grey.svg')}}" alt="">
 								<p class="text-s text-grey">Coût</p>
 							</div>
-							<p class="text-s text-blue">{{ bike_maintenance.cost }}</p>
+							<p class="text-s text-blue">{{ bike_maintenance.cost }} €</p>
 						</div>
 						<div class="bike-card__stat">
 							<div class="bike-card__maintenance">
@@ -145,5 +145,5 @@
 								        </tbody>
 								    </table> #}
 
-		<a href="{{ path('app_bike_maintenance_new') }}">Create new</a>
+		{# <a href="{{ path('app_bike_maintenance_new') }}">Create new</a> #}
 	{% endblock %}

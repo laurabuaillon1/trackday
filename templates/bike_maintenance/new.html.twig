@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New BikeMaintenance{% endblock %}
+{% block title %}Ajouter un Entretien{% endblock %}
 
 {% block body %}
-    <h1>Create new BikeMaintenance</h1>
+    <div class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_bike_maintenance_index') }}">Historique des entretiens</a>
+	</div>
+    <h1 class="form__title">Ajouter un entretien</h1>
+
 
     {{ include('bike_maintenance/_form.html.twig') }}
 
-    <a href="{{ path('app_bike_maintenance_index') }}">back to list</a>
+    {# <a href="{{ path('app_bike_maintenance_index') }}">back to list</a> #}
 {% endblock %}

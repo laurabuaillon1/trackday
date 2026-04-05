@@ -4,10 +4,22 @@ namespace App\Form;
 
 use App\Entity\Bike;
 use App\Entity\BikeMaintenance;
+use BcMath\Number;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Choice;
 
 class BikeMaintenanceType extends AbstractType
 {
@@ -17,20 +29,129 @@ class BikeMaintenanceType extends AbstractType
             ->add('bike', EntityType::class, [
                 'class' => Bike::class,
                 'choice_label' => 'nickname',
+                'label' => 'Mes motos',
+                'attr' => [
+                    'class' => 'form-field__dropdown',
+
+                ]
             ])
-            ->add('date')
-            ->add('mileage')
-            ->add('hours')
-            ->add('maintenance_type')
-            ->add('description')
-            ->add('cost')
-            ->add('workshop')
-            ->add('parts_used')
-            ->add('next_service_date')
-            ->add('next_service_km')
-            ->add('next_service_hours')
-            ->add('receipt_url')
-            ->add('notes')
+            ->add('date', DateType::class, [
+                'attr' => [
+                    'placeholder' => 'jj/mm/aaaa',
+                ],
+                'label' => 'Date de l\'entretien'
+            ])
+            ->add('mileage', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
+                ],
+                'label' => 'Utilisation actuelle'
+
+            ])
+            ->add('hours', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
+                ],
+                'label' => 'Utilisation actuelle',
+                'required' => false,
+            ])
+
+            ->add('usage_unit', ChoiceType::class, [
+                'choices' => [
+                    'kilomètres' => 'km',
+                    'heures' => 'hours',
+                ],
+                'attr' => [
+                    'class' => 'form-field__dropdown--maintenance',
+
+                ]
+            ])
+            ->add('maintenance_type', TextType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: Vidange,liquide de frein',
+                ],
+                'label' => 'Nom de l\'entretien'
+            ])
+            ->add('description', TextType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: Vidange huile moteur + changement du filtre',
+                ],
+                'label' => 'Description'
+            ])
+            ->add('cost', NumberType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: 10 €',
+                ],
+                'label' => 'Coût'
+            ])
+            ->add('workshop', ChoiceType::class, [
+                'label' => 'Efectué par',
+                'choices' => [
+                    'Magasin spécialisé'=>'magasin',
+                    'Moi-même'=> 'moi-même',
+                    'Un amis' => 'ami',
+                ],
+                'attr' => [
+                    'class' => 'form-field__dropdown',
+
+                ]
+            ])
+            ->add('parts_used', TextType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex: Rbf 660',
+                ],
+                'label' => 'Produits utilisés'
+            ])
+            ->add('next_service_date', DateType::class, [
+                'attr' => [
+                    'placeholder' => 'jj/mm/aaaa',
+                ],
+                'label' => 'Prochain entretien'
+            ])
+            ->add('next_service_km', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
+                ],
+                'label' => 'Utilisation actuelle',
+
+            ])
+            ->add('next_service_hours', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'placeholder' => 'Ex:15000km',
+                ],
+                'label' => 'Utilisation actuelle',
+                'required' => false,
+
+            ])
+            ->add('receipt_url', FileType::class, [
+                'mapped' => false,
+                'label' => 'Joindre une facture',
+                'required' => false,
+                'constraints' => [
+                    new Assert\File(
+                        maxSize: '5M',
+                        extensions: ['jpg', 'jpeg', 'png', 'webp','pdf'],
+                        extensionsMessage: 'Veuillez uploader un fichier valide (jpg, jpeg, png, webp, pdf)',
+                        maxSizeMessage: 'Le fichier ne doit pas dépasser 5MB.'
+                    )
+                ]
+            ])
+            ->add('notes', TextareaType::class, [
+                'attr' => [
+                    'placeholder' => 'Modifications,accessoires...',
+                    'class' => 'form-field__textarea',
+                ],
+                'label' => 'Notes',
+                'required' => false,
+            ])
             // ->add('created_at', null, [
             //     'widget' => 'single_text',
             // ])

@@ -108,6 +108,8 @@
 				</button>
 			</div>
 			<div class="bike-detail__documents">
+			{% if documents is not empty %}
+				{% for document in documents %}
 				<div class="bike-detail__document">
 					<div class="bike-detail__document-type">
 						<img class="bike-detail__icon" src="{{asset('icons/garage/file_white.svg')}}" alt="">
@@ -136,6 +138,10 @@
 						<p>Prix</p>
 					</div>
 				</div>
+				{% endfor %}
+			{% else %}
+				<p> Aucun document enregistrée </p>
+			{% endif %}
 			</div>
 		</div>
 	</div>
