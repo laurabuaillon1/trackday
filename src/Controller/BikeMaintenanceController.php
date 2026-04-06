@@ -54,7 +54,7 @@ final class BikeMaintenanceController extends AbstractController
                 try {
                     $receiptFile->move($photosDirectory, $newFile);
                 } catch (FileException $e) {
-                    $this->addFlash('error', 'Une erreur est survenue lors de l\'upload de la photo.');
+                    $this->addFlash('error', 'Une erreur est survenue lors de l\'upload du fichiers.');
                 }
 
                 $bikeMaintenance->setReceiptUrl($newFile);

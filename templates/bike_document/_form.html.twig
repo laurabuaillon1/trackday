@@ -1,4 +1,57 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="bike-update__wrap">
+	{{ form_start(form) }}
+
+	<div class="form-field">
+		{{ form_label(form.bike) }}
+		{{ form_widget(form.bike) }}
+		{{ form_errors(form.bike) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.document_type) }}
+		{{ form_widget(form.document_type) }}
+		{{ form_errors(form.document_type) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.document_name) }}
+		{{ form_widget(form.document_name) }}
+		{{ form_errors(form.document_name) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.file_url) }}
+		{{ form_widget(form.file_url) }}
+		{{ form_errors(form.file_url) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.upload_date) }}
+		{{ form_widget(form.upload_date) }}
+		{{ form_errors(form.upload_date) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.expiry_date) }}
+		{{ form_widget(form.expiry_date) }}
+		{{ form_errors(form.expiry_date) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.amount) }}
+		{{ form_widget(form.amount) }}
+		{{ form_errors(form.amount) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.notes) }}
+		{{ form_widget(form.notes) }}
+		{{ form_errors(form.notes) }}
+	</div>
+
+	<div class="bike-update__actions">
+		<button class="btn-primary">{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
 {{ form_end(form) }}

@@ -70,14 +70,12 @@ class BikeMaintenanceType extends AbstractType
             ])
             ->add('maintenance_type', TextType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: Vidange,liquide de frein',
                 ],
                 'label' => 'Nom de l\'entretien'
             ])
             ->add('description', TextType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: Vidange huile moteur + changement du filtre',
                 ],
                 'label' => 'Description'
@@ -90,7 +88,7 @@ class BikeMaintenanceType extends AbstractType
                 'label' => 'Coût'
             ])
             ->add('workshop', ChoiceType::class, [
-                'label' => 'Efectué par',
+                'label' => 'Effectué par',
                 'choices' => [
                     'Magasin spécialisé'=>'magasin',
                     'Moi-même'=> 'moi-même',
@@ -103,7 +101,6 @@ class BikeMaintenanceType extends AbstractType
             ])
             ->add('parts_used', TextType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: Rbf 660',
                 ],
                 'label' => 'Produits utilisés'
