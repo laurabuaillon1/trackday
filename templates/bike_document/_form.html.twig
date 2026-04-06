@@ -51,7 +51,8 @@
 	</div>
 
 	<div class="bike-update__actions">
-		<button class="btn-primary">{{ button_label|default('Enregistrer') }}</button>
+		<button class="btn-primary" type="submit" 
+            aria-label="Enregistrer le document : {{ bike_document.documentName }}">{{ button_label|default('Enregistrer') }}</button>
 	</div>
 </div>
 {{ form_end(form) }}

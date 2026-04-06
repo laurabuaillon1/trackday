@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="dashboard">
+	{# HEADER #}
+	<header class="dashboard">
 		<div class="dashboard__wrapper">
 			<div class="dashboard__title">
 				<img class="dashboard__icon" src="{{asset('icons/compte/user.svg')}}" alt="" aria-hidden="true">
@@ -12,15 +13,15 @@
 			</div>
 			<p class="text-xs">Gérez vos paramètres et préférences</p>
 		</div>
-	</div>
+	</header>
 
 	<div
 		class="accordion__wrap">
-		{# Accordion header  #}
-		<div class="accordion" id="accordionOne">
+		{# ACCORDION 1 - INFORMATION #}
+		<section class="accordion" id="accordionOne">
 			<div class="accordion-item">
 				<h2 class="accordion-header">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" aria-label="Développer les informations du compte">
 						<img class="accordion__icon-round" src="{{asset('icons/compte/user_profil.svg')}}" alt="" aria-hidden="true">
 						Information du compte
 					</button>
@@ -28,117 +29,81 @@
 
 				{# Accordion body  #}
 				<div id="collapseOne" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
-
 					<form class="accordion__form" action="{{path('app_account_edit')}}" method="post" enctype="multipart/form-data">
-						<label class="accordion__label text-s">Photo de profil:</label>
 						<input
 						type="hidden" name="_token" value="{{ csrf_token('update_profile') }}">
 
 						{# Photo dans le form #}
-						<input class="accordion__form-photo" type="file" id="user_profile_picture" name="profile_picture">
-						<span class="accordion__photo-hint text-xs text-grey">JPG, PNG ou GIF (max. 5MB)</span>
+						<div class="accordion__field">
+							<label class="accordion__label text-s">Photo de profil:</label>
+							<input class="accordion__form-photo" type="file" id="user_profile_picture" name="profile_picture">
+							<span class="accordion__photo-hint text-xs text-grey">JPG, PNG ou GIF (max. 5MB)</span>
+						</div>
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="lastname">Nom:</label>
-							<input class="accordion__input" type="text" id="fullname" name="lastname" value="{{ app.user.lastName }}"/>
+							<input class="accordion__input" type="file" id="lastname" name="lastname" value="{{ app.user.lastName }}"/>
 						</div>
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="firstname">Prénom:</label>
-							<input class="accordion__input" type="text" id="fullname" name="firstname" value="{{ app.user.firstName }}"/>
+							<input class="accordion__input" type="text" id="firstname" name="firstname" value="{{ app.user.firstName }}"/>
 						</div>
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="email">Email:</label>
-							<input class="accordion__input accordion__input--disabled" type="email" id="email" name="email" value="{{ app.user.email }}" disabled/>
+							<input class="accordion__input accordion__input--disabled" type="email" id="email" name="email" value="{{ app.user.email }}" aria-disabled="true"/>
 							<span class="accordion__hint text-xs text-grey">L'email ne peut pas être modifié</span>
 						</div>
 
-						<button type="submit" class="btn-primary">Enregistrer les modifications</button>
+						<button type="submit" class="btn-primary" aria-label="Enregistrer les modifications de mon profil">Enregistrer les modifications</button>
 					</form>
 				</div>
 			</div>
-		</div>
+		</section>
 
-		{# DEUXIEME ACCORDEON #}
+		{# ACCORDION 2 - HELP #}
 
-		<div class="accordion" id="accordionTwo">
+		<section class="accordion" id="accordionThree">
 			<div class="accordion-item">
 				<h2 class="accordion-header">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
-						<img class="accordion__icon-round" src="{{asset('icons/compte/security.svg')}}" alt="" aria-hidden="true">
-						Sécurité
-					</button>
-				</h2>
-
-				{# Accordion body  #}
-				<div id="collapseTwo" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
-
-					<form class="accordion__form" action="{{path('app_account_edit')}}" method="post" enctype="multipart/form-data">
-
-
-						<div class="accordion__field">
-							<label class="accordion__label" for="lastname">Nouveau mot de passe:</label>
-							<input class="accordion__input" type="text" id="fullname" name="lastname" value="{{ app.user.password }}"/>
-						</div>
-
-						<div class="accordion__field">
-							<label class="accordion__label" for="firstname">Confirmer le mot de passe:</label>
-							<input class="accordion__input" type="text" id="fullname" name="firstname" value="{{ app.user.firstName }}"/>
-						</div>
-						<button type="submit" class="btn-primary">Enregistrer les modifications</button>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		{# TROISIEME ACCORDEON #}
-
-		<div class="accordion" id="accordionThree">
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" aria-label="Aide et support">
 						<img class="accordion__icon-round" src="{{asset('icons/compte/help.svg')}}" alt="" aria-hidden="true">
 						Aide et Support
 					</button>
 				</h2>
 
 				{# Accordion body  #}
-				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
+				<div id="collapseTwo" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
 					<a href="#" class="accordion__link ">
 						<img class="sidebar__icon" src="{{ asset('icons/sidebar/settings_gray.svg') }}" width="20" height="20" alt="" aria-hidden="true">
 						<span>Contactez-nous</span>
-
-
 					</a>
-
 				</div>
 			</div>
-		</div>
+		</section>
 
-		{# QUATRIEME ACCORDEON #}
-
-		<div class="accordion" id="accordionThree">
+		{# ACCORDION 3 - LEGAL INFORMATION #}
+		<section class="accordion" id="accordionThree">
 			<div class="accordion-item">
 				<h2 class="accordion-header">
-					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree" aria-label="Développer les informations légal">
 						<img class="accordion__icon-round" src="{{asset('icons/compte/help.svg')}}" alt="" aria-hidden="true">
 						Information légales
 					</button>
 				</h2>
-
 				{# Accordion body  #}
-				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample">
+				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample" aria-label="Liens légaux">
 					<a href="#" class="accordion__link ">Conditions d'utilisation</a>
 					<a href="#" class="accordion__link ">Politique de confidentialité</a>
 					<a href="#" class="accordion__link ">Mentions légales</a>
 				</div>
 			</div>
-		</div>
+		</section>
 
 
 		{# DELETE COUNT CONTAINER #}
-		<div class="card">
+		<section class="card">
 			<div class="card__header">
 				<img class="card__icon" src="{{asset('icons/compte/infos.svg')}}" alt="" aria-hidden="true">
 				<h2 class="text-m">Zone dangereuse</h2>
@@ -168,6 +133,6 @@
 					{{include ('account/_delete_form.html.twig') }}
 				</div>
 			</div>
-		</div>
+		</section>
 	</div>
-</div>{% endblock %}
+{% endblock %}

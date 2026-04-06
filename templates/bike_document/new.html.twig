@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un document{% endblock %}
+{% block title %}Ajouter un document
+{% endblock %}
 
 {% block body %}
-    <div class="bike-detail__back">
+	{# NAV BACK #}
+	<div class="bike-detail__back">
 		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
-		<a class="auth-card__link font-medium" href="{{ path('app_bike_document_new', {'bikeId': bike.id}) }}">Voir ma moto</a>
+		<a class="auth-card__link font-medium" href="{{ path('app_bike_show', {'id': bike.id}) }}">Retour à
+			{{bike.nickname}}</a>
 	</div>
-    <h1 class="form__title">Ajouter un document</h1>
 
-    {{ include('bike_document/_form.html.twig') }}
+	{# TITLE #}
+	<header>
+		<h1 class="form__title">Ajouter un document</h1>
+	</header>
+
+    {# FORM #}
+	{{ include('bike_document/_form.html.twig') }}
 
 {% endblock %}

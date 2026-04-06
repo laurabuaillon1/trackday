@@ -145,7 +145,7 @@ final class BikeController extends AbstractController
 
         return $this->render('bike/edit.html.twig', [
             'bike' => $bike,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 

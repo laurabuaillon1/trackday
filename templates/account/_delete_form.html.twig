@@ -1,6 +1,6 @@
 <form class="card__form" method="post" action="{{ path('app_account_delete') }}" onsubmit="return confirm ('Êtes-vous sûr de vouloir supprimer votre compte ?')">
 	<input type="hidden" name="_token" value="{{ csrf_token('delete_account' ) }}">
-	<button class="card__button btn-primary" type="submit">
+	<button class="card__button btn-primary" type="submit" aria-label="Supprimer définitivement mon compte utilisateur">
 		<img class="dashboard__icon" src="{{asset('icons/compte/trash_white.svg')}}" alt="" aria-hidden="true">
 		Supprimer mon compte
 	</button>
