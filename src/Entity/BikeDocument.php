@@ -16,7 +16,7 @@ class BikeDocument
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
     #[Assert\Choice(
         choices: ['Assurance', 'Facture d\'achat', 'Facture de pièce','Garantie'],
     )]

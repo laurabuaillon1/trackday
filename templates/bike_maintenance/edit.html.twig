@@ -1,15 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Modifier un entretien{% endblock %}
+{% block title %}Modifier un entretien
+{% endblock %}
 
 {% block body %}
-    <div class="bike-detail__back">
+	{# NAV BACK #}
+	<nav class="bike-detail__back">
 		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
 		<a class="auth-card__link font-medium" href="{{ path('app_bike_maintenance_index') }}">Historique des entretiens</a>
-	</div>
-    <h1 class="form__title">Modifier un entretien</h1>
+	</nav>
 
+	{# TITLE #}
+	<header>
+		<h1 class="form__title">Modifier un entretien</h1>
+	</header>
 
-    {{ include('bike_maintenance/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-    
+	{{ include('bike_maintenance/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
 {% endblock %}

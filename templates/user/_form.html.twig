@@ -1,4 +1,46 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-outline">{{ button_label|default('Save') }}</button>
+<div class="bike-update__wrap">
+
+    {# Champ Photo de Profil #}
+    <div class="form-field">
+        {{ form_label(form.profile_picture) }}
+        {{ form_widget(form.profile_picture) }}
+        {{ form_errors(form.profile_picture) }}
+        <small class="form-help">Format acceptés : jpg, jpeg, png, webp (Max 5Mo)</small>
+    </div>
+
+    {# Groupe Nom et Prénom #}
+    <div class="form-field">
+        {{ form_label(form.last_name) }}
+        {{ form_widget(form.last_name) }}
+        {{ form_errors(form.last_name) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_label(form.first_name) }}
+        {{ form_widget(form.first_name) }}
+        {{ form_errors(form.first_name) }}
+    </div>
+
+    {# Groupe Email et Sécurité #}
+    <div class="form-field">
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email) }}
+        {{ form_errors(form.email) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password) }}
+        {{ form_errors(form.password) }}
+        {% if app.request.attributes.get('_route') == 'app_user_edit' %}
+            <small class="form-help text-warning">Laissez vide pour conserver le mot de passe actuel</small>
+        {% endif %}
+    </div>
+
+    {# Boutons d'actions #}
+    <div class="bike-update__actions">
+		<button type="submit" class="btn-primary">{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
 {{ form_end(form) }}

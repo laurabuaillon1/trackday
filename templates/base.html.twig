@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Trackday - L'application des pilotes
 			{% endblock %}
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Application mobile concu pour optimiser les performances des pilotes sur circuit et pour les accompagner tout au long de leurs journées de roulages">
 
-		<link rel="icon" href="{{asset('icons/favicon/favicon.png')}}" > {% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{asset('icons/favicon/favicon.png')}}"> {% block stylesheets %}{% endblock %}
 
 		{% block javascripts %}
 			{% block importmap %}

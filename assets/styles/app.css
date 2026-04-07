@@ -1206,11 +1206,11 @@ ul li {
   transition: background-color 0.15s ease;
 }
 .sidebar__link--disabled {
-  color: #b4bac2;
+  color: #334155;
   pointer-events: none;
 }
 .sidebar__link--disabled--icon {
-  color: #6B7280;
+  color: #334155;
 }
 .sidebar__footer {
   border-top: 1px solid #e5e7eb;

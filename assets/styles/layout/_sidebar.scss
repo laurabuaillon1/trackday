@@ -132,11 +132,11 @@
         transition: background-color 0.15s ease;
 
         &--disabled {
-            color: $color-gray-medium;
+            color: $color-gray-dark;
             pointer-events: none;
 
             &--icon{
-                color:#6B7280;
+                color:$color-gray-dark;
             }
         }
     }

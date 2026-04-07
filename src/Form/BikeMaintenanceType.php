@@ -17,14 +17,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Choice;
+
+use Symfony\Bundle\SecurityBundle\Security;
+use App\Repository\BikeRepository;
 
 class BikeMaintenanceType extends AbstractType
 {
+
+    private Security $security;
+
+    // On injecte le service Security via le constructeur
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $user = $this->security->getUser();
+
         $builder
             ->add('bike', EntityType::class, [
                 'class' => Bike::class,
@@ -33,7 +45,14 @@ class BikeMaintenanceType extends AbstractType
                 'attr' => [
                     'class' => 'form-field__dropdown',
 
-                ]
+                ],
+                // Ajout du QueryBuilder pour filtrer les motos
+                'query_builder' => function (BikeRepository $er) use ($user) {
+                    return $er->createQueryBuilder('b')
+                        ->where('b.user = :user') // Assure-toi que la propriété s'appelle bien 'user' dans ton entité Bike
+                        ->setParameter('user', $user)
+                        ->orderBy('b.nickname', 'ASC');
+                },
             ])
             ->add('date', DateType::class, [
                 'attr' => [
@@ -90,8 +109,8 @@ class BikeMaintenanceType extends AbstractType
             ->add('workshop', ChoiceType::class, [
                 'label' => 'Effectué par',
                 'choices' => [
-                    'Magasin spécialisé'=>'magasin',
-                    'Moi-même'=> 'moi-même',
+                    'Magasin spécialisé' => 'magasin',
+                    'Moi-même' => 'moi-même',
                     'Un amis' => 'ami',
                 ],
                 'attr' => [
@@ -135,7 +154,7 @@ class BikeMaintenanceType extends AbstractType
                 'constraints' => [
                     new Assert\File(
                         maxSize: '5M',
-                        extensions: ['jpg', 'jpeg', 'png', 'webp','pdf'],
+                        extensions: ['jpg', 'jpeg', 'png', 'webp', 'pdf'],
                         extensionsMessage: 'Veuillez uploader un fichier valide (jpg, jpeg, png, webp, pdf)',
                         maxSizeMessage: 'Le fichier ne doit pas dépasser 5MB.'
                     )

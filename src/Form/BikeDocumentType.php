@@ -33,6 +33,7 @@ class BikeDocumentType extends AbstractType
             ])
             ->add('document_type', ChoiceType::class, [
                 'label' => 'Type de document',
+                'placeholder'=>'Choisissez le type du document',
                 'choices' => [
                     'Assurance'=>'Assurance',
                     'Facture d\'achat'=> 'Facture d\'achat',

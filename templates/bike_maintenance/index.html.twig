@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-	<div class="dashboard">
+	{# HEADER #}
+	<header class="dashboard">
 		<div class="dashboard__wrapper">
 			<div class="dashboard__title">
 				<img class="dashboard__icon" src="{{asset('icons/maintenance/maintenance_red.svg')}}" alt="" aria-hidden="true">
@@ -14,136 +15,157 @@
 
 		</div>
 		<div class="add-action">
-			<a href="{{path('app_bike_maintenance_new')}}" class="btn-primary">
+			<a href="{{path('app_bike_maintenance_new')}}" class="btn-primary" aria-label="Ajouter un nouvel entretien">
 				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
 				<span class="add-btn__text">Ajouter un entretien</span>
 			</a>
 		</div>
-		<div class="bike-list">
-			{% for bike_maintenance in bike_maintenances %}
-				<div class="bike-card">
-					<div class="bike-card__header">
-						<div class="bike-card__img--default"></div>
-						<div class="bike-card__alert">
-							<img src="{{asset('icons/garage/maintenance_white.svg')}}" alt="">
-							<p class="text-white text-xs">Entretien</p>
-						</div>
-						<div class="bike-card__container">
-							<h3 class="bike-card__name text-l">{{ bike_maintenance.maintenanceType }}</h3>
-							<div class="bike-card__brand">
-                                <img src="{{asset('icons/dashboard/calendar_white.svg')}}" alt="">
-								<p class="text-s">{{ bike_maintenance.date ? bike_maintenance.date|format_date('long',locale= 'fr'): '' }}</p>
-							</div>
-						</div>
+	</header>
 
-					</div>
-					<div class="bike-card__details">
-						<div class="bike-card__stat">
-							<div class="bike-card__miles">
-								<img class="bike-card__icon" src="{{asset('icons/garage/counter_grey.svg')}}" alt="">
-								<p class="text-s text-grey">Marque</p>
-							</div>
-							<p class="text-s text-blue">{{ bike_maintenance.bike.brand }} {{ bike_maintenance.bike.model }}</p>
-						</div>
-						<div class="bike-card__stat">
-							<div class="bike-card__miles">
-								<img class="bike-card__icon" src="{{asset('icons/garage/counter_grey.svg')}}" alt="">
-								<p class="text-s text-grey">Coût</p>
-							</div>
-							<p class="text-s text-blue">{{ bike_maintenance.cost }} €</p>
-						</div>
-						<div class="bike-card__stat">
-							<div class="bike-card__maintenance">
-								<img class="bike-card__icon" src="{{asset('icons/garage/calendar_grey.svg')}}" alt="">
-								<p class="text-s text-grey">Lieux de l'entretien
-								</p>
-							</div>
-							<p class="text-s text-blue">{{ bike_maintenance.workshop }}</p>
-						</div>
-						<div class="bike-card__stat">
-							<div class="bike-card__nextmaintenance">
-								<img class="bike-card__icon" src="{{asset('icons/garage/maintenance_grey.svg')}}" alt="">
-								<p class="text-s text-grey">Prochain entretien</p>
-							</div>
+	{# MAINTENANCE LIST #}
+	<section class="bike-list" aria-label="Liste des entretiens effectués">
+		{% for bike_maintenance in bike_maintenances %}
+			<article class="bike-card">
+				<div
+					class="bike-card__header">
+					{# default img #}
+					<div class="bike-card__img--default" aria-label="Icône entretien"></div>
 
-							<pclass="text-stext-blue">{{ bike_maintenance.nextServiceKm }}</pclass=>
-							<p>{{ bike_maintenance.nextServiceHours }}</p>
-						</div>
-						<hr class="bike-card__trait"/>
-						<div class="bike-card__actions">
-							<div class="bike-card__details-link">
-								<a class="bike-card__link" href="{{ path('app_bike_maintenance_show', {'id': bike_maintenance.id}) }}">Voir les détails</a>
-								<img class="bike-card__icon" src="{{asset('icons/garage/arrow_right_blue_dark.svg')}}" alt="" aria-hidden="true">
-							</div>
-							<div class="bike-card__controls">
-								<a href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">
-									<img class="bike-card__icon" src="{{ asset('icons/garage/pen_grey.svg') }}" alt="" aria-hidden="true">
-								</a>
-								{{ include('bike_maintenance/_delete_form.html.twig') }}
-
-
-							</div>
-
-						</div>
+					{# badge #}
+					<div class="bike-card__alert">
+						<img src="{{asset('icons/garage/maintenance_white.svg')}}" alt="" aria-hidden="true">
+						<p class="text-white text-xs">Entretien</p>
 					</div>
 
+
+					<div class="bike-card__container">
+						<h2 class="bike-card__name text-l">{{ bike_maintenance.maintenanceType }}</h2>
+						<div class="bike-card__brand">
+							<img src="{{asset('icons/dashboard/calendar_white.svg')}}" alt="" aria-hidden="true">
+							<p class="text-s">{{ bike_maintenance.date ? bike_maintenance.date|format_date('long',locale= 'fr'): 'Date inconnue' }}</p>
+						</div>
+					</div>
 				</div>
-			{% endfor %}
-		</div>
 
-		{# <table class="table">
-								        <thead>
-								            <tr>
-								                <th>Id</th>
-								                <th>Date</th>
-								                <th>Mileage</th>
-								                <th>Hours</th>
-								                <th>Maintenance_type</th>
-								                <th>Description</th>
-								                <th>Cost</th>
-								                <th>Workshop</th>
-								                <th>Parts_used</th>
-								                <th>Next_service_date</th>
-								                <th>Next_service_km</th>
-								                <th>Next_service_hours</th>
-								                <th>Receipt_url</th>
-								                <th>Notes</th>
-								                <th>Created_at</th>
-								                <th>Updated_at</th>
-								                <th>actions</th>
-								            </tr>
-								        </thead>
-								        <tbody>
-								        {% for bike_maintenance in bike_maintenances %}
-								            <tr>
-								                <td>{{ bike_maintenance.id }}</td>
-								                <td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
-								                <td>{{ bike_maintenance.mileage }}</td>
-								                <td>{{ bike_maintenance.hours }}</td>
-								                <td>{{ bike_maintenance.maintenanceType }}</td>
-								                <td>{{ bike_maintenance.description }}</td>
-								                <td>{{ bike_maintenance.cost }}</td>
-								                <td>{{ bike_maintenance.workshop }}</td>
-								                <td>{{ bike_maintenance.partsUsed }}</td>
-								                <td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
-								                <td>{{ bike_maintenance.nextServiceKm }}</td>
-								                <td>{{ bike_maintenance.nextServiceHours }}</td>
-								                <td>{{ bike_maintenance.receiptUrl }}</td>
-								                <td>{{ bike_maintenance.notes }}</td>
-								                <td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-								                <td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-								                <td>
-								                    <a href="{{ path('app_bike_maintenance_show', {'id': bike_maintenance.id}) }}">show</a>
-								                    <a href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">edit</a>
-								                </td>
-								            </tr>
-								        {% else %}
-								            <tr>
-								                <td colspan="17">no records found</td>
-								            </tr>
-								        {% endfor %}
-								        </tbody>
-								    </table> #}
+				<div
+					class="bike-card__details">
+					{# MOTORBIKE #}
+					<div class="bike-card__stat">
+						<div class="bike-card__miles">
+							<img class="bike-card__icon" src="{{asset('icons/garage/counter_grey.svg')}}" alt="" aria-hidden="true">
+							<p class="text-s text-grey">Marque</p>
+						</div>
+						<p class="text-s text-blue">{{ bike_maintenance.bike.brand }}
+							{{ bike_maintenance.bike.model }}</p>
+					</div>
 
-		{# <a href="{{ path('app_bike_maintenance_new') }}">Create new</a> #}
-	{% endblock %}
+					{# COST #}
+					<div class="bike-card__stat">
+						<div class="bike-card__miles">
+							<img class="bike-card__icon" src="{{asset('icons/garage/counter_grey.svg')}}" alt="" aria-hidden="true">
+							<p class="text-s text-grey">Coût</p>
+						</div>
+						<p class="text-s text-blue">{{ bike_maintenance.cost }}
+							€</p>
+					</div>
+
+					{# PLACE #}
+					<div class="bike-card__stat">
+						<div class="bike-card__maintenance">
+							<img class="bike-card__icon" src="{{asset('icons/garage/calendar_grey.svg')}}" alt="" aria-hidden="true">
+							<p class="text-s text-grey">Lieux de l'entretien
+							</p>
+						</div>
+						<p class="text-s text-blue">{{ bike_maintenance.workshop }}</p>
+					</div>
+
+					{# NEXT MAINTENANCE #}
+					<div class="bike-card__stat">
+						<div class="bike-card__nextmaintenance">
+							<img class="bike-card__icon" src="{{asset('icons/garage/maintenance_grey.svg')}}" alt="" aria-hidden="true">
+							<p class="text-s text-grey">Prochain entretien</p>
+						</div>
+						<pclass="text-stext-blue">{{ bike_maintenance.nextServiceKm }}</pclass=>
+						<p>{{ bike_maintenance.nextServiceHours }}</p>
+					</div>
+
+					<hr
+					class="bike-card__trait" aria-hidden="true"/>
+
+					{# ACTION #}
+					<div class="bike-card__actions">
+						<div class="bike-card__details-link">
+							<a class="bike-card__link" href="{{ path('app_bike_maintenance_show', {'id': bike_maintenance.id}) }}">Voir les détails</a>
+							<img class="bike-card__icon" src="{{asset('icons/garage/arrow_right_blue_dark.svg')}}" alt="" aria-hidden="true">
+						</div>
+						<div class="bike-card__controls">
+							<a href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}" aria-label="Modifier l'entretien : {{ bike_maintenance.maintenanceType }}">
+								<img class="bike-card__icon" src="{{ asset('icons/garage/pen_grey.svg') }}" alt="" aria-hidden="true">
+							</a>
+							{{ include('bike_maintenance/_delete_form.html.twig') }}
+						</div>
+					</div>
+				</div>
+			</article>
+		{% else %}
+			<p class="text-center">Aucun entretien enregistré.</p>
+		{% endfor %}
+	</section>
+{% endblock %}
+
+
+{# <table class="table">
+											        <thead>
+											            <tr>
+											                <th>Id</th>
+											                <th>Date</th>
+											                <th>Mileage</th>
+											                <th>Hours</th>
+											                <th>Maintenance_type</th>
+											                <th>Description</th>
+											                <th>Cost</th>
+											                <th>Workshop</th>
+											                <th>Parts_used</th>
+											                <th>Next_service_date</th>
+											                <th>Next_service_km</th>
+											                <th>Next_service_hours</th>
+											                <th>Receipt_url</th>
+											                <th>Notes</th>
+											                <th>Created_at</th>
+											                <th>Updated_at</th>
+											                <th>actions</th>
+											            </tr>
+											        </thead>
+											        <tbody>
+											        {% for bike_maintenance in bike_maintenances %}
+											            <tr>
+											                <td>{{ bike_maintenance.id }}</td>
+											                <td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
+											                <td>{{ bike_maintenance.mileage }}</td>
+											                <td>{{ bike_maintenance.hours }}</td>
+											                <td>{{ bike_maintenance.maintenanceType }}</td>
+											                <td>{{ bike_maintenance.description }}</td>
+											                <td>{{ bike_maintenance.cost }}</td>
+											                <td>{{ bike_maintenance.workshop }}</td>
+											                <td>{{ bike_maintenance.partsUsed }}</td>
+											                <td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
+											                <td>{{ bike_maintenance.nextServiceKm }}</td>
+											                <td>{{ bike_maintenance.nextServiceHours }}</td>
+											                <td>{{ bike_maintenance.receiptUrl }}</td>
+											                <td>{{ bike_maintenance.notes }}</td>
+											                <td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											                <td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+											                <td>
+											                    <a href="{{ path('app_bike_maintenance_show', {'id': bike_maintenance.id}) }}">show</a>
+											                    <a href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">edit</a>
+											                </td>
+											            </tr>
+											        {% else %}
+											            <tr>
+											                <td colspan="17">no records found</td>
+											            </tr>
+											        {% endfor %}
+											        </tbody>
+											    </table> #}
+
+{# <a href="{{ path('app_bike_maintenance_new') }}">Create new</a> #}

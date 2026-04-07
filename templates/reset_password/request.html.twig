@@ -8,21 +8,23 @@
 
 {% block body %}
 	{% block sidebar %}{% endblock %}
-
+	{# message d'alert #}
 	{% for flash_error in app.flashes('reset_password_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
 
 	<div class="auth-card">
-	
-		<div class="back">
+		<nav class="back" aria-label="Retour">
 			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
 			<a class="auth-card__link font-medium" href="{{path('app_login')}}">Se connecter</a>
-		</div>
-		<h1 class="auth-card__title ">Modifier le mot de passe</h1>
-		<p class="auth-card__text ">
-			Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
-		</p>
+		</nav>
+
+		<header>
+			<h1 class="auth-card__title ">Modifier le mot de passe</h1>
+			<p class="auth-card__text ">
+				Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+			</p>
+		</header>
 
 		{{ form_start(requestForm) }}
 

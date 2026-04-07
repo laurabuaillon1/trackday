@@ -1,9 +1,15 @@
 <h1>Réinitialisation de votre mot de passe</h1>
 
-<p>Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant</p>
+<p class="text-m">
+    Bonjour,<br><br>
+    Une demande de réinitialisation de mot de passe a été effectuée pour votre compte <strong>Trackday</strong>.Pour réinitialiser votre mot de passe, veuillez cliquer sur le lien suivant
+</p>
 
+{# bouton #}
 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
 
 <p>Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+
+<hr class="bike-card__trait" aria-hidden="true"/>
 
 <p>L'équipe Trackday</p>

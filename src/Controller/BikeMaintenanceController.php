@@ -36,11 +36,14 @@ final class BikeMaintenanceController extends AbstractController
         Request $request,
         SluggerInterface $slugger,
         #[Autowire('%kernel.project_dir%/public/uploads/documents')] string $photosDirectory,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        BikeMaintenanceRepository $bikeMaintenanceRepository
     ): Response {
         $bikeMaintenance = new BikeMaintenance();
         $form = $this->createForm(BikeMaintenanceType::class, $bikeMaintenance);
         $form->handleRequest($request);
+        $user = $this->getUser();
+        assert($user instanceof \App\Entity\User);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
@@ -68,12 +71,14 @@ final class BikeMaintenanceController extends AbstractController
         return $this->render('bike_maintenance/new.html.twig', [
             'bike_maintenance' => $bikeMaintenance,
             'form' => $form,
+            'bike_maintenances' => $bikeMaintenanceRepository->findBy(['bike' => $user->getBikes()->toArray()]),
         ]);
     }
 
     #[Route('/{id}', name: 'app_bike_maintenance_show', methods: ['GET'])]
     public function show(BikeMaintenance $bikeMaintenance): Response
     {
+
         return $this->render('bike_maintenance/show.html.twig', [
             'bike_maintenance' => $bikeMaintenance,
             'bike' => $bikeMaintenance->getBike(),

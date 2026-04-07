@@ -8,10 +8,11 @@
 
 {% block body %}
 	<div class="auth-card">
-		<p>
+		<h1 class="auth-card__title">Vérifiez votre boîte mail</h1>
+		<p class="text-m">
 			Si un compte correspondant à votre adresse e-mail existe déjà, un e-mail contenant un lien vous permettant de réinitialiser votre mot de passe vient de vous être envoyé.Ce lien expirera dans
 			{{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
 		</p>
-		<p>Si vous ne recevez pas d'e-mail, veuillez vérifier vos spams ou courriers indésirables<a href="{{ path('app_forgot_password_request') }}">try again</a>.</p>
+		<p>Si vous ne recevez pas d'e-mail, veuillez vérifier vos spams ou courriers indésirables<a href="{{ path('app_forgot_password_request') }}">Réessayer la demande</a>.</p>
 	</div>
 {% endblock %}

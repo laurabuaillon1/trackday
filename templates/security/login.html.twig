@@ -15,26 +15,25 @@
 			<div class="mb-3">
 				Vous êtes connecté en tant que
 				{{ app.user.userIdentifier }},
-				<a href="{{ logout_path() }}">Deconnexion</a>
+				<a href="{{ logout_path() }}">Se déconnecter</a>
 			</div>
 		{% endif %}
 
 		<div class="auth-card">
-
 			<h1 class="auth-card__title">Connexion</h1>
-
-
 			<div class='auth-card__form'>
+
+				{# EMAIL #}
 				<div class="auth-card__field">
 					<label for="username">Email</label>
 
 					<div class="auth-card__input-wrapper auth-card__input-wrapper--email">
-						<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus  aria-hidden="true">
-						<img src="{{asset('icons/authentification/email.svg')}}" class="auth-card__icon" width="16" height="16">
-
+						<input type="email" placeholder="you@exemple.com" value="{{ last_username }}" name="_username" id="username" autocomplete="email" required autofocus aria-hidden="true">
+						<img src="{{asset('icons/authentification/email.svg')}}" class="auth-card__icon" width="16" height="16" alt="" aria-hidden="true">
 					</div>
 				</div>
 
+				{# MOT DE PASSE #}
 				<div class='auth-card__field'>
 					<label for="password">Mot de passe</label>
 
@@ -53,10 +52,20 @@
 				</button>
 			</div>
 
-			<input
-			type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+			{# Protection CSRF obligatoire #}
+			<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
 
-			{#
+			<div class="auth-links">
+				<a class="auth-card__link font-medium" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
+				<p class="auth-register">Besoin d'un compte ?<a class="register" href="{{path('app_register')}}">Inscrivez-vous</a>
+				</p>
+			</div>
+		</div>
+	</form>
+
+{% endblock %}
+
+{#
 								      Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
 									    See https://symfony.com/doc/current/security/remember_me.html
 																															
@@ -65,16 +74,3 @@
 								       <label for="_remember_me">Remember me</label>
 										    </div>
 										     #}
-
-			<div class="auth-links">
-				<a class="auth-card__link font-medium" href="{{ path('app_forgot_password_request') }}">Mot de passe oublié ?</a>
-				<p class="auth-register">Besoin d'un compte ?<a class="register" href="{{path('app_register')}}">Inscrivez-vous</a>
-				</p>
-
-			</div>
-
-
-		</div>
-	</form>
-
-{% endblock %}
