@@ -49,7 +49,7 @@ class BikeMaintenanceType extends AbstractType
                 // Ajout du QueryBuilder pour filtrer les motos
                 'query_builder' => function (BikeRepository $er) use ($user) {
                     return $er->createQueryBuilder('b')
-                        ->where('b.user = :user') // Assure-toi que la propriété s'appelle bien 'user' dans ton entité Bike
+                        ->where('b.user = :user') 
                         ->setParameter('user', $user)
                         ->orderBy('b.nickname', 'ASC');
                 },

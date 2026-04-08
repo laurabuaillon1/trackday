@@ -9,8 +9,21 @@
 .badge-inactif{@include badge-inactif;}
 .badge-banni{@include badge-banni;}
 
+.role-admin{@include role-admin; }
+.role-user{@include role-user; }
+
 
 .table:not(caption) > * > * {
     --bs-table-color: inherit;
     --bs-table-bg: transparent;
+}
+
+.table-gap{
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+.avatar--padded {
+    padding: 0!important;
 }

@@ -22,6 +22,13 @@
         {{ form_errors(form.first_name) }}
     </div>
 
+    {# Role #}
+    <div class="form-field">
+        {{ form_label(form.roles) }}
+        {{ form_widget(form.roles) }}
+        {{ form_errors(form.roles) }}
+    </div>
+
     {# Groupe Email et Sécurité #}
     <div class="form-field">
         {{ form_label(form.email) }}
@@ -29,13 +36,11 @@
         {{ form_errors(form.email) }}
     </div>
 
+    {# Groupe Email et Sécurité #}
     <div class="form-field">
         {{ form_label(form.password) }}
         {{ form_widget(form.password) }}
         {{ form_errors(form.password) }}
-        {% if app.request.attributes.get('_route') == 'app_user_edit' %}
-            <small class="form-help text-warning">Laissez vide pour conserver le mot de passe actuel</small>
-        {% endif %}
     </div>
 
     {# Boutons d'actions #}

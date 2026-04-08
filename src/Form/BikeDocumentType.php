@@ -25,6 +25,7 @@ class BikeDocumentType extends AbstractType
             ->add('bike', EntityType::class, [
                 'class' => Bike::class,
                 'choice_label' => 'nickname',
+                'choices' => $options['bikes'],
                 'label' => 'Mes motos',
                 'attr' => [
                     'class' => 'form-field__dropdown',
@@ -104,6 +105,7 @@ class BikeDocumentType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => BikeDocument::class,
+            'bikes' => [],
         ]);
     }
 }

@@ -9,8 +9,6 @@
 {% block body %}
 	{% block sidebar %}{% endblock %}
 	<form method="post">
-
-
 		{% if app.user %}
 			<div class="mb-3">
 				Vous êtes connecté en tant que
@@ -44,7 +42,7 @@
 				</div>
 
 				{% if error %}
-					<div class="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					<div class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 				{% endif %}
 
 				<button class="app-btn" type="submit">

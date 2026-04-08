@@ -16,6 +16,10 @@
         display: flex;
         text-align:start;
     }
+
+    &__btn-primary{
+        width: 100%;
+    }
 }
 
 .form-field{
@@ -82,3 +86,12 @@
     }
 }
 
+
+
+// ====================================
+// Formulaire - Bouton delete
+// ====================================
+
+.btn-primary--full{
+    width: 100%;
+}

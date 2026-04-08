@@ -33,14 +33,14 @@
 				<tr>
 					<th>Utilisateur</th>
 					{# <th>Id</th> #}
-					<th>Nom de famille</th>
+					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Email</th>
 					{# <th>Email_verified</th> #}
 					<th>Crée le</th>
 					<th>Dernière connexion</th>
 					<th>Statut</th>
-					{# <th>Role</th> #}
+					<th>Role</th>
 					<th>Photo de profil</th>
 					<th>Actions</th>
 				</tr>
@@ -48,8 +48,7 @@
 			<tbody>
 				{% for user in users %}
 					<tr>
-						<td
-							class="sidebar__avatar" name="profilepicture">
+						<td class="sidebar__avatar avatar--padded" name="profilepicture">
 							{# {{app.user.firstName|first}}{{app.user.lastName|first}} #}
 							{% if app.user.profilePicture %}
 								<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
@@ -69,9 +68,14 @@
 								{{ user.accountStatus }}
 							</span>
 						</td>
-						{# <td>{{ user.role }}</td> #}
-						<td>{{ user.profilePicture }}</td>
 						<td>
+							{% set role = 'ROLE_ADMIN' in user.roles ? 'admin' : 'user' %}
+							<span class="role-{{ role }}">
+								{{ role }}
+							</td>
+						</td>
+						<td>{{ user.profilePicture }}</td>
+						<td class="table-gap">
 							<a class="btn-secondary" href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
 							<a class="btn-secondary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
 						</td>
@@ -82,7 +86,6 @@
 					</tr>
 				{% endfor %}
 			</tbody>
-			<p>Heure du serveur PHP : {{ "now"|date("H:i:s") }}</p>
 		</table>
 	</div>
 {% endblock %}

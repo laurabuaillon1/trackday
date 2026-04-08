@@ -6,7 +6,8 @@
 
 {% block body %}
 	<div class="bike-detail">
-		<div class="bike-detail__wrap">
+		<div
+			class="bike-detail__wrap">
 			{# NAV #}
 			<div class="bike-detail__back" aria-label="Retour">
 				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
@@ -20,7 +21,10 @@
 				<div class="bike-detail__info">
 					<h1 class="bike-detail__title">{{ bike_maintenance.bike.nickname }}</h1>
 					<div class="bike-detail__specs">
-						<p class="text-s">{{ bike_maintenance.bike.year }} • {{ bike_maintenance.bike.displacement }}cc • {{ bike_maintenance.bike.color }}</p>
+						<p class="text-s">{{ bike_maintenance.bike.year }}
+							•
+							{{ bike_maintenance.bike.displacement }}cc •
+							{{ bike_maintenance.bike.color }}</p>
 					</div>
 					<p class="bike-detail__license text-l font-bold">{{ bike_maintenance.bike.licensePlate }}</p>
 				</div>
@@ -103,70 +107,72 @@
 		</section>
 
 		{# ACTIONS #}
-		<a class="btn-outline" href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">Modifier</a>
-		{{ include('bike_maintenance/_delete_form.html.twig') }}
+		<div class="bike-detail__buttons">
+			<a class="btn-outline" href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}" aria-label="Modifier l'entretien de la moto">Modifier</a>
+			{{ include('bike_maintenance/_delete_form.html.twig') }}
+		</div>
 	{% endblock %}
 	{# <table class="table">
-					        <tbody>
-					            <tr>
-					                <th>Date</th>
-					                <td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
-					            </tr>
-					            <tr>
-					                <th>Mileage</th>
-					                <td>{{ bike_maintenance.mileage }}</td>
-					            </tr>
-					            <tr>
-					                <th>Hours</th>
-					                <td>{{ bike_maintenance.hours }}</td>
-					            </tr>
-					            <tr>
-					                <th>Maintenance_type</th>
-					                <td>{{ bike_maintenance.maintenanceType }}</td>
-					            </tr>
-					            <tr>
-					                <th>Description</th>
-					                <td>{{ bike_maintenance.description }}</td>
-					            </tr>
-					            <tr>
-					                <th>Cost</th>
-					                <td>{{ bike_maintenance.cost }}</td>
-					            </tr>
-					            <tr>
-					                <th>Workshop</th>
-					                <td>{{ bike_maintenance.workshop }}</td>
-					            </tr>
-					            <tr>
-					                <th>Parts_used</th>
-					                <td>{{ bike_maintenance.partsUsed }}</td>
-					            </tr>
-					            <tr>
-					                <th>Next_service_date</th>
-					                <td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
-					            </tr>
-					            <tr>
-					                <th>Next_service_km</th>
-					                <td>{{ bike_maintenance.nextServiceKm }}</td>
-					            </tr>
-					            <tr>
-					                <th>Next_service_hours</th>
-					                <td>{{ bike_maintenance.nextServiceHours }}</td>
-					            </tr>
-					            <tr>
-					                <th>Receipt_url</th>
-					                <td>{{ bike_maintenance.receiptUrl }}</td>
-					            </tr>
-					            <tr>
-					                <th>Notes</th>
-					                <td>{{ bike_maintenance.notes }}</td>
-					            </tr>
-					            <tr>
-					                <th>Created_at</th>
-					                <td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-					            </tr>
-					            <tr>
-					                <th>Updated_at</th>
-					                <td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-					            </tr>
-					        </tbody>
-					    </table> #}
+							        <tbody>
+							            <tr>
+							                <th>Date</th>
+							                <td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
+							            </tr>
+							            <tr>
+							                <th>Mileage</th>
+							                <td>{{ bike_maintenance.mileage }}</td>
+							            </tr>
+							            <tr>
+							                <th>Hours</th>
+							                <td>{{ bike_maintenance.hours }}</td>
+							            </tr>
+							            <tr>
+							                <th>Maintenance_type</th>
+							                <td>{{ bike_maintenance.maintenanceType }}</td>
+							            </tr>
+							            <tr>
+							                <th>Description</th>
+							                <td>{{ bike_maintenance.description }}</td>
+							            </tr>
+							            <tr>
+							                <th>Cost</th>
+							                <td>{{ bike_maintenance.cost }}</td>
+							            </tr>
+							            <tr>
+							                <th>Workshop</th>
+							                <td>{{ bike_maintenance.workshop }}</td>
+							            </tr>
+							            <tr>
+							                <th>Parts_used</th>
+							                <td>{{ bike_maintenance.partsUsed }}</td>
+							            </tr>
+							            <tr>
+							                <th>Next_service_date</th>
+							                <td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
+							            </tr>
+							            <tr>
+							                <th>Next_service_km</th>
+							                <td>{{ bike_maintenance.nextServiceKm }}</td>
+							            </tr>
+							            <tr>
+							                <th>Next_service_hours</th>
+							                <td>{{ bike_maintenance.nextServiceHours }}</td>
+							            </tr>
+							            <tr>
+							                <th>Receipt_url</th>
+							                <td>{{ bike_maintenance.receiptUrl }}</td>
+							            </tr>
+							            <tr>
+							                <th>Notes</th>
+							                <td>{{ bike_maintenance.notes }}</td>
+							            </tr>
+							            <tr>
+							                <th>Created_at</th>
+							                <td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+							            </tr>
+							            <tr>
+							                <th>Updated_at</th>
+							                <td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+							            </tr>
+							        </tbody>
+							    </table> #}

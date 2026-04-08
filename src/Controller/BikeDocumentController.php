@@ -29,43 +29,56 @@ final class BikeDocumentController extends AbstractController
     }
 
     #[Route('/new/{bikeId}', name: 'app_bike_document_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, int $bikeId,BikeRepository $bikeRepository,SluggerInterface $slugger,#[Autowire('%kernel.project_dir%/public/uploads/documents')] string $receiptDirectory,): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, int $bikeId, BikeRepository $bikeRepository, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/documents')] string $receiptDirectory,): Response
     {
+
+        //PREPARATION DES DONNEES
         $bikeDocument = new BikeDocument();
-        $form = $this->createForm(BikeDocumentType::class, $bikeDocument);
+        $bike = $bikeRepository->find($bikeId);
+        // récupère uniquement les motos de l'utilisateur connecté
+        $bikes = $bikeRepository->findBy(['user' => $this->getUser()]);
+
+        // CREATION DU FORMULAIRE
+        $form = $this->createForm(BikeDocumentType::class, $bikeDocument, [
+            'bikes' => $bikes,
+        ]);
+
         $form->handleRequest($request);
-        $bike=$bikeRepository->find($bikeId);
-        $bikeDocument = new BikeDocument();
 
+        //LORSQUE LE FORMULAIRE EST ENVOYE ET VALIDE
         if ($form->isSubmitted() && $form->isValid()) {
-            $receiptFile=$form->get('file_url')->getData();
 
-            if($receiptFile){
-                $originalname= pathinfo($receiptFile->getClientOriginalName(),PATHINFO_FILENAME);
+            // GESTION DU FICHIER UPLOADER
+            $receiptFile = $form->get('file_url')->getData();
+
+            if ($receiptFile) {
+                $originalname = pathinfo($receiptFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safefilename = $slugger->slug($originalname);
                 $newfilename = $safefilename . "." . uniqid() . "." . $receiptFile->getClientOriginalExtension();
 
-                try{
-                    $receiptFile->move($receiptDirectory,$newfilename);
-                }catch(FileException $e){
+                try {
+                    $receiptFile->move($receiptDirectory, $newfilename);
+                } catch (FileException $e) {
                     $this->addFlash('error', 'Une erreur est survenue lors de l\'upload du fichiers.');
                 }
 
                 $bikeDocument->setFileUrl($newfilename);
             }
 
+            //SAUVEGARDE EN BDD
+            $bikeDocument->setBike($bike);
             $entityManager->persist($bikeDocument);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_bike_document_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_bike_show', ['id' => $bikeId], Response::HTTP_SEE_OTHER);
         }
 
-        
 
+        //AFFICHE LE FORMULAIRE
         return $this->render('bike_document/new.html.twig', [
             'bike_document' => $bikeDocument,
             'form' => $form,
-            'bike'=>$bike,
+            'bike' => $bike,
         ]);
     }
 
@@ -78,22 +91,22 @@ final class BikeDocumentController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_bike_document_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, BikeDocument $bikeDocument, EntityManagerInterface $entityManager,SluggerInterface $slugger,#[Autowire('%kernel.project_dir%/public/uploads/documents')] string $receiptDirectory): Response
+    public function edit(Request $request, BikeDocument $bikeDocument, EntityManagerInterface $entityManager, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/documents')] string $receiptDirectory): Response
     {
         $form = $this->createForm(BikeDocumentType::class, $bikeDocument);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $receiptFile=$form->get('file_url')->getData();
+            $receiptFile = $form->get('file_url')->getData();
 
-            if($receiptFile){
-                $originalname= pathinfo($receiptFile->getClientOriginalName(),PATHINFO_FILENAME);
+            if ($receiptFile) {
+                $originalname = pathinfo($receiptFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safefilename = $slugger->slug($originalname);
                 $newfilename = $safefilename . "." . uniqid() . "." . $receiptFile->getClientOriginalExtension();
 
-                try{
-                    $receiptFile->move($receiptDirectory,$newfilename);
-                }catch(FileException $e){
+                try {
+                    $receiptFile->move($receiptDirectory, $newfilename);
+                } catch (FileException $e) {
                     $this->addFlash('error', 'Une erreur est survenue lors de l\'upload du fichiers.');
                 }
 
@@ -103,7 +116,7 @@ final class BikeDocumentController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_bike_document_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_bike_show', ['id' => $bikeDocument->getBike()->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('bike_document/edit.html.twig', [
@@ -115,11 +128,11 @@ final class BikeDocumentController extends AbstractController
     #[Route('/{id}', name: 'app_bike_document_delete', methods: ['POST'])]
     public function delete(Request $request, BikeDocument $bikeDocument, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$bikeDocument->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $bikeDocument->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($bikeDocument);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('app_bike_document_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_bike_show', ['id' => $bikeDocument->getBike()->getId()], Response::HTTP_SEE_OTHER);
     }
 }

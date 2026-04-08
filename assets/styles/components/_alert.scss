@@ -1,3 +1,6 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
 .alert{
     padding: 12px 16px;
     border-radius: 0.5rem;
@@ -7,15 +10,12 @@
     width: 100%;
 
     &-danger {
-        background-color: #2d0000;
-        color: #ff4444;
-        border-color: #ff4444;
+        color: $color-red-error;
+        
     }
 
     &-success {
-        background-color: #002d00;
-        color: #44ff44;
-        border-color: #44ff44;
+        @include login-sucess;
     }
 
     &-warning {

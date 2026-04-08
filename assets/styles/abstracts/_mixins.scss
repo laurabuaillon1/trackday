@@ -241,6 +241,8 @@
     color: $color-background;
 }
 
+
+
 @mixin btn-secondary{
     @include btn-base;
     background-color: $color-white;
@@ -253,7 +255,6 @@
     @include btn-base;
     background-color: $button-gray;
     color: $color-background;
-    width: 100%
 }
 
 @mixin btn-danger{
@@ -334,7 +335,7 @@
 
 
 // ================================
-// Tableau admin - Status
+// Tableau admin - Status count
 // ================================
 
 
@@ -346,7 +347,7 @@
     text-decoration: none;
 
     //style
-    
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
@@ -376,4 +377,42 @@
     @include badge-base;
     background-color: $badge-banni;
     color: $badge-color-red;
+}
+
+// ================================
+// Tableau admin - role user
+// ================================
+
+
+@mixin role-base{
+     //reset les styles navigateur (Chrome)
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+
+    //style
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0px 12px;
+    height: 32px;
+    border-radius: 0.5rem;
+    font-family: $font-primary;
+    font-size: $text-s;
+    font-weight: 600;
+}
+
+
+@mixin role-admin{
+    @include role-base;
+    background-color: $badge-banni;
+    color: $badge-color-red;
+}
+
+@mixin role-user{
+    @include role-base;
+     background-color: $badge-inactif;
+    color: $badge-color-gray;
 }
