@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bike index
+{% block title %}Liste des motos
 {% endblock %}
 
 {% block body %}
@@ -28,12 +28,11 @@
 	</header>
 
 	<div class="table-responsive">
-
-
 		<table class="table table-hover">
 			<thead>
 				<tr>
 					<th>Propriétaire</th>
+					<th>Rôle</th>
 					<th>Nom</th>
 					<th>Marque</th>
 					<th>Modele</th>
@@ -46,20 +45,25 @@
 					<th>Heures</th>
 					<th>Unité</th>
 					{# <th>Last_service_date</th>
-					<th>Next_service_km</th>
-					<th>Next_service_hours</th> #}
+										<th>Next_service_km</th>
+										<th>Next_service_hours</th> #}
 					<th>Photo</th>
 					{# <th>Notes</th> #}
 					{# <th>Is_active</th>
-					<th>Created_at</th>
-					<th>Updated_at</th> #}
+										<th>Created_at</th>
+										<th>Updated_at</th> #}
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				{% for bike in bikes %}
 					<tr>
-						<td>{{ bike.user.firstName }} {{ bike.user.lastName }}</td>
+						<td>{{ bike.user.firstName }}
+							{{ bike.user.lastName }}</td>
+						<td>
+							{% set role = 'ROLE_ADMIN' in bike.user.roles ? 'admin' : 'user' %}
+							<span class="role-{{ role }}">{{ role }}</span>
+						</td>
 						<td>{{ bike.nickname }}</td>
 						<td>{{ bike.brand }}</td>
 						<td>{{ bike.model }}</td>
@@ -72,14 +76,14 @@
 						<td>{{ bike.hours }}</td>
 						<td>{{ bike.usageUnit }}</td>
 						{# <td>{{ bike.lastServiceDate ? bike.lastServiceDate|date('Y-m-d') : '' }}</td>
-						<td>{{ bike.nextServiceKm }}</td>
-						<td>{{ bike.nextServiceHours }}</td> #}
+												<td>{{ bike.nextServiceKm }}</td>
+												<td>{{ bike.nextServiceHours }}</td> #}
 						<td>{{ bike.photoUrl }}</td>
 						{# <td>{{ bike.notes }}</td>
-						<td>{{ bike.isActive ? 'Yes' : 'No' }}</td>
-						<td>{{ bike.createdAt ? bike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-						<td>{{ bike.updatedAt ? bike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
-						<td class="table-gap"> 
+												<td>{{ bike.isActive ? 'Yes' : 'No' }}</td>
+												<td>{{ bike.createdAt ? bike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+												<td>{{ bike.updatedAt ? bike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+						<td class="table-gap">
 							<a class="btn-secondary" href="{{ path('app_admin_bike_show', {'id': bike.id}) }}">Voir</a>
 							<a class="btn-secondary" href="{{ path('app_admin_bike_edit', {'id': bike.id}) }}">Mofifier</a>
 						</td>

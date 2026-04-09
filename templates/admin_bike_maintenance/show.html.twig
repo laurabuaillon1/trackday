@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entretien de
+	{{ bike_maintenance.bike.nickname }}
+{% endblock %}
+
+{% block body %}
+	<div class="bike-detail">
+		<div
+			class="bike-detail__wrap">
+			{# NAV BACK #}
+			<nav class="bike-detail__back">
+				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+				<a class="auth-card__link font-medium" href="{{ path('app_admin_bike_maintenance_index') }}">Voir les motos</a>
+			</nav>
+
+			{# MOTORBIKE HEADER #}
+			<header class="bike-detail__header">
+				<img class="bike-detail__img" src="{{asset('uploads/photos/' ~ bike_maintenance.bike.photoUrl) }}" alt="Photo de {{ bike_maintenance.bike.nickname }}">
+
+				<div class="bike-detail__info">
+					<h1 class="bike-detail__title">{{ bike_maintenance.bike.nickname }}</h1>
+					<div class="bike-detail__specs">
+						<p class="text-s">{{ bike_maintenance.bike.year }}
+							•
+							{{ bike_maintenance.bike.displacement }}
+							cc •
+							{{ bike_maintenance.bike.color }}</p>
+					</div>
+					<p class="bike-detail__license text-l font-bold" aria-label="Plaque d'immatriculation">{{ bike_maintenance.bike.licensePlate }}</p>
+				</div>
+			</header>
+		</div>
+		{# CARD - INFORMATION #}
+		<section class="bike-detail__card">
+			<h2 class="bike-detail__section-title text-m">Informations</h2>
+
+			<div class="bike-detail__stats">
+				<div type="onclick" class="bike-detail__stat red-card">
+					<div class="bike-card__label">
+						<img class="bike-card__icon" src="{{asset('icons/garage/maintenance_grey.svg')}}" alt="">
+						{% if bike_maintenance.receiptUrl %}
+							<a class="text-s text-red font-semibold" href="{{ asset('uploads/documents/' ~ bike_maintenance.receiptUrl) }}" download aria-label="Télécharger la facture de l'entretien {{ bike_maintenance.maintenanceType }}">
+								Télécharger la facture
+							</a>
+						{% endif %}
+					</div>
+				</div>
+                
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Type d'entretien</p>
+					<p class="text-s text-blue">{{ bike_maintenance.maintenanceType ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Date</p>
+					<p class="text-s text-blue">{{ bike_maintenance.date ? bike_maintenance.date|date('d/m/Y') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Kilométrage</p>
+					<p class="text-s text-blue">
+						{% if bike_maintenance.usageUnit == 'km' %}
+							{{ bike_maintenance.mileage ?? '-' }}
+							km
+						{% else %}
+							{{ bike_maintenance.hours ?? '-' }}
+							h
+						{% endif %}
+					</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Coût</p>
+					<p class="text-s text-blue">{{ bike_maintenance.cost ?? '-' }}
+						€</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Atelier</p>
+					<p class="text-s text-blue">{{ bike_maintenance.workshop ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Pièces utilisées</p>
+					<p class="text-s text-blue">{{ bike_maintenance.partsUsed ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Description</p>
+					<p class="text-s text-blue">{{ bike_maintenance.description ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Date Prochain entretien</p>
+					<p class="text-s text-blue">{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('d/m/Y') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Prochain entretien</p>
+					<p class="text-s text-blue">
+						{% if bike_maintenance.usageUnit == 'km' %}
+							{{ bike_maintenance.nextServiceKm ?? '-' }}
+							km
+						{% else %}
+							{{ bike_maintenance.nextServiceHours ?? '-' }}
+							h
+						{% endif %}
+					</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Notes</p>
+					<p class="text-s text-blue">{{ bike_maintenance.notes ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Créé le</p>
+					<p class="text-s text-blue">{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('d/m/Y H:i') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Mis à jour le</p>
+					<p class="text-s text-blue">{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('d/m/Y H:i') : '-' }}</p>
+				</div>
+			</div>
+		</section>
+
+		<div class="bike-detail__buttons">
+			<a class="btn-outline" href="{{ path('app_admin_bike_maintenance_edit', {'id': bike_maintenance.id}) }}" aria-label="Modifier l'entretien">Modifier</a>
+			{{ include('admin_bike_maintenance/_delete_form.html.twig') }}
+		</div>
+	{% endblock %}

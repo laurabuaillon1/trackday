@@ -49,7 +49,6 @@ final class AdminBikeController extends AbstractController
                 try {
                     $photoFile->move($receiptDirectory, $newFilename);
                 } catch (FileException $e) {
-                    // Gérer l'exception si quelque chose se passe mal pendant l'upload
                     $this->addFlash('error','Une erreur est survenue lors de l\'upload de la photo.');
                 }
 

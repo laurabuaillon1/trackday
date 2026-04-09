@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier
+{{ bike_maintenance.bike.nickname }}{% endblock %}
+
+{% block body %}
+	{# NAV BACK #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_bike_maintenance_index') }}">Voir les entretiens</a>
+	</nav>
+
+	{# TITLE #}
+	<header>
+		<h1 class="form__title">Modifier un entretien</h1>
+	</header>
+
+	{{ include('admin_bike_maintenance/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+
+	
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des entretiens
+{% endblock %}
+
+{% block body %}
+	{# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_dashboard') }}">Retourner sur le dashboard admin</a>
+	</nav>
+
+	{# HEADER #}
+	<header class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Liste des entretiens</h1>
+			</div>
+			<p class="text-m ">Controller et gérer vos les entretiens</p>
+		</div>
+		<div class="add-action">
+			<a href="{{ path('app_admin_bike_maintenance_new') }}" class="btn-primary">
+				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
+				<span class="add-btn__text">Ajouter un entretien</span>
+			</a>
+		</div>
+	</header>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Propriétaire</th>
+					<th>Rôle</th>
+					<th>Moto</th>
+					<th>Date</th>
+					{# <th>Mileage</th> #}
+					{# <th>Hours</th> #}
+					<th>Type d'entretien</th>
+					{# <th>Description</th> #}
+					<th>Prix €</th>
+					<th>Réaliser par</th>
+					{# <th>Parts_used</th> #}
+					{# <th>Next_service_date</th>
+										<th>Next_service_km</th>
+										<th>Next_service_hours</th>
+										<th>Usage_unit</th>
+										<th>Receipt_url</th> #}
+					{# <th>Notes</th>
+										<th>Created_at</th>
+										<th>Updated_at</th> #}<th>Actions
+				</th>
+			</tr>
+			</thead>
+				<tbody>
+					{% for bike_maintenance in bike_maintenances %}
+						<tr><td>
+							{{ bike_maintenance.bike.user.firstName }}{{ bike_maintenance.bike.user.lastName }}
+						</td>
+							<td>
+							{% set role = 'ROLE_ADMIN' in bike_maintenance.bike.user.roles ? 'admin' : 'user' %}<span class="role-{{ role }}"> {{ role }}</span>
+						</td>
+
+						<td>{{ bike_maintenance.bike.nickname }}
+							{{ bike_maintenance.bike.nickname }}</td>
+						<td>{{ bike_maintenance.date ? bike_maintenance.date|date('Y-m-d') : '' }}</td>
+						{# <td>{{ bike_maintenance.mileage }}</td>
+												<td>{{ bike_maintenance.hours }}</td> #}
+						<td>{{ bike_maintenance.maintenanceType }}</td>
+						{# <td>{{ bike_maintenance.description }}</td> #}
+						<td>{{ bike_maintenance.cost }}</td>
+						<td>{{ bike_maintenance.workshop }}</td>
+						{# <td>{{ bike_maintenance.partsUsed }}</td>
+												<td>{{ bike_maintenance.nextServiceDate ? bike_maintenance.nextServiceDate|date('Y-m-d') : '' }}</td>
+												<td>{{ bike_maintenance.nextServiceKm }}</td>
+												<td>{{ bike_maintenance.nextServiceHours }}</td>
+												<td>{{ bike_maintenance.usageUnit }}</td>
+												<td>{{ bike_maintenance.receiptUrl }}</td>
+												<td>{{ bike_maintenance.notes }}</td>
+												<td>{{ bike_maintenance.createdAt ? bike_maintenance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+												<td>{{ bike_maintenance.updatedAt ? bike_maintenance.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+						<td class="table-gap">
+							<a class="btn-secondary" href="{{ path('app_admin_bike_maintenance_show', {'id': bike_maintenance.id}) }}">Voir</a>
+							<a class="btn-secondary" href="{{ path('app_admin_bike_maintenance_edit', {'id': bike_maintenance.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="18">Aucun entretien enregistré</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
