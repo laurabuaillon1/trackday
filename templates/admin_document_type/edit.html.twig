@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier
+	{{ document_type.label }}
+{% endblock %}
+
+{% block body %}
+	<div
+		class="bike-detail">
+		{# NAV BACK #}
+		<div class="bike-detail__wrap">
+			<nav class="bike-detail__back">
+				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+				<a class="auth-card__link font-medium" href="{{ path('app_admin_document_type_index') }}">Voir les documents</a>
+			</nav>
+
+			{# TITLE #}
+			<header>
+				<h1 class="form__title">Modifier les {{ document_type.label }}</h1>
+			</header>
+
+			{{ include('admin_document_type/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+		{% endblock %}

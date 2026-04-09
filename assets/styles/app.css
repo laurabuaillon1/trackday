@@ -1704,4 +1704,15 @@ input::placeholder {
   box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.144);
 }
 
+.legal-content {
+  padding: 1rem;
+}
+
+.form-field--inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+}
+
 /*# sourceMappingURL=app.css.map */
