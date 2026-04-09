@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bike
+{% endblock %}
+
+{% block body %}
+	<div class="bike-detail">
+		<div
+			class="bike-detail__wrap">
+			{# NAV BACK #}
+			<nav class="bike-detail__back">
+				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+				<a class="auth-card__link font-medium" href="{{ path('app_admin_bike_index') }}">Voir les motos</a>
+			</nav>
+
+			{# MOTORBIKE HEADER #}
+			<header class="bike-detail__header">
+				<img class="bike-detail__img" src="{{asset('uploads/photos/' ~ bike.photoUrl) }}" alt="Photo de {{bike.nickname}}">
+
+				<div class="bike-detail__info">
+					<h1 class="bike-detail__title">{{ bike.nickname }}</h1>
+					<div class="bike-detail__specs">
+						<p class="text-s">{{ bike.year }}
+							•
+							{{ bike.displacement }}
+							cc •
+							{{ bike.color }}</p>
+					</div>
+					<p class="bike-detail__license text-l font-bold" aria-label="Plaque d'immatriculation">{{ bike.licensePlate }}</p>
+				</div>
+			</header>
+		</div>
+
+		{# //CARD - INFORMATION #}
+		<section class="bike-detail__card">
+			<h2 class="bike-detail__section-title text-m">Informations</h2>
+
+			<div class="bike-detail__stats">
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Surnom</p>
+					<p class="text-s text-blue">{{ bike.nickname ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Marque</p>
+					<p class="text-s text-blue">{{ bike.brand }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Modèle</p>
+					<p class="text-s text-blue">{{ bike.model }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Année</p>
+					<p class="text-s text-blue">{{ bike.year ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Cylindrée</p>
+					<p class="text-s text-blue">{{ bike.displacement ?? '-' }}
+						cc</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Couleur</p>
+					<p class="text-s text-blue">{{ bike.color ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Plaque d'immatriculation</p>
+					<p class="text-s text-blue">{{ bike.licensePlate ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Date d'achat</p>
+					<p class="text-s text-blue">{{ bike.purchaseDate ? bike.purchaseDate|date('d/m/Y') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Kilométrage</p>
+					<p class="text-s text-blue">
+						{% if bike.usageUnit == 'km' %}
+							{{ bike.mileage ?? '-' }}
+							km
+						{% else %}
+							{{ bike.hours ?? '-' }}
+							h
+						{% endif %}
+					</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Dernier entretien</p>
+					<p class="text-s text-blue">{{ bike.lastServiceDate ? bike.lastServiceDate|date('d/m/Y') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Prochain entretien</p>
+					<p class="text-s text-blue">
+						{% if bike.usageUnit == 'km' %}
+							{{ bike.nextServiceKm ?? '-' }}
+							km
+						{% else %}
+							{{ bike.nextServiceHours ?? '-' }}
+							h
+						{% endif %}
+					</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Notes</p>
+					<p class="text-s text-blue">{{ bike.notes ?? '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Statut</p>
+					<span class="badge-{{ bike.isActive ? 'active' : 'inactif' }}">
+						{{ bike.isActive ? 'Active' : 'Inactive' }}
+					</span>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Créée le</p>
+					<p class="text-s text-blue">{{ bike.createdAt ? bike.createdAt|date('d/m/Y H:i') : '-' }}</p>
+				</div>
+
+				<div class="bike-detail__stat">
+					<p class="text-s text-grey">Mise à jour le</p>
+					<p class="text-s text-blue">{{ bike.updatedAt ? bike.updatedAt|date('d/m/Y H:i') : '-' }}</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div class="bike-detail__buttons">
+		<a class="btn-outline" href="{{ path('app_admin_bike_edit', {'id': bike.id}) }}" aria-label="Modifier les informations de la moto">Modifier</a>
+		{{ include('admin_bike/_delete_form.html.twig') }}
+	</div>
+
+{% endblock %}

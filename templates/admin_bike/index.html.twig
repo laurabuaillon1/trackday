@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bike index
+{% endblock %}
+
+{% block body %}
+	{# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_dashboard') }}">Retourner sur le dashboard admin</a>
+	</nav>
+
+	{# HEADER #}
+	<header class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Liste des motos</h1>
+			</div>
+			<p class="text-m ">Controller et gérer vos les motos</p>
+		</div>
+		<div class="add-action">
+			<a href="{{ path('app_admin_bike_new') }}" class="btn-primary">
+				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
+				<span class="add-btn__text">Ajouter une moto</span>
+			</a>
+		</div>
+	</header>
+
+	<div class="table-responsive">
+
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Propriétaire</th>
+					<th>Nom</th>
+					<th>Marque</th>
+					<th>Modele</th>
+					<th>Année</th>
+					<th>Cylindrée</th>
+					<th>Couleur</th>
+					<th>Immatriculation</th>
+					<th>Achat</th>
+					<th>Kilométrage</th>
+					<th>Heures</th>
+					<th>Unité</th>
+					{# <th>Last_service_date</th>
+					<th>Next_service_km</th>
+					<th>Next_service_hours</th> #}
+					<th>Photo</th>
+					{# <th>Notes</th> #}
+					{# <th>Is_active</th>
+					<th>Created_at</th>
+					<th>Updated_at</th> #}
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for bike in bikes %}
+					<tr>
+						<td>{{ bike.user.firstName }} {{ bike.user.lastName }}</td>
+						<td>{{ bike.nickname }}</td>
+						<td>{{ bike.brand }}</td>
+						<td>{{ bike.model }}</td>
+						<td>{{ bike.year }}</td>
+						<td>{{ bike.displacement }}</td>
+						<td>{{ bike.color }}</td>
+						<td>{{ bike.licensePlate }}</td>
+						<td>{{ bike.purchaseDate ? bike.purchaseDate|date('Y-m-d') : '' }}</td>
+						<td>{{ bike.mileage }}</td>
+						<td>{{ bike.hours }}</td>
+						<td>{{ bike.usageUnit }}</td>
+						{# <td>{{ bike.lastServiceDate ? bike.lastServiceDate|date('Y-m-d') : '' }}</td>
+						<td>{{ bike.nextServiceKm }}</td>
+						<td>{{ bike.nextServiceHours }}</td> #}
+						<td>{{ bike.photoUrl }}</td>
+						{# <td>{{ bike.notes }}</td>
+						<td>{{ bike.isActive ? 'Yes' : 'No' }}</td>
+						<td>{{ bike.createdAt ? bike.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ bike.updatedAt ? bike.updatedAt|date('Y-m-d H:i:s') : '' }}</td>#}
+						<td class="table-gap"> 
+							<a class="btn-secondary" href="{{ path('app_admin_bike_show', {'id': bike.id}) }}">Voir</a>
+							<a class="btn-secondary" href="{{ path('app_admin_bike_edit', {'id': bike.id}) }}">Mofifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="21">Aucune moto enregistrée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{# <a href="{{ path('app_admin_bike_new') }}">Create new</a> #}
+{% endblock %}

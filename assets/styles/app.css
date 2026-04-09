@@ -1593,6 +1593,7 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-top: 1rem;
 }
 @media (min-width: 1024px) {
   .bike-detail__buttons {
