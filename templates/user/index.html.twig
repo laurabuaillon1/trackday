@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index
+{% block title %}Liste des utilisateurs
 {% endblock %}
 
 {% block body %}
@@ -48,12 +48,12 @@
 			<tbody>
 				{% for user in users %}
 					<tr>
-						<td class="sidebar__avatar avatar--padded" name="profilepicture">
-							{# {{app.user.firstName|first}}{{app.user.lastName|first}} #}
-							{% if app.user.profilePicture %}
-								<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
+						<td
+							class="sidebar__avatar avatar--padded">
+							{% if user.profilePicture %}
+								<img src="{{asset ('uploads/profiles/'~ user.profilePicture )}}" alt="Photo de profil">
 							{% else %}
-								{{app.user.firstName|first}}{{app.user.lastName|first}}
+								{{user.firstName|first}}{{user.lastName|first}}
 							{% endif %}
 						</td>
 						{# <td>{{ user.id }}</td> #}
@@ -64,15 +64,14 @@
 						<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>{{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}</td>
 						<td>
-							<span class="badge-{{user.accountStatus|lower}}">
-								{{ user.accountStatus }}
+							<span class="badge-{{user.accountStatus|lower}}">{{ user.accountStatus }}
 							</span>
 						</td>
 						<td>
 							{% set role = 'ROLE_ADMIN' in user.roles ? 'admin' : 'user' %}
 							<span class="role-{{ role }}">
 								{{ role }}
-							</td>
+							</span>
 						</td>
 						<td>{{ user.profilePicture }}</td>
 						<td class="table-gap">

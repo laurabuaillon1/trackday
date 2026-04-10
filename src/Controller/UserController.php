@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[IsGranted('ROLE_ADMIN')]
 #[Route('/user')]
@@ -28,13 +29,16 @@ final class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager,SluggerInterface $slugger,#[Autowire('%kernel.project_dir%/public/uploads/photos')] string $receiptDirectory): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger, UserPasswordHasherInterface $passwordHasher, #[Autowire('%kernel.project_dir%/public/uploads/profiles')] string $receiptDirectory): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $hashedPassword = $passwordHasher->hashPassword($user, $form->get('password')->getData());
+            $user->setPassword($hashedPassword);
 
             $receiptFile = $form->get('profile_picture')->getData();
 
@@ -74,7 +78,7 @@ final class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager,SluggerInterface $slugger,#[Autowire('%kernel.project_dir%/public/uploads/photos')] string $receiptDirectory): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/photos')] string $receiptDirectory): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

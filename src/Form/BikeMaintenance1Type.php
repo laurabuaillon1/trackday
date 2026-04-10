@@ -26,9 +26,7 @@ class BikeMaintenance1Type extends AbstractType
     {
         $builder
             ->add('date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Date de l\'entretien'
             ])
             ->add('mileage', IntegerType::class, [
@@ -61,7 +59,6 @@ class BikeMaintenance1Type extends AbstractType
             ])
             ->add('cost', NumberType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: 10 €',
                 ],
                 'label' => 'Coût'
@@ -85,9 +82,7 @@ class BikeMaintenance1Type extends AbstractType
                 'label' => 'Produits utilisés'
             ])
             ->add('next_service_date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Prochain entretien'
             ])
             ->add('next_service_km', IntegerType::class, [

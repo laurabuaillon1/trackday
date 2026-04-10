@@ -85,6 +85,14 @@ li{
 // Responsive - Tablette
 // ================================
 
+@media (min-width: $small) {
+    .stats__title   { font-size: $text-xs;   color: $card-grey-dark; }
+    // .section-card__title {font-family: $text-xxs; font-weight: $font-bold;}
+    .stats__number  { font-size: $text-xxl; color: $card-blue-dark; }
+}
+
+
+
 @media (min-width: $medium) {
     h1 {
         font-size: $text-4xl;

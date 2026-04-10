@@ -27,7 +27,7 @@
 							cc •
 							{{ bike.color }}</p>
 					</div>
-					<p class="bike-detail__license text-l font-bold" aria-label="Plaque d'immatriculation">{{ bike.licensePlate }}</p>
+					<p class="bike-detail__license text-l font-bold">{{ bike.licensePlate }}</p>
 				</div>
 			</header>
 		</div>
@@ -149,10 +149,11 @@
 			<a class="btn-outline" href="{{ path('app_bike_edit', {'id': bike.id}) }}" aria-label="Modifier les informations de la moto">Modifier</a>
 			{{ include('bike/_delete_form.html.twig') }}
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}
 
 
-	{# <table class="table">
+{# <table class="table">
 																							    <tbody>
 																									 <tr>
 																																															                <th>Nickname</th>

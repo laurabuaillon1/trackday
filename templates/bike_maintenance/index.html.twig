@@ -29,7 +29,7 @@
 				<div
 					class="bike-card__header">
 					{# default img #}
-					<div class="bike-card__img--default" aria-label="Icône entretien"></div>
+					<div class="bike-card__img--default"></div>
 
 					{# badge #}
 					<div class="bike-card__alert">
@@ -85,8 +85,7 @@
 							<img class="bike-card__icon" src="{{asset('icons/garage/maintenance_grey.svg')}}" alt="" aria-hidden="true">
 							<p class="text-s text-grey">Prochain entretien</p>
 						</div>
-						<pclass="text-stext-blue">{{ bike_maintenance.nextServiceKm }}</pclass=>
-						<p>{{ bike_maintenance.nextServiceHours }}</p>
+						<p class="text-stext-blue">{{ bike_maintenance.nextServiceKm }}{{ bike_maintenance.nextServiceHours }}</p>
 					</div>
 
 					<hr

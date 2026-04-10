@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Modifier un utilisateur
+{% endblock %}
 
 {% block body %}
-    <div class="dashboard">
+	<div class="dashboard">
 		<nav class="bike-detail__back">
 			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
 			<a class="auth-card__link font-medium" href="{{ path('app_user_index') }}">Retourner sur la liste des utilisateurs</a>
 		</nav>
 		{# HEADER #}
-        <header class="dashboard__wrapper">
+		<header class="dashboard__wrapper">
 			<div class="dashboard__title">
 				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
 				<h1>Modifier le profil de
@@ -19,9 +20,6 @@
 			<p class="text-m ">Modifier toutes les informations des utilisateurs</p>
 		</header>
 
-    {{ include('user/_form.html.twig')}}
-
-    {# <a href="{{ path('app_user_index') }}">back to list</a> #}
-
-    {# {{ include('user/_delete_form.html.twig') }} #}
+		{{ include('user/_form.html.twig')}}
+	</div>
 {% endblock %}

@@ -15,7 +15,6 @@
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
-
 		{% endblock %}
 	</head>
 
@@ -26,8 +25,8 @@
 					{{ include('components/_sidebar.html.twig') }}
 				{% endif %}
 			{% endblock %}
-			<main class="flex-grow-1  main-content " style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
-				</main>
+			<main class="flex-grow-1  main-content" style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
+			</main>
 			</div>
 		</body>
 	</html>

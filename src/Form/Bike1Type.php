@@ -54,7 +54,6 @@ class Bike1Type extends AbstractType
             ])
             ->add('year', TextType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: 2020',
                 ],
                 'label' => 'Année'
@@ -62,7 +61,6 @@ class Bike1Type extends AbstractType
             ])
             ->add('displacement', TextType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: 1000',
                 ],
                 'label' => 'Cylindrée(cc)'
@@ -80,9 +78,7 @@ class Bike1Type extends AbstractType
                 'label' => 'Plaque d\'immatriculation'
             ])
             ->add('purchase_date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Date d\'achat'
             ])
             ->add('mileage', IntegerType::class, [
@@ -112,9 +108,7 @@ class Bike1Type extends AbstractType
                 ]
             ])
             ->add('last_service_date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Dernier entretien'
             ])
             ->add('next_service_km', IntegerType::class, [

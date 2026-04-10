@@ -42,14 +42,6 @@
 						<th>Email</th>
 						<td>{{ user.email }}</td>
 					</tr>
-					{# <tr>
-																																					                <th>Email_verified</th>
-																																					                <td>{{ user.emailVerified }}</td>
-																																					            </tr> #}
-					{# <tr>
-																																					                <th>Password</th>
-																																					                <td>{{ user.password }}</td>
-																																					            </tr> #}
 					<tr>
 						<th>Date de création</th>
 						<td>{{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</td>
@@ -87,17 +79,9 @@
 			</table>
 		</section>
 
-
-		{# <a href="{{ path('app_user_index') }}">back to list</a> #}
-		{# <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a> #}
-
-		{# <div class="bike-detail__buttons">
-							<a class="btn-outline" href="{{ path('app_user_edit', {'id': user.id}) }}" aria-label="Modifier l'entretien de la moto">Modifier</a>
-							{{ include('user/_delete_form.html.twig') }}
-						</div> #}
-
 		{# ACTIONS #}
 			<div class="bike-detail__buttons"> <a class="btn-outline" href="{{ path('app_user_edit', {'id': user.id}) }}" aria-label="Modifier l'utilisateur">Modifier</a>
 			{{ include('user/_delete_form.html.twig') }}
 		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

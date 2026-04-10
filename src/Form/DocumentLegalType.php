@@ -32,9 +32,7 @@ class DocumentLegalType extends AbstractType
                 'label' => 'Texte du document',
             ])
             ->add('publicationDate', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Date de publication',
             ])
             ->add('isActive',CheckboxType::class, [

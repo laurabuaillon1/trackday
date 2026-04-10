@@ -16,8 +16,11 @@
 
 			{# TITLE #}
 			<header>
-				<h1 class="form__title">Modifier les {{ document_type.label }}</h1>
+				<h1 class="form__title">Modifier les
+					{{ document_type.label }}</h1>
 			</header>
 
 			{{ include('admin_document_type/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-		{% endblock %}
+		</div>
+	</div>
+{% endblock %}
