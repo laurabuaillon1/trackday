@@ -8,12 +8,16 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\DomCrawler\Image;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\Format;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[IsGranted('ROLE_ADMIN')]
@@ -45,10 +49,20 @@ final class UserController extends AbstractController
             if ($receiptFile) {
                 $originalFile = pathinfo($receiptFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFile);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $receiptFile->getClientOriginalExtension();
+
+                // force the extension to webp instead of the original
+                $newFilename = $safeFilename . '-' . uniqid() . '.webp';
 
                 try {
+                    // move the original file first
                     $receiptFile->move($receiptDirectory, $newFilename);
+
+                    // full path to the saved file
+                    $fullpath = $receiptDirectory . '/' . $newFilename;
+                    $manager = new ImageManager(new Driver());
+                    $image = $manager->decodePath($fullpath);
+                    $image->scaleDown(width: 300);
+                    $image->encodeUsingFormat(Format::WEBP, quality: 80)->save($fullpath);
                 } catch (FileException $e) {
                     $this->addFlash('error', 'Une erreur est survenue lors de l\'upload de la photo.');
                 }
@@ -78,22 +92,33 @@ final class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/uploads/photos')] string $receiptDirectory): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, SluggerInterface $slugger, UserPasswordHasherInterface $passwordHasher, #[Autowire('%kernel.project_dir%/public/uploads/profiles')] string $receiptDirectory): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $hashedPassword = $passwordHasher->hashPassword($user, $form->get('password')->getData());
+            $user->setPassword($hashedPassword);
             $receiptFile = $form->get('profile_picture')->getData();
 
             if ($receiptFile) {
                 $originalFile = pathinfo($receiptFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFilename = $slugger->slug($originalFile);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $receiptFile->getClientOriginalExtension();
+                // force the extension to webp instead of the original
+                $newFilename = $safeFilename . '-' . uniqid() . '.webp';
 
                 try {
+                    // move the original file first
                     $receiptFile->move($receiptDirectory, $newFilename);
+
+                    // full path to the saved file
+                    $fullpath = $receiptDirectory . '/' . $newFilename;
+                    $manager = new ImageManager(new Driver());
+                    $image = $manager->decodePath($fullpath);
+                    $image->scaleDown(width: 300);
+                    $image->encodeUsingFormat(Format::WEBP, quality: 80)->save($fullpath);
                 } catch (FileException $e) {
                     $this->addFlash('error', 'Une erreur est survenue lors de l\'upload de la photo.');
                 }

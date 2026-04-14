@@ -4,6 +4,12 @@
 	{{app.user.lastname}}!
 {% endblock %}
 
+{% block meta_description %}
+    Suivez vos chronos, analysez vos sessions et progressez sur circuit avec votre tableau de bord Trackday.
+{% endblock %}
+
+
+
 {% block body %}
 	<div
 		class="dashboard">
@@ -84,7 +90,7 @@
 						{% for bike in bikes %}
 							<div class="section-card__wrap">
 								{% if bike.photoUrl %}
-									<img class="section-card__image" src="{{asset ('uploads/photos/'~ bike.photoUrl )}}" alt="Photo de la {{ bike.brand }} {{ bike.model }}">
+									<img class="section-card__image" src="{{asset ('uploads/photos/'~ bike.photoUrl )}}" alt="Photo de la {{ bike.brand }} {{ bike.model }}" width="300" height="200">
 								{% endif %}
 								<div class="section-card__infos">
 									<p class="text-s font-bold">{{ bike.brand }}

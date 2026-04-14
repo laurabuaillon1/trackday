@@ -44,24 +44,21 @@ security:
     # Note: Only the *first* matching rule is applied
     access_control:
         # Nouvel utilisateur qui ne possède pas encore de compte:
-        - {path: ^/register, roles: PUBLIC_ACCESS}
-        - {path: ^/login,roles: PUBLIC_ACCESS}
-        - {path: ^/logout,roles: PUBLIC_ACCESS}
-        - {path: ^/reset-password,roles: PUBLIC_ACCESS}
-        
+        - { path: ^/register, roles: PUBLIC_ACCESS }
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/logout, roles: PUBLIC_ACCESS }
+        - { path: ^/reset-password, roles: PUBLIC_ACCESS }
+
         # Admin:
         - { path: ^/user, roles: ROLE_ADMIN }
         - { path: ^/admin, roles: ROLE_ADMIN }
-    
+
         # Utilisateurs ayant déjà un compte:
         - { path: ^/account, roles: ROLE_USER }
         - { path: ^/dashboard, roles: ROLE_USER }
         - { path: ^/bike, roles: ROLE_USER }
         - { path: ^/maintenance, roles: ROLE_USER }
         - { path: ^/legal, roles: ROLE_USER }
-
-
-
 
 when@test:
     security:

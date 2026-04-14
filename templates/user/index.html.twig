@@ -2,6 +2,8 @@
 
 {% block title %}Liste des utilisateurs
 {% endblock %}
+{% block meta_description %}Consulter la liste des utilisateurs et accéder à leur gestion.
+{% endblock %}
 
 {% block body %}
 	{# NAV #}
@@ -48,8 +50,7 @@
 			<tbody>
 				{% for user in users %}
 					<tr>
-						<td
-							class="sidebar__avatar avatar--padded">
+						<td class="sidebar__avatar avatar--padded">
 							{% if user.profilePicture %}
 								<img src="{{asset ('uploads/profiles/'~ user.profilePicture )}}" alt="Photo de profil">
 							{% else %}

@@ -4,7 +4,7 @@
 
 document.addEventListener("turbo:load", function () {
     //variables de mes inputs
-    let select = document.querySelector(".form-field__dropdown");
+    let select = document.querySelector("#bike_usage_unit");
 
     //arrête l'exécution du script si l'élément n'existe pas sur la page 
     if (!select) return;

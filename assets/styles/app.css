@@ -34,6 +34,10 @@ li {
   font-size: 0.875rem;
 }
 
+.form-field ul li {
+  color: #d10000;
+}
+
 .text-xxs {
   font-size: 0.625rem;
 }
@@ -127,6 +131,12 @@ li {
 }
 
 @media (min-width: 320px) {
+  h1 {
+    font-size: 1.5rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #111827;
+  }
   .stats__title {
     font-size: 0.75rem;
     color: #4b5563;
@@ -135,11 +145,17 @@ li {
     font-size: 1.5rem;
     color: #111827;
   }
+  .stats__p {
+    font-size: 0.75rem;
+    color: #4b5563;
+  }
 }
 @media (min-width: 768px) {
   h1 {
     font-size: 2.25rem;
     font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: #111827;
   }
   .stats__title {
     font-size: 0.875rem;
@@ -151,7 +167,7 @@ li {
   }
   .stats__p {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #4b5563;
   }
   .section-card__title {
     font-size: 1.125rem;
