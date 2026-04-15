@@ -1,0 +1,117 @@
+{# Header mobile fixe #}
+<header class="sidebar__mobile-header">
+	<button class="sidebar__burger" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Ouvrir le menu de navigation">
+		<img src="{{ asset('icons/sidebar/menu_burger.svg') }}" width="16" height="16" alt="" aria-hidden="true">
+	</button>
+	<div class="sidebar__logo-title">
+		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="24" height="24" alt="Icone de l'application mobile Trackday">
+		<span class="sidebar__brand-name">Trackday</span>
+	</div>
+</header>
+
+{# Sidebar #}
+<aside
+	class="offcanvas-lg offcanvas-start sidebar" tabindex="-1" id="sidebar" style="max-width: 240px;" aria-label="Menu de navigation">
+
+	{# Logo desktop #}
+	<div class="sidebar__logo-desktop">
+		<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="30" height="30" alt="Icone de l'application mobile trackday" aria-hidden="true">
+		<div>
+			<div class="sidebar__brand-name">TRACKDAY</div>
+			<div class="sidebar__brand-subtitle">L'application des pilotes sur circuit</div>
+		</div>
+	</div>
+
+	{# Header mobile dans offcanvas #}
+	<div class="offcanvas-header sidebar__offcanvas-header">
+		<div class="sidebar__logo-mobile">
+			<img src="{{ asset('icons/authentification/logo_icone.svg') }}" width="28" height="28" alt="" aria-hidden="true">
+			<div>
+				<div class="sidebar__brand-name">Trackday</div>
+				<div class="sidebar__brand-subtitle">Pilotage Circuit</div>
+			</div>
+		</div>
+		<button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Fermer le menu de navigation"></button>
+	</div>
+
+	{# NAV BAR #}
+	<div class="offcanvas-body sidebar__body">
+		<nav
+			class="sidebar__nav" aria-label="Navigation principale">
+			{# admin panel #}
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('app_admin_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_admin_dashboard' ? 'sidebar__link--active' : '' }}">
+					<img src="{{ asset('icons/sidebar/admin_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+					<span>Gestion Admin</span>
+				</a>
+			{% endif %}
+
+			{# general navbar #}
+			<a href="{{ path('app_dashboard') }}" class="sidebar__link {{ app.request.attributes.get('_route') == 'app_dashboard' ? 'sidebar__link--active' : '' }}">
+				<img src="{{ asset('icons/sidebar/flag_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Tableau de bord</span>
+			</a>
+			<a href="{{ path('app_bike_index') }}" class="sidebar__link">
+				<img src="{{ asset('icons/sidebar/biker_on_bike.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Mon Garage</span>
+			</a>
+
+			<a href="{{path('app_bike_maintenance_index')}}" class="sidebar__link ">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/maintenance_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Entretien</span>
+
+			</a>
+
+			{# DISABLED LINK #}
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img src="{{ asset('icons/sidebar/calendar.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Mes Trackdays</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Option Premium verrouillée" aria-hidden="true">
+
+			</a>
+
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/bell_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Rappels</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Option Premium verrouillée" aria-hidden="true">
+
+			</a>
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/expense_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Frais</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Option Premium verrouillée" aria-hidden="true">
+
+			</a>
+
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/setting_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Réglages Moto</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Option Premium verrouillée" aria-hidden="true">
+
+			</a>
+			<a href="#" class="sidebar__link sidebar__link--disabled">
+				<img class="sidebar__icon" src="{{ asset('icons/sidebar/info_black.svg') }}" width="20" height="20" alt="" aria-hidden="true">
+				<span>Informations</span>
+				<img src="{{ asset('icons/sidebar/lock_gray.svg') }}" width="14" height="14" class="ms-auto" alt="Option Premium verrouillée" aria-hidden="true">
+			</a>
+		</nav>
+
+		{# Sidebar footer #}
+		<footer class="sidebar__footer">
+			<div class="sidebar__user">
+				<div class="sidebar__avatar"  aria-hidden="true">
+					{% if app.user.profilePicture %}
+						<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
+					{% else %}
+						{{app.user.lastName|first}}{{app.user.firstName|first}}
+					{% endif %}
+				</div>
+				<div class="sidebar__user-info">
+					<div class="sidebar__user-email">{{ app.user.lastName }}
+						{{ app.user.firstName }}</div>
+					<a href="{{path('app_account')}}" class="sidebar__user-link">Gérer mon compte</a>
+				</div>
+			</div>
+		</footer>
+	</div>
+</aside>

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs
+{% endblock %}
+{% block meta_description %}Consulter la liste des utilisateurs et accéder à leur gestion.
+{% endblock %}
+
+{% block body %}
+	{# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_dashboard') }}">Retourner sur le dashboard admin</a>
+	</nav>
+
+	{# HEADER #}
+	<header class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Liste des utilisateurs</h1>
+			</div>
+			<p class="text-m ">Controller et gérer vos utilisateurs</p>
+		</div>
+		<div class="add-action">
+			<a href="{{path('app_user_new')}}" class="btn-primary">
+				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
+				<span class="add-btn__text">Créer un utilisateur</span>
+			</a>
+		</div>
+	</header>
+
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Utilisateur</th>
+					{# <th>Id</th> #}
+					<th>Nom</th>
+					<th>Prénom</th>
+					<th>Email</th>
+					{# <th>Email_verified</th> #}
+					<th>Crée le</th>
+					<th>Dernière connexion</th>
+					<th>Statut</th>
+					<th>Role</th>
+					<th>Photo de profil</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td class="sidebar__avatar avatar--padded">
+							{% if user.profilePicture %}
+								<img src="{{asset ('uploads/profiles/'~ user.profilePicture )}}" alt="Photo de profil">
+							{% else %}
+								{{user.firstName|first}}{{user.lastName|first}}
+							{% endif %}
+						</td>
+						{# <td>{{ user.id }}</td> #}
+						<td>{{ user.lastName }}</td>
+						<td>{{ user.firstName }}</td>
+						<td>{{ user.email }}</td>
+						{# <td>{{ user.emailVerified }}</td> #}
+						<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>
+							<span class="badge-{{user.accountStatus|lower}}">{{ user.accountStatus }}
+							</span>
+						</td>
+						<td>
+							{% set role = 'ROLE_ADMIN' in user.roles ? 'admin' : 'user' %}
+							<span class="role-{{ role }}">
+								{{ role }}
+							</span>
+						</td>
+						<td>{{ user.profilePicture }}</td>
+						<td class="table-gap">
+							<a class="btn-secondary" href="{{ path('app_user_show', {'id': user.id}) }}">Voir</a>
+							<a class="btn-secondary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="12">Aucun utilisateur</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

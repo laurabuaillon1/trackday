@@ -1,0 +1,8 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.login-page{
+    @include auth-page($auth-background, $auth-gradient);
+    
+
+}

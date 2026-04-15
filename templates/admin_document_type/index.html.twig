@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des documents{% endblock %}
+{% block meta_description %}Consulter la liste des types de documents et accéder à leur gestion.{% endblock %}
+
+{% block body %}
+    {# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_dashboard') }}">Retourner sur le dashboard admin</a>
+	</nav>
+
+    {# HEADER #}
+	<header class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Gestion des types de documents</h1>
+			</div>
+			<p class="text-m ">Controller et gérer vos documents</p>
+		</div>
+		<div class="add-action">
+			<a href="{{ path('app_admin_document_type_new') }}" class="btn-primary">
+				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
+				<span class="add-btn__text">Ajouter un document</span>
+			</a>
+		</div>
+	</header>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Diminutif</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document_type in document_types %}
+            <tr>
+                <td>{{ document_type.code }}</td>
+                <td>{{ document_type.label }}</td>
+                <td class="table-gap">
+                    <a class="btn-secondary" href="{{ path('app_admin_document_type_show', {'id': document_type.id}) }}">Voir</a>
+                    <a class="btn-secondary" href="{{ path('app_admin_document_type_edit', {'id': document_type.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun document enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

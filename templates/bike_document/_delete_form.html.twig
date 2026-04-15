@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_bike_document_delete', {'id': bike_document.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer ce document ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ bike_document.id) }}">
+	<button class="btn-primary" type="submit" aria-label="Supprimer le document : {{ bike_document.documentName }}">Supprimer</button>
+</form>

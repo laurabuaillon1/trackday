@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Trackday - L'application des pilotes
+			{% endblock %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{% block meta_description %}Application mobile conçue pour optimiser les performances des pilotes sur circuit et les accompagner lors de leurs journées de roulage.{% endblock %}">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+		<link rel="icon" href="{{asset('icons/favicon/favicon.png')}}"> 
+
+		{# CSS FIRST #}
+		{% block stylesheets %}{% endblock %}
+
+		{# JS SECOND #}
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+
+	<body class="{% block body_class %}{% endblock %}">
+		<div class="d-lg-flex min-vh-100">
+			{% block sidebar %}
+				{% if app.user %}
+					{{ include('components/_sidebar.html.twig') }}
+				{% endif %}
+			{% endblock %}
+			<main class="flex-grow-1  main-content" style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
+				</main>
+			</div>
+		</body>
+	</html>

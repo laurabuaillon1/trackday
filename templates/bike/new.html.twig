@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une moto
+{% endblock %}
+
+{% block meta_description %}Ajoutez un nouveau véhicule à votre garage Trackday pour suivre ses performances sur circuit.{% endblock %}
+
+
+{% block body %}
+	{# NAV BACK #}
+	<div class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_bike_index') }}">Retourner au garage</a>
+	</div>
+
+	{# TITLE #}
+	<header>
+		<h1 class="form__title">Ajouter une nouvelle moto</h1>
+	</header>
+
+	{# FORM #}
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
+	{{ include('bike/_form.html.twig') }}
+
+{% endblock %}

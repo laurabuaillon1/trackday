@@ -1,0 +1,91 @@
+{{ form_start(form) }}
+<div class="bike-update__wrap">
+	<div class="form-field">
+		{{ form_label(form.photo_url) }}
+		{{ form_widget(form.photo_url) }}
+		{{ form_errors(form.photo_url) }}
+	</div>
+	<div class="form-field">
+		{{ form_label(form.nickname) }}
+		{{ form_widget(form.nickname) }}
+		{{ form_errors(form.nickname) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.brand) }}
+		{{ form_widget(form.brand) }}
+		{{ form_errors(form.brand) }}
+	</div>
+	<div class="form-field">
+		{{ form_label(form.model) }}
+		{{ form_widget(form.model) }}
+		{{ form_errors(form.model) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.year) }}
+		{{ form_widget(form.year) }}
+		{{ form_errors(form.year) }}
+	</div>
+	<div class="form-field">
+		{{ form_label(form.displacement) }}
+		{{ form_widget(form.displacement) }}
+		{{ form_errors(form.displacement) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.color) }}
+		{{ form_widget(form.color) }}
+		{{ form_errors(form.color) }}
+	</div>
+	<div class="form-field">
+		{{ form_label(form.license_plate) }}
+		{{ form_widget(form.license_plate) }}
+		{{ form_errors(form.license_plate) }}
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.purchase_date) }}
+		{{ form_widget(form.purchase_date) }}
+		{{ form_errors(form.purchase_date) }}
+	</div>
+
+	<div class="form-field__usage-unit">
+		<label class="form-label" for="{{ form.usage_unit.vars.id }}">Utilisation actuelle</label>
+		<div class="form-field__usage-inputs">
+			{{ form_widget(form.mileage, {'attr': {'placeholder': 'Ex: 15000', 'class': 'usage-input'}}) }}
+			{{ form_widget(form.hours, {'attr': {'placeholder': 'Ex: 45.5', 'class': 'usage-input', 'style': 'display:none'}}) }}
+			{{ form_widget(form.usage_unit) }}
+		</div>
+		{{ form_errors(form.mileage) }}
+		{{ form_errors(form.hours) }}
+	</div>
+
+
+	<div class="form-field">
+		{{ form_label(form.last_service_date) }}
+		{{ form_widget(form.last_service_date) }}
+		{{ form_errors(form.last_service_date) }}
+	</div>
+
+	<div class="form-field__next-service">
+		<label>Prochain entretien</label>
+		<div class="form-field__usage-inputs">
+			{{ form_widget(form.next_service_km, {'attr': {'placeholder': 'Ex: 5000', 'class': 'next-input'}}) }}
+			{{ form_widget(form.next_service_hours, {'attr': {'placeholder': 'Ex: 60.0', 'class': 'next-input', 'style': 'display:none'}}) }}
+			<span class="next-unit-label" aria-live="polite">km</span>
+		</div>
+	</div>
+
+	<div class="form-field">
+		{{ form_label(form.notes) }}
+		{{ form_widget(form.notes) }}
+		{{ form_errors(form.notes) }}
+	</div>
+
+	<div class="bike-update__actions">
+		<button class="btn-primary" type ="submit" aria-label="Enregistrer les informations de la moto" >{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
+{{ form_end(form) }}
+

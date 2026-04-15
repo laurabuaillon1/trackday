@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: BikeRepository::class)]
 class Bike
@@ -17,33 +19,105 @@ class Bike
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Votre pseudo doit comporter au moins 2 caractères',
+        maxMessage: 'Votre pseudo ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-Z0-9_\-\.\ ]+$/u',
+        message: 'Le pseudo ne doit contenir que des lettres, chiffres, espaces, tirets, points et underscores.'
+    )]
     private ?string $nickname = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'La marque doit comporter au moins 2 caractères',
+        maxMessage: 'La marque ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^\p{L}+$/u',
+        message: 'La marque ne doit contenir que des lettres.'
+    )]
     private ?string $brand = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'Le modèle doit comporter au moins 2 caractères',
+        maxMessage: 'Le modèle ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^[a-zA-Z0-9 ]+$/',
+        message: 'Le modèle ne doit contenir des lettres et/ou des chiffres'
+    )]
     private ?string $model = null;
 
     #[ORM\Column(type: Types::SMALLINT, nullable: true)]
+    #[Assert\PositiveOrZero]
+    #[Assert\Regex(
+        pattern: '/^\d{4}$/',
+        message: 'L\'année doit contenir exactement 4 chiffres.',
+    )]
     private ?int $year = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'La cylindrée doit comporter au moins 2 caractères',
+        maxMessage: 'La cylindrée ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^\d+$/',
+        message: 'La cylindrée doit contenir uniquement des chiffres.'
+    )]
+     #[Assert\PositiveOrZero]
     private ?string $displacement = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 255,
+        minMessage: 'La couleur doit comporter au moins 2 caractères',
+        maxMessage: 'La couleur ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^\p{L}+$/u',
+        message: 'La couleur ne doit contenir que des lettres.'
+    )]
     private ?string $color = null;
 
     #[ORM\Column(length: 15, nullable: true)]
+    #[Assert\Length(
+        min: 2,
+        max: 15,
+        minMessage: 'La plaque d\'immatriculation doit comporter au moins 2 caractères',
+        maxMessage: 'La plaque d\'immatriculation ne peut pas dépasser 255 caractères',
+    )]
+    #[Assert\Regex(
+        pattern: '/^[A-Za-z0-9]{2}-?\d{3}-?[A-Za-z]{2}$/',
+        message: 'La plaque d\'immatriculation doit être au format AA-123-AA.'
+    )]
     private ?string $license_plate = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $purchase_date = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'Les kilomètres doivent être un nombre entier positif ou nul.'
+    )]
     private ?int $mileage = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'Le nombre d’heures doit être un entier positif ou nul.'
+    )]
     private ?int $hours = null;
 
     #[ORM\Column(length: 10)]
@@ -53,19 +127,29 @@ class Bike
     private ?\DateTime $last_service_date = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'Le kilométrage du prochain entretien doit être un nombre positif ou nul.'
+    )]
     private ?int $next_service_km = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'L\'heure du prochain entretien doit être un nombre positif ou nul.'
+    )]
     private ?int $next_service_hours = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo_url = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(
+        max: 500,
+        maxMessage: 'Les notes ne peuvent pas dépasser 500 caractères.'
+    )]
     private ?string $notes = null;
 
     #[ORM\Column]
-    private ?bool $is_active = null;
+    private ?bool $is_active = true;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $created_at = null;
@@ -74,7 +158,7 @@ class Bike
     private ?\DateTimeImmutable $updated_at = null;
 
     #[ORM\ManyToOne(inversedBy: 'bikes')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false,onDelete: 'CASCADE')]
     private ?User $user = null;
 
     /**
@@ -91,8 +175,10 @@ class Bike
 
     public function __construct()
     {
-        $this->bikeDocuments = new ArrayCollection();
-        $this->bikeMaintenances = new ArrayCollection();
+        $this->bikeDocuments = new ArrayCollection(); //collection vide
+        $this->bikeMaintenances = new ArrayCollection(); //collection vide
+        $this->created_at = new \DateTimeImmutable(); //date du jour
+        $this->updated_at = new \DateTimeImmutable(); //date du jour
     }
 
     public function getId(): ?int
@@ -304,6 +390,7 @@ class Bike
         return $this;
     }
 
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->created_at;
@@ -339,6 +426,8 @@ class Bike
 
         return $this;
     }
+
+
 
     /**
      * @return Collection<int, BikeDocument>

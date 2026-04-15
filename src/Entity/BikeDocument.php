@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\BikeDocumentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: BikeDocumentRepository::class)]
 class BikeDocument
@@ -14,25 +16,39 @@ class BikeDocument
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: true)]
+    #[Assert\Choice(
+        choices: ['Assurance', 'Facture d\'achat', 'Facture de pièce','Garantie'],
+    )]
     private ?string $document_type = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom du document ne peux pas dépasser 255 caractères.'
+    )]
     private ?string $document_name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $file_url = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $upload_date = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $expiry_date = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
+    #[Assert\NotBlank()]
+    #[Assert\PositiveOrZero(message: 'Le coût doit être un nombre positif ou nul.')]
+    #[Assert\Type(type: 'numeric', message: 'Le coût doit être un nombre.')]
     private ?string $amount = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(
+        max: 500,
+        maxMessage: 'Les notes ne peuvent pas dépasser 500 caractères.'
+    )]
     private ?string $notes = null;
 
     #[ORM\Column]
@@ -44,6 +60,12 @@ class BikeDocument
     #[ORM\ManyToOne(inversedBy: 'bikeDocuments')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Bike $bike = null;
+
+    public function __construct(){
+        $this->created_at= new \DateTimeImmutable();
+        $this->updated_at=new \DateTimeImmutable();
+    }
+    
 
     public function getId(): ?int
     {

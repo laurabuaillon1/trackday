@@ -1,0 +1,45 @@
+// add your SASS styles in this file
+
+
+// base
+@use 'base/base';
+@use 'base/reset';
+@use 'base/typography';
+
+// abstract
+@use 'abstracts/functions';
+@use 'abstracts/mixins';
+@use 'abstracts/variables' as *;
+
+
+// components
+@use 'components/alert';
+@use 'components/badge';
+@use 'components/button';
+@use 'components/card';
+@use 'components/table';
+@use 'components/modal';
+@use 'components/dropdown';
+
+// layout
+@use 'layout/footer';
+@use 'layout/header';
+@use 'layout/sidebar';
+
+// pages
+@use 'pages/dashboard';
+@use 'pages/garage';
+@use 'pages/login';
+@use 'pages/register';
+@use 'pages/resetpassword';
+@use 'pages/newpassword';
+@use 'pages/check-email';
+@use 'pages/form';
+@use 'pages/detailmoto';
+@use 'pages/legal-document';
+
+// themes
+@use 'themes/dark';
+@use 'themes/eco';
+@use 'themes/light';
+

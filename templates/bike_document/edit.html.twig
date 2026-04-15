@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon document
+{% endblock %}
+
+{% block meta_description %}Modifiez les informations du document {{ bike_document.documentName }} sur Trackday.{% endblock %}
+
+
+{% block body %}
+	{# NAV BACK #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_bike_show', {'id': bike_document.bike.id}) }}">Retourner au garage</a>
+	</nav>
+
+	{# TITLE #}
+	<header>
+		<h1>Modifier mon document</h1>
+	</header>
+
+	{{ include('bike_document/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+	{# <a href="{{ path('app_bike_document_index') }}">back to list</a> #}
+	{# {{ include('bike_document/_delete_form.html.twig') }} #}
+{% endblock %}

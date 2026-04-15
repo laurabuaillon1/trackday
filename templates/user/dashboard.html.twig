@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ app.user.lastname }}
+{% endblock %}
+{% block meta_description %}Accéder au tableau de bord administrateur et piloter l’ensemble de l’application en un coup d’œil.{% endblock %}
+
+{% block body %}
+
+	{# HEADER #}
+	<div class="dashboard">
+		<header class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Tableau de bord Admin</h1>
+			</div>
+			<p class="text-m ">Suivez vos utilisateurs</p>
+		</header>
+
+		{# Notifications #}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success alert-dismissible fade show">
+				{{ message }}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer l'alerte"></button>
+			</div>
+		{% endfor %}
+
+
+		{# Statistique #}
+		<section class="stats__grid">
+			<h2 class="stats__grid-title">Statistiques générales</h2>
+			<div class="stats__wrap">
+
+				<div class="stats__card">
+					<h3 class="stats__title">Nombres d'utilisateurs</h3>
+					<img class="stats__icon" src="{{ asset('icons/dashboard/calendar_white.svg') }}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Total</p>
+				</div>
+
+				<div class="stats__card">
+					<h3 class="stats__title">Nouveaux inscrits</h3>
+					<img class="stats__icon trophy" src="{{asset('icons/dashboard/trophy_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">ce mois</p>
+				</div>
+				<div class="stats__card">
+					<h3 class="stats__title">Moto enregistrées</h3>
+					<img class="stats__icon flag" src="{{asset('icons/dashboard/lap_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Total</p>
+				</div>
+
+
+				<div class="stats__card">
+					<h3 class="stats__title">Maintenances enregistrées</h3>
+					<img class="stats__icon time " src="{{asset('icons/dashboard/time_white.svg')}}" alt="" aria-hidden="true">
+					<p class="stats__number">0</p>
+					<p class="stats__p">Total</p>
+				</div>
+			</div>
+		</section>
+
+		{# SECTION GESTION #}
+		<section class="dashboard-admin__grid">
+			<h2 class="stats__grid-title">Gestion des utilisateurs</h2>
+			<a class="dashboard-admin__management" href="{{path('app_user_index')}}" aria-label="Voir la liste complète des utilisateurs">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste des utilisateurs</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_bike_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste de toutes les motos</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_bike_maintenance_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste des entretiens</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_document_legal_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste des documents légaux</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_document_type_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Gestion des types de documents</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			
+
+		</section>
+	</div>
+{% endblock %}

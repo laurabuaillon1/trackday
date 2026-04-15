@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil de
+	{{app.user.lastName}}
+	{{app.user.firstName}}
+{% endblock %}
+{% block meta_description %}Consulter en détail un utilisateur et ses informations associées.{% endblock %}
+
+{% block body %}
+	<div
+		class="dashboard">
+
+		{# NAV #}
+		<nav class="bike-detail__back" aria-label="Retour">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+			<a class="auth-card__link font-medium" href="{{ path('app_user_index') }}">Retourner sur la liste des utilisateurs</a>
+		</nav>
+
+		{# HEADER #}
+		<header class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Fiche de
+					{{app.user.lastName}}
+					{{app.user.firstName}}</h1>
+			</div>
+			<p class="text-m ">Retrouver toutes les informations des utilisateurs</p>
+		</header>
+
+		{# INFORMATION #}
+		<section class="info-section" aria-label="Informations utilisateur">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Nom de famille</th>
+						<td>{{ user.lastName }}</td>
+					</tr>
+					<tr>
+						<th>Prénom</th>
+						<td>{{ user.firstName }}</td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td>{{ user.email }}</td>
+					</tr>
+					<tr>
+						<th>Date de création</th>
+						<td>{{ user.createdAt ? user.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Dernière Connexion</th>
+						<td>{{ user.lastLoginAt ? user.lastLoginAt|date('Y-m-d H:i:s') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Statut</th>
+						<td>
+							<span class="badge-{{user.accountStatus|lower}}">
+								{{ user.accountStatus }}
+							</span>
+						</td>
+					</tr>
+					<tr>
+						<th>Role</th>
+						<td>
+							{% set role = 'ROLE_ADMIN' in user.roles ? 'admin' : 'user' %}
+							<span class="role-{{ role }}">{{ role }}</span>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">Photo de profil</th>
+						<td>
+							{% if user.profilePicture %}
+								<img src="{{ asset('uploads/profiles/' ~ user.profilePicture) }}" alt="Photo de profil de {{ user.firstName }}" class="profile-thumb" width="40" height="40">
+							{% else %}
+								<span class="text-grey italic">Aucune photo</span>
+							{% endif %}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		{# ACTIONS #}
+			<div class="bike-detail__buttons"> <a class="btn-outline" href="{{ path('app_user_edit', {'id': user.id}) }}" aria-label="Modifier l'utilisateur">Modifier</a>
+			{{ include('user/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\BikeMaintenanceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BikeMaintenanceRepository::class)]
 class BikeMaintenance
@@ -14,43 +15,82 @@ class BikeMaintenance
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Assert\NotBlank()]
     private ?\DateTime $date = null;
 
-    #[ORM\Column]
+    #[ORM\Column (nullable:true)]
+    #[Assert\PositiveOrZero(
+        message: 'Les kilomètres doivent être un nombre entier positif ou nul.'
+    )]
     private ?int $mileage = null;
 
-    #[ORM\Column]
+    #[ORM\Column (nullable:true)]
+    #[Assert\PositiveOrZero(
+        message: 'Le nombre d’heures doit être un entier positif ou nul.'
+    )]
     private ?int $hours = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom de l\'entretien ne peuvent pas dépasser 255 caractères.'
+    )]
     private ?string $maintenance_type = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'La description ne peuvent pas dépasser 255 caractères.'
+    )]
     private ?string $description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2, nullable: false)]
+    #[Assert\NotBlank()]
+    #[Assert\PositiveOrZero(message: 'Le coût doit être un nombre positif ou nul.')]
+    #[Assert\Type(type: 'numeric', message: 'Le coût doit être un nombre.')]
     private ?string $cost = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Choice(
+        choices: ['magasin', 'moi-même', 'ami'],
+    )]
     private ?string $workshop = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(
+        max: 255,
+        maxMessage: 'Le nom des produits utilisé ne peuvent pas dépasser 255 caractères.'
+    )]
     private ?string $parts_used = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTime $next_service_date = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'Le kilométrage du prochain entretien doit être un nombre positif ou nul.'
+    )]
     private ?int $next_service_km = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\PositiveOrZero(
+        message: 'L\'heure du prochain entretien doit être un nombre positif ou nul.'
+    )]
     private ?int $next_service_hours = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $usage_unit = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $receipt_url = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[Assert\Length(
+        max: 500,
+        maxMessage: 'Les notes ne peuvent pas dépasser 500 caractères.'
+    )]
     private ?string $notes = null;
 
     #[ORM\Column]
@@ -62,6 +102,14 @@ class BikeMaintenance
     #[ORM\ManyToOne(inversedBy: 'bikeMaintenances')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Bike $bike = null;
+
+   
+
+    public function __construct()
+    {
+        $this->created_at = new \DateTimeImmutable();
+        $this->updated_at = new \DateTimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -256,6 +304,18 @@ class BikeMaintenance
     public function setBike(?Bike $bike): static
     {
         $this->bike = $bike;
+
+        return $this;
+    }
+
+    public function getUsageUnit(): ?string
+    {
+        return $this->usage_unit;
+    }
+
+    public function setUsageUnit(string $usage_unit): static
+    {
+        $this->usage_unit = $usage_unit;
 
         return $this;
     }

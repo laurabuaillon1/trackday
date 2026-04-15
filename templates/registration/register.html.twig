@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body_class %}register-page
+{% endblock %}
+
+{% block body %}
+	{% block sidebar %}{% endblock %}
+
+	{# message error #}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	{# CARD #}
+	<div class="auth-card">
+		{# nav #}
+		<nav class="auth-card__back" aria-label="Retour">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}"  width="16" height="16" aria-hidden="true" alt="">
+			<a class="auth-card__link font-medium" href="{{ path('app_login') }}">Se connecter</a>
+		</nav>
+		<h1 class="auth-card__title ">Créer un compte</h1>
+
+
+		{{ form_errors(registrationForm) }}
+
+		{{ form_start(registrationForm) }}
+
+		{# email #}
+		<div class="auth-card__form">
+			<div class="auth-card__field">
+				{{ form_label(registrationForm.email)}}
+				<div class="auth-card__input-wrapper auth-card__input-wrapper--email">
+					{{ form_widget(registrationForm.email)}}
+					<img src="{{asset('icons/authentification/email.svg')}}" class="auth-card__icon" width="16" height="16" alt="" aria-hidden="true">
+				</div>
+				{{ form_errors(registrationForm.email)}}
+			</div>
+
+		{# PASSWORD GROUP #}
+			<div class="auth-card__passwords">
+				{# first password #}
+				<div class="auth-card__field">
+					{{ form_label(registrationForm.plainPassword.first,'Mot de passe')}}
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
+						{{ form_widget(registrationForm.plainPassword.first)}}
+						<img
+						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
+					{# data-target= permet à l'icone de savoir quel input afficher/cacher #}
+					</div>
+				</div>
+				{# second password #}
+				<div class="auth-card__field">
+					{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
+					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
+						{{ form_widget(registrationForm.plainPassword.second)}}
+						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
+
+					</div>
+					{{ form_errors(registrationForm.plainPassword.first)}}
+				</div>
+			</div>
+
+			{# conditions #}
+			<div class="auth-card__terms">
+				{{ form_widget(registrationForm.agreeTerms) }}
+				{{ form_label(registrationForm.agreeTerms) }}
+				{{ form_errors(registrationForm.agreeTerms) }}
+			</div>
+
+			<button type="submit" class="app-btn">Créer un compte</button>
+		</div>
+			{{ form_end(registrationForm) }}
+	</div>
+{% endblock %}

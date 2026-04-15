@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_bike_maintenance_delete', {'id': bike_maintenance.id}) }}" onsubmit="return confirm('Voulez-vous supprimer l\' entretien: {{ bike_maintenance.maintenanceType }} ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ bike_maintenance.id) }}">
+	<button type="submit" class="btn-primary btn-primary--full" aria-label="Supprimer l'entretien : {{ bike_maintenance.maintenanceType }}">Supprimer</button>
+</form>

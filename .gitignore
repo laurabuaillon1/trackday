@@ -22,3 +22,6 @@
 ###> symfonycasts/sass-bundle ###
 /public/assets/
 ###< symfonycasts/sass-bundle ###
+
+### Fichiers uploadés par les utilisateurs (photos, documents)
+/public/uploads/

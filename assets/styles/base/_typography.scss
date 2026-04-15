@@ -1,0 +1,122 @@
+@use '../abstracts/variables' as *;
+@use "../base/breakpoints" as*;
+
+// ===========================================
+//import des typographie depuis GOOGLE FONT
+// ===========================================
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+
+// ================================
+// Éléments de base
+// ================================
+
+h1, h2, h3, h4, h5, h6, p, a {
+    margin:0px;
+}
+
+
+label{
+    font-family: $font-primary;
+    font-size: $text-s;
+    color: $color-gray-dark;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.auth-card label{
+    justify-content: center;
+}
+
+.agree-terms label{
+    font-size: $text-xxs;
+}
+
+li{
+    list-style-type: none;
+    font-size: $text-s;
+    
+}
+
+// targets only error li inside form fields
+.form-field ul li {
+    color: $color-red-error;
+}
+
+// ================================
+// Classes utilitaires - Taille
+// ================================
+
+.text-xxs  { font-size: $text-xxs; }//10px
+.text-xs   { font-size: $text-xs; }//12px
+.text-s    { font-size: $text-s; }//14px
+.text-m    { font-size: $text-m; }//16px
+.text-l    { font-size: $text-l; }//18px
+.text-xl   { font-size: $text-xl; }//20px
+.text-xxl  { font-size: $text-xxl; }//24px
+.text-xxxl { font-size: $text-xxxl; }//32px
+.text-4xl  { font-size: $text-4xl; }//36px
+.text-5xl  { font-size: $text-5xl; }//40px
+.text-6xl { font-size: $text-6xl; }//48px
+
+// ================================
+// Classes utilitaires - Couleurs
+// ================================
+.text-white { color:$color-white; }
+.text-grey { color:$card-grey-dark ;}
+.text-blue { color:$card-blue-dark; }
+.text-red { color:$color-drop-red-3; }
+
+// ================================
+// Classes utilitaires - Weight
+// ================================
+
+.font-thin       { font-weight: 100; }
+.font-light      { font-weight: 300; }
+.font-regular    { font-weight: 400; }
+.font-medium     { font-weight: 500; }
+.font-semibold   { font-weight: 600; }
+.font-bold       { font-weight: 700; }
+.font-extrabold  { font-weight: 800; }
+.font-black      { font-weight: 900; }
+
+
+// ================================
+// Responsive - Tablette
+// ================================
+
+@media (min-width: $small) {
+    h1 {
+        font-size: $text-xxl;
+        font-family: $font-primary;
+        font-weight: 600 ;
+        color: $card-blue-dark;
+    }
+    .stats__title   { font-size: $text-xs;   color: $card-grey-dark; }
+    .stats__number  { font-size: $text-xxl; color: $card-blue-dark; }
+    .stats__p       { font-size: $text-xs;   color: $card-grey-dark; }
+}
+
+
+
+@media (min-width: $medium) {
+    h1 {
+        font-size: $text-4xl;
+        font-family: $font-primary;
+        font-weight: 600 ;
+        color: $card-blue-dark;
+    }
+
+    .stats__title   { font-size: $text-s;   color: $card-grey-dark; }
+    .stats__number  { font-size: $text-4xl; color: $card-blue-dark; }
+    .stats__p       { font-size: $text-s;   color: $card-grey-dark; }
+
+    .section-card__title { font-size: $text-l; color: $card-blue-dark; }
+}
+
+

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le mot de passe
+{% endblock %}
+
+{% block body_class %}reset-password
+{% endblock %}
+
+{% block body %}
+	{% block sidebar %}{% endblock %}
+	{# message d'alert #}
+	{% for flash_error in app.flashes('reset_password_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	<div class="auth-card">
+		<nav class="back" aria-label="Retour">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+			<a class="auth-card__link font-medium" href="{{path('app_login')}}">Se connecter</a>
+		</nav>
+
+		<header>
+			<h1 class="auth-card__title ">Modifier le mot de passe</h1>
+			<p class="auth-card__text ">
+				Saisissez votre adresse e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.
+			</p>
+		</header>
+
+		{{ form_start(requestForm) }}
+
+		<div class="auth-form-group">
+			{{ form_label(requestForm.email) }}
+			{{ form_widget(requestForm.email) }}
+			{{ form_errors(requestForm.email) }}
+		</div>
+
+		<button type="submit" class="app-btn">Envoyer un email</button>
+		{{ form_end(requestForm) }}
+	</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un utilisateur
+{% endblock %}
+{% block meta_description %}Modifier un utilisateur et mettre à jour ses informations.{% endblock %}
+
+{% block body %}
+	<div class="dashboard">
+		<nav class="bike-detail__back">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+			<a class="auth-card__link font-medium" href="{{ path('app_user_index') }}">Retourner sur la liste des utilisateurs</a>
+		</nav>
+		{# HEADER #}
+		<header class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Modifier le profil de
+					{{app.user.lastName}}
+					{{app.user.firstName}}</h1>
+			</div>
+			<p class="text-m ">Modifier toutes les informations des utilisateurs</p>
+		</header>
+
+		{{ include('user/_form.html.twig')}}
+	</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Entretien
+{% endblock %}
+
+{% block meta_description %}Enregistrez un nouvel entretien pour votre véhicule de circuit sur Trackday.{% endblock %}
+
+
+{% block body %}
+	{# NAV BACK #}
+	<div class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_bike_maintenance_index') }}">Historique des entretiens</a>
+	</div>
+
+	{# TITLE #}
+	<header>
+		<h1 class="form__title">Ajouter un entretien</h1>
+	</header>
+
+    {# FORM #}
+	{{ include('bike_maintenance/_form.html.twig') }}
+
+	{# <a href="{{ path('app_bike_maintenance_index') }}">back to list</a> #}
+{% endblock %}

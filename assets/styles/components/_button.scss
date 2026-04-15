@@ -1,0 +1,15 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+//Boutons
+
+
+//bouton ajouter
+.add-action{ @include add-action;}
+.add-btn{ @include add-btn;}
+.btn-base{ @include btn-base;}
+.btn-primary{ @include btn-primary;}
+.btn-outline {@include btn-outline;}
+.btn-danger{ @include btn-danger;}
+.btn-disabled { @include btn-disabled;}
+.btn-secondary{@include btn-secondary;}

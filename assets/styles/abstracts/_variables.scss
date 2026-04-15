@@ -1,0 +1,74 @@
+// dimension breakpoints
+$breakpoints-tablet:768px;
+$breakpoints-desktop:1024px;
+    
+
+
+// Couleurs de base
+$color-dark: #0F172A;
+$color-light: #F5F7FA;
+$color-white: #ffffff;
+$color-gray-light: #f1f5f9;
+$color-gray-medium: #b4bac2;
+$color-gray-dark: #334155;
+$color-gray-muted: #64748B;
+$color-red-error:#d10000;
+$color-green-success:#009120;
+$color-orange-alert:#f97316e6;
+
+
+
+// Authentification-background
+$auth-background:$color-light;
+$auth-gradient:linear-gradient(135deg, #f1f5f9, #f1f5f9);
+
+// Authentification-card
+$auth-card-background: #fffffff2;
+
+
+//3-Typographie
+$font-primary:"Inter", sans-serif;
+$font-brand-name: "Josefin Sans", sans-serif;
+
+$text-xxs: 0.625rem;//10px
+$text-xs: 0.75rem;//12px
+$text-s: 0.875rem;//14px
+$text-m: 1rem;//16px
+$text-l: 1.125rem;//18px
+$text-xl: 1.25rem;//20px
+$text-xxl: 1.5rem;//24px
+$text-xxxl: 2rem;//32px
+$text-4xl: 2.25rem;//36px
+$text-5xl: 2.5rem;//40px
+$text-6xl: 3rem;//48px
+
+// Sidebar
+$color-background: #fafafa;
+$color-border:#e5e7eb;
+$color-gray-disabled:#435670;
+
+//Dropdown
+$color-drop-red:#fef2f2;
+$color-drop-red-1:#fecaca;
+$color-drop-red-2:#7f1d1d;
+$color-drop-red-3:#b91c1c;
+
+//Grid
+$card-white:#f9fafb;
+$card-grey-dark:#4b5563;
+$card-blue-dark:#111827;
+$card-grey-light:#6b7280;
+
+//Button
+$button-red:#dc2626;
+$button-gray:#374151;
+$button-ligth-gray:#d1d5db;
+
+
+//Statut
+$badge-actif:#EAF3DE;
+$badge-color-green:#3B6D11;
+$badge-inactif:#F1EFE8;
+$badge-color-gray:#5F5E5A;
+$badge-banni:#FCEBEB;
+$badge-color-red:#A32D2D;
