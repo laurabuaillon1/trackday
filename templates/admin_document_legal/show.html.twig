@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ document_legal.documentType.label }}
+{% endblock %}
+{% block meta_description %}Consulter en détail un document légal et ses informations associées.{% endblock %}
+
+{% block body %}
+	<div
+		class="bike-detail">
+		{# NAV BACK #}
+		<div class="bike-detail__wrap">
+			<nav class="bike-detail__back">
+				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+				<a class="auth-card__link font-medium" href="{{ path('app_admin_document_legal_index') }}">Voir les documents</a>
+			</nav>
+
+			{# MOTORBIKE HEADER #}
+			<header class="bike-detail__header">
+				<div class="bike-detail__info">
+					<h1 class="bike-detail__title">{{ document_legal.documentType.label }}</h1>
+					<div class="bike-detail__specs">
+						<p class="text-s">Version:
+							{{ document_legal.version }}
+							• Date de création:
+							{{ document_legal.publicationDate ? document_legal.publicationDate|date('d-m-Y') : '' }}
+							•
+																					Active :{{ document_legal.isActive ? 'Yes' : 'No' }}</p>
+					</div>
+
+				</div>
+			</header>
+		</div>
+
+		{# CARD - INFORMATION #}
+		<section class="bike-detail__card">
+			<h2 class="bike-detail__section-title text-m">Contenu du document</h2>
+			<p class="text-s text-blue legal-content">{{ document_legal.textContent|nl2br }}</p>
+		</section>
+
+
+		<div class="bike-detail__buttons">
+			<a class="btn-outline" href="{{ path('app_admin_document_legal_edit', {'id': document_legal.id}) }}" aria-label="Modifier l'entretien">Modifier</a>
+			{{ include('admin_document_legal/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}
+{# <table class="table">
+					<tbody>
+						<tr>
+							<th>Id</th>
+							<td>{{ document_legal.id }}</td>
+						</tr>
+						<tr>
+							<th>Version</th>
+							<td>{{ document_legal.version }}</td>
+						</tr>
+						<tr>
+							<th>TextContent</th>
+							<td>{{ document_legal.textContent }}</td>
+						</tr>
+						<tr>
+							<th>PublicationDate</th>
+							<td>{{ document_legal.publicationDate ? document_legal.publicationDate|date('Y-m-d') : '' }}</td>
+						</tr>
+						<tr>
+							<th>IsActive</th>
+							<td>{{ document_legal.isActive ? 'Yes' : 'No' }}</td>
+						</tr>
+					</tbody>
+				</table> #}

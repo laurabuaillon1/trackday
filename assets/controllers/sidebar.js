@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!toggle || !sidebar || !overlay) return;
 
-    // Ouvrir la sidebar
+    // Open sidebar
     toggle.addEventListener("click", function () {
         sidebar.classList.add("open");
         overlay.classList.add("active");
     });
 
-    // Fermer en cliquant sur l'overlay
+    // close the sidebar (overlay)
     overlay.addEventListener("click", function () {
         sidebar.classList.remove("open");
         overlay.classList.remove("active");

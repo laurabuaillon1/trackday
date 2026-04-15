@@ -3,6 +3,9 @@
 {% block title %}Ajouter une moto
 {% endblock %}
 
+{% block meta_description %}Ajoutez un nouveau véhicule à votre garage Trackday pour suivre ses performances sur circuit.{% endblock %}
+
+
 {% block body %}
 	{# NAV BACK #}
 	<div class="bike-detail__back">
@@ -15,7 +18,12 @@
 		<h1 class="form__title">Ajouter une nouvelle moto</h1>
 	</header>
 
-    {# FORM #}
+	{# FORM #}
+	{% for message in app.flashes('error') %}
+		<div class="alert alert-danger">
+			{{ message }}
+		</div>
+	{% endfor %}
 	{{ include('bike/_form.html.twig') }}
 
 {% endblock %}

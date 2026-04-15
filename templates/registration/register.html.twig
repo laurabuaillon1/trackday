@@ -18,7 +18,7 @@
 	<div class="auth-card">
 		{# nav #}
 		<nav class="auth-card__back" aria-label="Retour">
-			<img src="{{asset('icons/authentification/arrow_left.svg')}}" alt="" width="16" height="16" aria-hidden="true">
+			<img src="{{asset('icons/authentification/arrow_left.svg')}}"  width="16" height="16" aria-hidden="true" alt="">
 			<a class="auth-card__link font-medium" href="{{ path('app_login') }}">Se connecter</a>
 		</nav>
 		<h1 class="auth-card__title ">Créer un compte</h1>
@@ -47,7 +47,7 @@
 					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.first)}}
 						<img
-						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye" width="16" height="16" aria-hidden="true">
+						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
 					{# data-target= permet à l'icone de savoir quel input afficher/cacher #}
 					</div>
 				</div>
@@ -56,7 +56,7 @@
 					{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
 					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.second)}}
-						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye" width="16" height="16" aria-hidden="true">
+						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
 
 					</div>
 					{{ form_errors(registrationForm.plainPassword.first)}}
@@ -71,7 +71,7 @@
 			</div>
 
 			<button type="submit" class="app-btn">Créer un compte</button>
-			{{ form_end(registrationForm) }}
 		</div>
+			{{ form_end(registrationForm) }}
 	</div>
 {% endblock %}

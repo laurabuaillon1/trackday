@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ document.documentType.label }}
+{% endblock %}
+{% block meta_description %}Consulter la liste des contenus légaux .{% endblock %}
+
+{% block body %}
+	<div
+		class="bike-detail">
+		{# NAV BACK #}
+		<div class="bike-detail__wrap">
+			<nav class="bike-detail__back">
+				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+				<a class="auth-card__link font-medium" href="{{ path('app_account') }}">Gérer mon compte</a>
+			</nav>
+
+			{# MOTORBIKE HEADER #}
+			<header class="bike-detail__header">
+				<div class="bike-detail__info">
+					<h1 class="bike-detail__title">{{ document.documentType.label }}</h1>
+					<div class="bike-detail__specs">
+						<p class="text-s">Version
+							{{ document.version }}
+							•
+							{{ document.publicationDate|date('d/m/Y') }}</p>
+					</div>
+				</div>
+			</header>
+		</div>
+		{# CARD - INFORMATION #}
+		<section class="bike-detail__card">
+			<h2 class="bike-detail__section-title text-m">Contenu du document</h2>
+			<p class="text-s text-blue legal-content">{{ document.textContent|nl2br }}</p>
+		</section>
+	</div>
+
+{% endblock %}

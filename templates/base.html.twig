@@ -7,15 +7,18 @@
 			{% endblock %}
 		</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Application mobile concu pour optimiser les performances des pilotes sur circuit et pour les accompagner tout au long de leurs journées de roulages">
+		<meta name="description" content="{% block meta_description %}Application mobile conçue pour optimiser les performances des pilotes sur circuit et les accompagner lors de leurs journées de roulage.{% endblock %}">
 
-		<link rel="icon" href="{{asset('icons/favicon/favicon.png')}}"> {% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{asset('icons/favicon/favicon.png')}}"> 
 
+		{# CSS FIRST #}
+		{% block stylesheets %}{% endblock %}
+
+		{# JS SECOND #}
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
-
 		{% endblock %}
 	</head>
 
@@ -26,7 +29,7 @@
 					{{ include('components/_sidebar.html.twig') }}
 				{% endif %}
 			{% endblock %}
-			<main class="flex-grow-1  main-content " style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
+			<main class="flex-grow-1  main-content" style="{% if app.user %}margin-left: 0;{% endif %}"> {% block body %}{% endblock %}
 				</main>
 			</div>
 		</body>

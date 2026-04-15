@@ -4,12 +4,15 @@
 	{{ bike_maintenance.bike.nickname }}
 {% endblock %}
 
+{% block meta_description %}Détails de l'entretien effectué sur {{ bike_maintenance.bike.nickname }}.{% endblock %}
+
+
 {% block body %}
 	<div class="bike-detail">
 		<div
 			class="bike-detail__wrap">
 			{# NAV #}
-			<div class="bike-detail__back" aria-label="Retour">
+			<div class="bike-detail__back">
 				<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
 				<a class="auth-card__link font-medium" href="{{ path('app_bike_maintenance_index') }}">Historique des entretiens</a>
 			</div>
@@ -85,7 +88,7 @@
 				</div>
 
 				{# FILE  #}
-				<div type="onclick" class="bike-detail__stat red-card">
+				<div class="bike-detail__stat red-card">
 					<div class="bike-card__label">
 						<img class="bike-card__icon" src="{{asset('icons/garage/maintenance_grey.svg')}}" alt="">
 						{% if bike_maintenance.receiptUrl %}
@@ -111,8 +114,9 @@
 			<a class="btn-outline" href="{{ path('app_bike_maintenance_edit', {'id': bike_maintenance.id}) }}" aria-label="Modifier l'entretien de la moto">Modifier</a>
 			{{ include('bike_maintenance/_delete_form.html.twig') }}
 		</div>
-	{% endblock %}
-	{# <table class="table">
+	</div>
+{% endblock %}
+{# <table class="table">
 							        <tbody>
 							            <tr>
 							                <th>Date</th>

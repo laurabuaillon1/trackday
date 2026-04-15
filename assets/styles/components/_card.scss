@@ -195,11 +195,11 @@ input {
         margin-bottom: 24px;
     }
 
-    &__grid-title{
-        font-size: $text-xxl;
-        color: $color-gray-muted;
-        margin: 1rem 0rem;
-    }
+    // &__grid-title{
+    //     font-size: $text-xxl;
+    //     color: $color-gray-muted;
+    //     margin: 1rem 0rem;
+    // }
 
     &__grid{
         display: flex;
@@ -247,11 +247,7 @@ input {
     }
     }
 }
-//     .stats__title   { @include stats-text($text-xs,  700, $stats-card-color-title,  $font-primary); }
-//     .stats__number  { @include stats-text($text-xxl, 500, $stats-card-color-number, $font-primary); }
-//     .stats__p       { @include stats-text($text-xs,  400, $stats-card-color-p,      $font-primary); margin-bottom: 0; }
-
-
+   
 
 // ================================
 // Card Dashboard - Prochains Trackdays
@@ -284,6 +280,7 @@ input {
         color: $card-blue-dark;
         font-weight: 500;
         font-family: $font-primary;
+        font-size: $text-m ;
     }
 
     &__empty {
@@ -303,6 +300,7 @@ input {
     &__empty-text {
         margin: 0;
         padding-bottom: 24px;
+        color: $card-grey-dark;
     }
 
     &__wrap{

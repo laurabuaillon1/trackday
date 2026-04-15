@@ -99,7 +99,7 @@
 		{# Sidebar footer #}
 		<footer class="sidebar__footer">
 			<div class="sidebar__user">
-				<div class="sidebar__avatar" name="profilepicture" aria-hidden="true">
+				<div class="sidebar__avatar"  aria-hidden="true">
 					{% if app.user.profilePicture %}
 						<img src="{{asset ('uploads/profiles/'~ app.user.profilePicture )}}" alt="Photo de profil">
 					{% else %}

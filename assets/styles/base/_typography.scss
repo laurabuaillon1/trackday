@@ -43,6 +43,11 @@ li{
     
 }
 
+// targets only error li inside form fields
+.form-field ul li {
+    color: $color-red-error;
+}
+
 // ================================
 // Classes utilitaires - Taille
 // ================================
@@ -85,15 +90,31 @@ li{
 // Responsive - Tablette
 // ================================
 
+@media (min-width: $small) {
+    h1 {
+        font-size: $text-xxl;
+        font-family: $font-primary;
+        font-weight: 600 ;
+        color: $card-blue-dark;
+    }
+    .stats__title   { font-size: $text-xs;   color: $card-grey-dark; }
+    .stats__number  { font-size: $text-xxl; color: $card-blue-dark; }
+    .stats__p       { font-size: $text-xs;   color: $card-grey-dark; }
+}
+
+
+
 @media (min-width: $medium) {
     h1 {
         font-size: $text-4xl;
         font-family: $font-primary;
+        font-weight: 600 ;
+        color: $card-blue-dark;
     }
 
     .stats__title   { font-size: $text-s;   color: $card-grey-dark; }
     .stats__number  { font-size: $text-4xl; color: $card-blue-dark; }
-    .stats__p       { font-size: $text-s;   color: $card-grey-light; }
+    .stats__p       { font-size: $text-s;   color: $card-grey-dark; }
 
     .section-card__title { font-size: $text-l; color: $card-blue-dark; }
 }

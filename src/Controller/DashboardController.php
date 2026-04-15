@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -13,10 +14,13 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class DashboardController extends AbstractController
 {
     #[Route('/dashboard', name: 'app_dashboard')]
-    public function index(): Response
+    public function index(EntityManagerInterface $entityManager): Response
     {
         /** @var \App\Entity\User $user */
         $user=$this->getUser();
+
+        $user->setLastLoginAt(new \DateTimeImmutable());
+        $entityManager->flush();
 
         $this->addFlash('success', 'Bienvenue sur Trackday ! Suivez vos journées de roulages, gérez votre moto, analysez vos temps et progressez à chaque sortie.');
 

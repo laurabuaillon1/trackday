@@ -66,20 +66,15 @@ class BikeDocumentType extends AbstractType
                 ]
             ])
             ->add('upload_date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Date d\'ajout'
             ])
             ->add('expiry_date', DateType::class, [
-                'attr' => [
-                    'placeholder' => 'jj/mm/aaaa',
-                ],
+                'widget' => 'single_text',
                 'label' => 'Date d\'ajout'
             ])
             ->add('amount', NumberType::class, [
                 'attr' => [
-                    'min' => 0,
                     'placeholder' => 'Ex: 10 €',
                 ],
                 'label' => 'Coût'

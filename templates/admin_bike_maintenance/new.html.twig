@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un nouvel entretien{% endblock %}
+
+{% block meta_description %}Ajouter un nouvel entretien de moto et renseigner les opérations effectuées.{% endblock %}
+
+{% block body %}
+
+    {# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_bike_maintenance_index') }}">Voir la liste des entretiens</a>
+	</nav>
+    {# TITLE #}
+	<header>
+		<h1 class="form__title">Ajouter un entretien</h1>
+	</header>
+
+    {{ include('admin_bike_maintenance/_form.html.twig') }}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un type de document
+{% endblock %}
+{% block meta_description %}Créer un nouveau type de document et définir ses propriétés.{% endblock %}
+
+{% block body %}
+	{# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_document_type_index') }}">Voir la liste des documents</a>
+	</nav>
+
+    {# TITLE #}
+	<header>
+		<h1 class="form__title">Ajouter un document</h1>
+	</header>
+
+	{{ include('admin_document_type/_form.html.twig') }}
+
+{% endblock %}

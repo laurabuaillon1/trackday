@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte
-{% endblock %}
+{% block title %}Mon compte{% endblock %}
+{% block meta_description %}Consulter et gérer les informations de votre compte utilisateur.{% endblock %}
 
 {% block body %}
 	{# HEADER #}
@@ -42,17 +42,17 @@
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="lastname">Nom:</label>
-							<input class="accordion__input" type="file" id="lastname" name="lastname" value="{{ app.user.lastName }}"/>
+							<input class="accordion__input" type="text" id="lastname" name="lastname" value="{{ app.user.lastName }}">
 						</div>
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="firstname">Prénom:</label>
-							<input class="accordion__input" type="text" id="firstname" name="firstname" value="{{ app.user.firstName }}"/>
+							<input class="accordion__input" type="text" id="firstname" name="firstname" value="{{ app.user.firstName }}">
 						</div>
 
 						<div class="accordion__field">
 							<label class="accordion__label" for="email">Email:</label>
-							<input class="accordion__input accordion__input--disabled" type="email" id="email" name="email" value="{{ app.user.email }}" aria-disabled="true"/>
+							<input class="accordion__input accordion__input--disabled" type="email" id="email" name="email" value="{{ app.user.email }}" aria-disabled="true">
 							<span class="accordion__hint text-xs text-grey">L'email ne peut pas être modifié</span>
 						</div>
 
@@ -64,7 +64,7 @@
 
 		{# ACCORDION 2 - HELP #}
 
-		<section class="accordion" id="accordionThree">
+		<section class="accordion" id="accordionTwo">
 			<div class="accordion-item">
 				<h2 class="accordion-header">
 					<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" aria-label="Aide et support">
@@ -93,10 +93,10 @@
 					</button>
 				</h2>
 				{# Accordion body  #}
-				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample" aria-label="Liens légaux">
-					<a href="#" class="accordion__link ">Conditions d'utilisation</a>
-					<a href="#" class="accordion__link ">Politique de confidentialité</a>
-					<a href="#" class="accordion__link ">Mentions légales</a>
+				<div id="collapseThree" class="accordion__collapse collapse show" data-bs-parent="#accordionExample" role="navigation" aria-label="Liens légaux">
+					<a href="{{ path('app_legal_content', {'type': 'CGV'}) }}" class="accordion__link ">Conditions générale de vente</a>
+					<a href="{{ path('app_legal_content', {'type': 'PDC'}) }}" class="accordion__link ">Politique de confidentialité</a>
+					<a href="{{ path('app_legal_content', {'type': 'ML'}) }}" class="accordion__link ">Mentions légales</a>
 				</div>
 			</div>
 		</section>

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Document légaux{% endblock %}
+{% block meta_description %}Consulter la liste des documents légaux et accéder à leur gestion complète.{% endblock %}
+
+{% block body %}
+    {# NAV #}
+	<nav class="bike-detail__back">
+		<img src="{{asset('icons/authentification/arrow_left.svg')}}" width="16" height="16" alt="" aria-hidden="true">
+		<a class="auth-card__link font-medium" href="{{ path('app_admin_dashboard') }}">Retourner sur le dashboard admin</a>
+	</nav>
+
+    {# HEADER #}
+	<header class="dashboard">
+		<div class="dashboard__wrapper">
+			<div class="dashboard__title">
+				<img class="dashboard__icon" src="{{asset('icons/dashboard/flag_red.svg')}}" alt="" aria-hidden="true">
+				<h1>Documents légaux</h1>
+			</div>
+			<p class="text-m ">Controller et gérer vos documents</p>
+		</div>
+		<div class="add-action">
+			<a href="{{ path('app_admin_document_legal_new') }}" class="btn-primary">
+				<img class="add-btn__img" src="{{asset('icons/garage/add_white.svg')}}" alt="" aria-hidden="true">
+				<span class="add-btn__text">Ajouter un document</span>
+			</a>
+		</div>
+	</header>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Version</th>
+                <th>Contenu</th>
+                <th>Date de publication</th>
+                <th>Actif</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document_legal in document_legals %}
+            <tr>
+                <td>{{ document_legal.documentType.label }}</td>
+                <td>{{ document_legal.version }}</td>
+                <td>{{ document_legal.textContent|slice(0,50) }}...</td>
+                <td>{{ document_legal.publicationDate ? document_legal.publicationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ document_legal.isActive ? 'Yes' : 'No' }}</td>
+                <td class="table-gap">
+                    <a class="btn-secondary" href="{{ path('app_admin_document_legal_show', {'id': document_legal.id}) }}">Voir</a>
+                    <a class="btn-secondary" href="{{ path('app_admin_document_legal_edit', {'id': document_legal.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun document enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_admin_document_legal_new') }}">Create new</a> #}
+{% endblock %}

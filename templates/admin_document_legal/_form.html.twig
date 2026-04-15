@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+<div class="bike-update__wrap">
+    <div class="form-field">
+        {{ form_label(form.documentType) }}
+        {{ form_widget(form.documentType) }}
+        {{ form_errors(form.documentType) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_label(form.version) }}
+        {{ form_widget(form.version) }}
+        {{ form_errors(form.version) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_label(form.textContent) }}
+        {{ form_widget(form.textContent) }}
+        {{ form_errors(form.textContent) }}
+    </div>
+
+    <div class="form-field">
+        {{ form_label(form.publicationDate) }}
+        {{ form_widget(form.publicationDate) }}
+        {{ form_errors(form.publicationDate) }}
+    </div>
+
+    <div class="form-field form-field--inline">
+        {{ form_label(form.isActive) }}
+        {{ form_widget(form.isActive) }}
+        {{ form_errors(form.isActive) }}
+    </div>
+
+    <div class="bike-update__actions">
+        <button class="btn-primary" type="submit">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
+</div>
+{{ form_end(form) }}

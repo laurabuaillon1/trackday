@@ -4,6 +4,12 @@
 	{{app.user.lastname}}!
 {% endblock %}
 
+{% block meta_description %}
+    Suivez vos chronos, analysez vos sessions et progressez sur circuit avec votre tableau de bord Trackday.
+{% endblock %}
+
+
+
 {% block body %}
 	<div
 		class="dashboard">
@@ -14,7 +20,6 @@
 				<h1>Tableau de bord</h1>
 			</div>
 			<p class="text-m ">Suivez vos performances</p>
-
 		</header>
 
 		{# NOTIFICATIONS #}
@@ -29,28 +34,28 @@
 		<section class="stats__grid" aria-label="Statistiques globales">
 			<div class="stats__wrap">
 				<div class="stats__card">
-					<h3 class="stats__title">Trackday</h3>
+					<h2 class="stats__title">Trackday</h2>
 					<img class="stats__icon flag" src="{{asset('icons/dashboard/lap_white.svg')}}" alt="" aria-hidden="true">
 					<p class="stats__number">0</p>
 					<p class="stats__p">Journée</p>
 				</div>
 
 				<div class="stats__card">
-					<h3 class="stats__title">Tours</h3>
+					<h2 class="stats__title">Tours</h2>
 					<img class="stats__icon flag" src="{{asset('icons/dashboard/lap_white.svg')}}" alt="" aria-hidden="true">
 					<p class="stats__number">0</p>
 					<p class="stats__p">Total</p>
 				</div>
 
 				<div class="stats__card">
-					<h3 class="stats__title">Record</h3>
+					<h2 class="stats__title">Record</h2>
 					<img class="stats__icon trophy" src="{{asset('icons/dashboard/trophy_white.svg')}}" alt="" aria-hidden="true">
 					<p class="stats__number">0</p>
 					<p class="stats__p">Meilleur</p>
 				</div>
 
 				<div class="stats__card">
-					<h3 class="stats__title">A venir</h3>
+					<h2 class="stats__title">A venir</h2>
 					<img class="stats__icon time " src="{{asset('icons/dashboard/time_white.svg')}}" alt="" aria-hidden="true">
 					<p class="stats__number">0</p>
 					<p class="stats__p">Sessions</p>
@@ -66,7 +71,7 @@
 			<section class="section-card">
 				<header class="section-card__header">
 					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
-					<h2 class="section-card__title">Prochains Trackdays</h2>
+					<h3 class="section-card__title">Prochains Trackdays</h3>
 				</header>
 				<div class="section-card__empty">
 					<img class="section-card__empty-icon" src="{{asset('icons/dashboard/calendar_grey.svg')}}" alt="" aria-hidden="true">
@@ -78,14 +83,14 @@
 			<section class="section-card">
 				<header class="section-card__header">
 					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar" aria-hidden="true">
-					<h2 class="section-card__title">Mon Garage</h2>
+					<h3 class="section-card__title">Mon Garage</h3>
 				</header>
 				<div class="section-card__empty">
 					{% if bikes is not empty %}
 						{% for bike in bikes %}
-							<article class="section-card__wrap">
+							<div class="section-card__wrap">
 								{% if bike.photoUrl %}
-									<img class="section-card__image" src="{{asset ('uploads/photos/'~ bike.photoUrl )}}" alt="Photo de la {{ bike.brand }} {{ bike.model }}">
+									<img class="section-card__image" src="{{asset ('uploads/photos/'~ bike.photoUrl )}}" alt="Photo de la {{ bike.brand }} {{ bike.model }}" width="300" height="200">
 								{% endif %}
 								<div class="section-card__infos">
 									<p class="text-s font-bold">{{ bike.brand }}
@@ -94,7 +99,7 @@
 										km •
 										{{ bike.year }}</p>
 								</div>
-							</article>
+							</div>
 						{% endfor %}
 					{% else %}
 						<p>Aucune moto enregistrée</p>
@@ -107,7 +112,7 @@
 		<div class="section-card">
 			<div class="section-card__header">
 				<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-				<p class="section-card__title">Rappels</p>
+				<h3 class="section-card__title">Rappels</h3>
 			</div>
 			<div class="section-card__empty">
 				<p class="section-card__empty-text">Aucun rappel de prévu</p>
@@ -116,7 +121,7 @@
 		<div class="section-card">
 			<div class="section-card__header">
 				<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="calendar">
-				<p class="section-card__title">Frais ce mois-ci</p>
+				<h3 class="section-card__title">Frais ce mois-ci</h3>
 			</div>
 			<div class="section-card__empty">
 				<p class="section-card__empty-text">Aucun trackday prévu</p>
@@ -132,4 +137,4 @@
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
+{% endblock %}

@@ -2,6 +2,7 @@
 
 {% block title %}Admin - {{ app.user.lastname }}
 {% endblock %}
+{% block meta_description %}Accéder au tableau de bord administrateur et piloter l’ensemble de l’application en un coup d’œil.{% endblock %}
 
 {% block body %}
 
@@ -69,10 +70,31 @@
 				</div>
 				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
 			</a>
-			<a class="dashboard-admin__management" href="{{path('app_bike_index')}}" aria-label="Voir la liste complète des motos">
+			<a class="dashboard-admin__management" href="{{path('app_admin_bike_index')}}" aria-label="Voir la liste complète des motos">
 				<div class="dashboard-admin__infos">
 					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
 					<p class="dashboard-admin__title">Liste de toutes les motos</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_bike_maintenance_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste des entretiens</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_document_legal_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Liste des documents légaux</p>
+				</div>
+				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
+			</a>
+			<a class="dashboard-admin__management" href="{{path('app_admin_document_type_index')}}" aria-label="Voir la liste complète des motos">
+				<div class="dashboard-admin__infos">
+					<img src="{{asset('icons/dashboard/calendar_red.svg')}}" alt="" aria-hidden="true">
+					<p class="dashboard-admin__title">Gestion des types de documents</p>
 				</div>
 				<img src="{{asset('icons/dashboard/arrow_right_black.svg')}}" alt="">
 			</a>
