@@ -3,7 +3,8 @@
 {% block title %}Mon garage
 {% endblock %}
 
-{% block meta_description %}Gérez vos motos et retrouvez tous vos entretiens enregistrés sur Trackday.{% endblock %}
+{% block meta_description %}Gérez vos motos et retrouvez tous vos entretiens enregistrés sur Trackday.
+{% endblock %}
 
 {% block body %}
 	{# HEADER #}
@@ -28,8 +29,11 @@
 		{% for bike in bikes %}
 			<article class="bike-card">
 				<div class="bike-card__header">
-					<img
-					class="bike-card__img" src="{{ asset('uploads/photos/' ~ bike.photoUrl) }}" alt="Photo de {{bike.nickname}}" width="300" height="200">
+					{% if bike.photoUrl is not null %}
+						<img class="bike-card__img" src="{{ asset('uploads/photos/' ~ bike.photoUrl) }}" alt="Photo de {{bike.nickname}}" width="300" height="200">
+					{% else %}
+						<img class="bike-card__img" src="{{ asset('pictures/default.webp') }}" alt="Photo de par default de Trackday" width="300" height="200">
+					{% endif %}
 					{# Badge d'alerte #}
 					<div class="bike-card__alert">
 						<img src="{{asset('icons/garage/maintenance_white.svg')}}" alt="" aria-hidden="true">
