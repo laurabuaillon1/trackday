@@ -8,7 +8,6 @@
 
 {% block body %}
 	{% block sidebar %}{% endblock %}
-
 	{# message error #}
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -47,7 +46,7 @@
 					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.first)}}
 						<img
-						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
+						src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_first" class="auth-card__eye " width="16" height="16" aria-hidden="true" alt="">
 					{# data-target= permet à l'icone de savoir quel input afficher/cacher #}
 					</div>
 				</div>
@@ -56,7 +55,7 @@
 					{{ form_label(registrationForm.plainPassword.second,'Confirmer le mot de passe')}}
 					<div class="auth-card__input-wrapper auth-card__input-wrapper--password">
 						{{ form_widget(registrationForm.plainPassword.second)}}
-						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye" width="16" height="16" aria-hidden="true" alt="">
+						<img src="{{asset('icons/authentification/eye-hide.svg')}}" data-target="registration_form_plainPassword_second" class="auth-card__eye " width="16" height="16" aria-hidden="true" alt="">
 
 					</div>
 					{{ form_errors(registrationForm.plainPassword.first)}}
