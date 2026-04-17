@@ -1255,7 +1255,6 @@ input::placeholder {
   gap: 0.25rem;
   flex-grow: 1;
   background-color: #fafafa;
-  border-right: 1px solid #e5e7eb;
   padding: 1.25rem;
 }
 .sidebar__link {
